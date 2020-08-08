@@ -11,3 +11,10 @@ def index(request):
         "Events":elem['Events'][0]['イベント名']
     }
     return render(request,'index.html',d)
+
+#########元のmasterの書き方
+#from rikumane_app import data
+# Create your views here.
+#def index(request):
+#    return render(request,'rikumane_app/index.html',{'data.company_data':data.company_data})
+#########################
