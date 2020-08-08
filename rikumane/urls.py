@@ -18,10 +18,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
     path('', include('rikumane_app.urls', 'rikumane_app')),
-=======
-    path('',include("rikumane_app.urls"))
-
->>>>>>> 9afd29d9bb78d4740baf983ad404f27500b98302
 ]
