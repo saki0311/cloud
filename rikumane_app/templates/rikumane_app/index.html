@@ -1,4 +1,5 @@
-<html lang="ja">
+{% extends "./base.html" %}
+<!-- <html lang="ja">
   <head>
     <meta charset="utf-8">
     <title>リクマネ-就活タスク管理システム</title>
@@ -11,4 +12,30 @@
     <p>イベント : <b>{{ Ivents }}</b></p>
     
   </body>
-</html>
+</html> -->
+<!-- 画面の左側 -->
+{% block box1 %}
+    <p>ここに企業要録ボタン表示</p>
+    <p>ここに企業名表示おそらくリンクでつなぐ</p>
+    <h1>リクマネ</h1>
+    <p>企業名 : <b>{{ Company }}</b> </p>
+    <p>Mypage URL : <b>{{ URL }}</b></p>
+    <p>Mypage ID : <b>{{ id }}</b></p>
+    <p>イベント : <b>{{ Ivents }}</b></p>
+​
+{% endblock %}
+​
+<!-- 画面の真ん中 -->
+{% block box2 %}
+​
+    <h1>企業名表示</h1>
+​
+{% endblock %}
+​
+<!-- 画面の右側 -->
+{% block box3 %}
+​
+​
+{% endblock %}
+
+
