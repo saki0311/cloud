@@ -29,9 +29,9 @@
       </h1>
       <ul>
         <div id="mypage_id"></div>
-        <li><a href="{% block box3 %}{% endblock %}" onclick="copyToClipboard()">マイページ</a></li><br>
+        <li><a href="{% block box3 %}{% endblock %}" onclick="copyToClipboard()" target="_blank">マイページ</a></li><br>
         <li>ES</li><br>
-        <li><a href="{% url  'rikumane_app:ivents' %}">イベント</a></li><br>
+        <li><a href="{% url  'rikumane_app:ivents' %}?id={{ID0}}">イベント</a></li><br>
       </ul>
      
     </div>
