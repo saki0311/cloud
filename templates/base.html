@@ -28,9 +28,10 @@
         {% endblock %}
       </h1>
       <ul>
-        <li><a href="{% block box3 %}{% endblock %}">マイページ</a></li><br>
+        <div id="mypage_id"></div>
+        <li><a href="{% block box3 %}{% endblock %}" onclick="copyToClipboard()">マイページ</a></li><br>
         <li>ES</li><br>
-        <li>イベント</li><br>
+        <li><a href="{% url  'rikumane_app:ivents' %}">イベント</a></li><br>
       </ul>
      
     </div>
@@ -41,4 +42,6 @@
 
   </div>
 </body>
+<script id="test" type="rikumane_app/json">{"con":"{{ID0}}"}</script>
+<script src="{% static 'js/clipbord.js' %}"></script>
 </html>
