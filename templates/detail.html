@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% load static %}
+    {% block box2 %}
+        <div id="box2">
+            <ul>
+              <div id="mypage_id"></div>
+              <li><a href="{{company.URL}}" onclick="copyToClipboard()" target="_blank">マイページ</a></li><br>
+              <li>ES</li><br>
+              <li><a href="{% url  'rikumane_app:ivents' %}?id={{company.id}}">イベント</a></li><br>
+            </ul>
+        </div>
+    {% endblock %}
+    {% block script %}
+    <script id="test" type="rikumane_app/json">{"con":"{{company.id}}"}</script>
+    {% endblock %}

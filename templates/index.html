@@ -2,33 +2,4 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block box1 %}
-  <!-- モーダル画面を開くボタン -->
-  <div id="open" class="button">
-    <button>企業新規登録</button>
-  </div>
-  <!-- グレーの透過マスク -->
-  <div id="mask" class="hidden"></div>
-  <!-- モーダル画面 -->
-  <div id="modal" class="hidden">
-    <form action="{% url  'rikumane_app:index' %}" method="get">
-      <p>企業名：<input type="text" name="company"></p>
-      <p>マイページID：<input type="text" name="id"></p>
-      <p>ログインURL：<input type="text" name="url"></p>
-      <input type="submit" value="新規登録">
-    </form>
-    <!-- モーダル画面を閉じるボタン -->
-    <div id="close" class="button">
-      <button>画面を閉じる</button>
-    </div>
-  </div>
-  {{ Company0 }}
-{%endblock%}
 
-{% block box2 %}
-  {{ Company0 }}
-{%endblock%}
-
-{% block box3 %}
-  {{ URL0 }}
-{%endblock%}

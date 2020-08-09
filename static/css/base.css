@@ -140,3 +140,7 @@ html,body{
 #modal.hidden{
     transform: translate(0px,-500px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
 }
+a {
+    color: white;
+    text-decoration: none;
+  }
