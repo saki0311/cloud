@@ -19,13 +19,21 @@ class Choice(models.Model):
         return self.choice_text
 
 class Company(models.Model):
+    # URL:企業毎のURL
+    # CompanyName:企業名
+    # LoginId:ログインのためのID
+
     URL = models.CharField(max_length=100)
     CompanyName = models.CharField(max_length=100)
     LoginId = models.CharField(max_length=100)
     def __str__(self):
-        return '<{0}>'.format(self.CompanyName)
+        return '<企業名：{0}, URL：{1} ID：{2}>'.format(self.CompanyName,self.URL,self.LoginId)
 
 class Event(models.Model):
+    # Company:そのイベントの属する企業
+    # EventName:イベント名
+    # EventStart:開始日時（ex. 2000-01-01 02:11:11+00:00）
+    # EventEnd:終了日時
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     EventName = models.CharField(max_length=100)
     EventStart = models.DateTimeField()

@@ -7,6 +7,13 @@
 <body>
     <h1>リクマネ</h1>
     <p>企業名 : {{ Company0 }}</p>
+     
+      {% for h in Company0 %}
+      <p>企業名 :
+      {{ h.CompanyName }}
+    </p>
+      {% endfor %}
+    
     <p>Mypage URL : {{ URL0 }}</p>
     <p>Mypage ID : {{ ID0 }}</p>
     <form action="{% url  'rikumane_app:ivents' %}">

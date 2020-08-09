@@ -6,7 +6,7 @@ from . import models
 def index(request):
     params = {
         # 'Company0': company_data[0]['Company'],
-        'Company0' : models.Company.objects.get(pk=1).CompanyName,
+        'Company0' : models.Company.objects.all(),
         'URL0': company_data[0]['URL'],
         'ID0': company_data[0]['id'],
     }
