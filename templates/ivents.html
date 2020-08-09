@@ -6,8 +6,18 @@
   <title>リクマネ 就活タスク管理</title>
 </head>
 <body>
+    {% for one in data%}
+        <p>企業名：{{one.Company}}</p>
+        {% for event in one.Events %}
+            <p>イベント名：{{ event.event_name }}</p>
+            <p>イベント開始時間：{{ event.event_start}}</p>
+            <p>イベント終了時間：{{ event.event_end}}</p>
+        {% endfor %}
+    {% endfor %}
     <form action="{% url  'rikumane_app:index' %}">
         <input type="submit" value="戻る"/>
     </form>
+    <button onclick="location.href={% url 'rikumane_app:add_event' %}">イベントの追加</button>
+  <br><br>
 </body>
 </html>
