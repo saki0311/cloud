@@ -28,8 +28,9 @@ def credentials_account():
             pickle.dump(creds, token)
     # カレンダーAPI操作に必要なインスタンス作成
     service = build('calendar', 'v3', credentials=creds)
+    # カレンダーAPI操作用インスタンスを返す
+    return service
 
-schedule = {'title':'テスト','start_time':"2020-08-08 14:30:00","end_time":"2020-08-08 15:00:00"}
 def add_calendar(service,schedule):
     body = {
             # 予定のタイトル

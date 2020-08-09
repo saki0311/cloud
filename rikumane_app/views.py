@@ -13,5 +13,34 @@ def index(request):
     return render(request,'index.html', params)
 
 def ivents(request):
-    return render(request,'ivents.html')
+    d={
+    'data':company_data,
+    'title':request.GET.get('name'),
+    'start_time':request.GET.get('start_time'),
+    'end_time':request.GET.get('end_time'),
+    }
+    if request.GET.get('name') and request.GET.get('start_time') and request.GET.get('end_time'):
+        d['start_time'] += ":00"
+        d['end_time'] += ":00"
+        event = calendar.credentials_account()
+        calendar.add_calendar(event,d)
 
+    return render(request,'ivents.html',d)
+
+    '''
+
+def add_event(request):
+    d={
+        'title':request.GET.get('name'),
+        'start_time':request.GET.get('start_time'),
+        'end_time':request.GET.get('end_time'),
+    }
+    
+    
+    if request.GET.get('name') and request.GET.get('start_time') and request.GET.get('end_time'):
+        d['start_time'] += ":00"
+        d['end_time'] += ":00"
+        event = calendar.credentials_account()
+        calendar.add_calendar(event,d)
+    return render(request,'add_event.html',d)
+    '''
