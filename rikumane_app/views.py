@@ -5,8 +5,11 @@ from . import models
 
 def index(request):
     params = {
-        # 'Company0': company_data[0]['Company'],
-        'Company0' : models.Company.objects.all(),
+        # models.Company.objects.all()で企業のデータを全取得
+        # for文で1つづつ取り出し（HTML内）、
+        # XXXX.CompanyNameなどで値を取得できます（不要なら消して）
+        # 'Company0' : models.Company.objects.all(),
+        'Company0': company_data[0]['Company'],
         'URL0': company_data[0]['URL'],
         'ID0': company_data[0]['id'],
     }
