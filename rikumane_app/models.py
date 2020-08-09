@@ -27,7 +27,7 @@ class Company(models.Model):
     CompanyName = models.CharField(max_length=100)
     LoginId = models.CharField(max_length=100)
     def __str__(self):
-        return '<企業名：{0}, URL：{1} ID：{2}>'.format(self.CompanyName,self.URL,self.LoginId)
+        return '<企業名：{0}>'.format(self.CompanyName)
 
 class Event(models.Model):
     # Company:そのイベントの属する企業
