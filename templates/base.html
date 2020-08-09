@@ -1,7 +1,10 @@
 
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head lang="ja">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <meta charset="UTF-8">
   <title>リクマネ 就活タスク管理</title>
 </head>
@@ -9,18 +12,30 @@
   <div id="main">
     <div id="box1">
       <h1 id="maintitle">リクマネ</h1>
-      <h2 id="subtitle">Recuruit<br>Management</h2>
+      <!--<h2 id="subtitle">Recuruit<br>Management</h2>-->
       <div id="conpanylink">
-        {% block box1 %}
-        {% endblock %}
+        <ul>
+          <li>
+            {% block box1 %}
+            {% endblock %}
+          </li>
+      </ul>
       </div>
     </div>
     <div id="box2">
-      {% block box2 %}
-      {% endblock %}
+      <h1>
+        {% block box2 %}
+        {% endblock %}
+      </h1>
+      <ul>
+        <li><a href="{% block box3 %}{% endblock %}">マイページ</a></li><br>
+        <li>ES</li><br>
+        <li>イベント</li><br>
+      </ul>
+     
     </div>
     <div id="box3">
-      {% block box3 %}
+      {% block box4 %}
       {% endblock %}
   </div>
 
