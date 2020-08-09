@@ -1,4 +1,7 @@
-
+<!--
+スーパークラス用のhtmlテンプレート
+左側のメインメニューを引き継ぐ
+  -->
 {% load static %}
 
 <!DOCTYPE html>
@@ -44,10 +47,13 @@
       </div>
     </div>
    {% endblock %}
+   <!-- メインメニューより右側 -->
    {% block box2 %}
    {% endblock %}
+   <!--ここまで-->
 </body>
+<!--JS読み込み用-->
 {% block script %}
 {% endblock %}
-<script src="{% static 'js/clipbord.js' %}"></script>
+<script src="{% static 'js/user_define.js' %}"></script>
 </html>
