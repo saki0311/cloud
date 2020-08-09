@@ -1,50 +1,6 @@
 
+<!-- base.htmlと同じ（スーパークラスを仕様しないため）-->
 {% extends 'base.html' %}
 {% load static %}
 
-{% block box1 %}
-  {{ Company0 }}
-{%endblock%}
 
-{% block box2 %}
-  {{ Company0 }}
-{%endblock%}
-
-{% block box3 %}
-  {{ URL0 }}
-{%endblock%}
-
-
-
-
-
-<!--
-<!DOCTYPE html>
-<html>
-<head lang="ja">
-  <meta charset="UTF-8">
-  <title>リクマネ 就活タスク管理</title>
-  <script>
-    function copyToClipboard(){
-      var textarea = document.getElementsByTagName("textarea")[0];
-      textarea.select();
-      document.execCommand("copy");
-      alert(textarea.textContent);
-      location.href="{{URL0}}";
-    }
-  </script>
-</head>
-<body>
-    <h1>リクマネ</h1>
-    <p>企業名 : {{ Company0 }}</p>
-    <p>Mypage URL : {{ URL0 }}</p>
-    <textarea id="copyTarget">{{ID0}}</textarea>
-    <input type="button" value="mypageへ" onclick="copyToClipboard()">
-
-    <p>Mypage ID : {{ ID0 }}</p>
-    <form action="{% url  'rikumane_app:ivents' %}">
-      <input type="submit" value="イベント"/>
-    </form>
- </body>
- </html>
--->
