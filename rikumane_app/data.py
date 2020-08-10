@@ -5,6 +5,7 @@ company_data = [{
             'id':"ND3849238", #mypageId
             'URL':'https://nttdata.snar.jp/login.aspx',
             'Company':'NTTデータ',
+            'memo':'株式会社エヌ・ティ・ティ・データは、東京都江東区にある、データ通信やシステム構築事業を行っている日本のシステムインテグレーター。情報サービス事業では業界最大手である',
             'ES':[
                 {
                  'question_title':'学生時代に最も力を注いだことは？',
@@ -19,14 +20,28 @@ company_data = [{
             ],
             'Events':[
                 {
-                'event_name':'ES提出',
+                'event_id':0,
+                'event_name':'一次面接',
                 'event_start':'08:10:00:00',
-                'event_end':'08:11:23:59'
+                'event_end':'08:11:23:59',
+                'event_discription':'web面接　zoomのURLはメール参照　集団面接で時間は40分',
+                'check':False,
                 },
                 {
-                'event_name':'Webテスト',
+                'event_id':1,
+                'event_name':'ES提出・WEBテスト',
+                'event_start':'08:10:00:00',
+                'event_end':'08:11:23:59',
+                'event_discription':'WEBテストの形式は玉手箱',
+                'check':True,
+                },
+                {
+                'event_id':2,
+                'event_name':'説明会',
                 'event_start':'08:11:00:00',
-                'event_end':'08:14:23:59'
+                'event_end':'08:14:23:59',
+                'event_discription':'選考に進むには参加必須　服装自由　会場は西日本支社',
+                'check':True,
                 }
             ]
         }
@@ -38,11 +53,22 @@ company_data = [{
             'id':"NRI39822334",
             'URL':'https://working.nri.co.jp/careerexplorer/applicant/login/exclusive-login',
             'Company':'野村総合研究所',
+            'memo':'株式会社野村総合研究所は、東京都千代田区大手町に本社を置く、日本の最大手シンクタンク、コンサルティングファーム、システムインテグレーター。略称はNRI、野村総研。',
+            'ES':[
+                {
+                 'question_title':'学生時代に最も力を注いだことは？',
+                 'text_counts':200,
+                 'question_contents':'所属するテニスサークルで、学園祭模擬店出店を発案・企画し、責任者として取り組んだ。退部者が多いという問題に対して、全員が共通の目標に向かって長期間活動する経験によって、組織に愛着を持ち活動を継続すると考えたことが動機である。練習機会の減少や財政難を理由に反対する部員もいたが、強豪サークルの代表や過去の学園祭出店経験者に実際に話を聞き、報告書にまとめることで部員の懸念事項を解決し、出店へと至った。また出店の際に３つの部門を設け、部員がどれか１つの部門に所属する仕組みを構築することで、全員が当事者意識を持てるようにした。結果、出店を成功させるだけでなく、前年比約２５％退部者を減らすことができた。',
+                },
+            ],
             'Events':[
                 {
-                'event_name':'ES提出',
+                'event_id':0,
+                'event_name':'説明会',
                 'event_start':'09:05:10:00',
-                'event_end':'09:12:23:59'
+                'event_end':'09:12:23:59',
+                'event_discription':'選考に進むには参加必須　服装自由　会場は西日本支社',
+                'check':False,
                 }
             ]
         }
