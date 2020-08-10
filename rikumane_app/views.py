@@ -12,30 +12,7 @@ def index(request):
     }
     return render(request,'index.html', params)
 
-''' 
-・detail用関数　
-選択したクエリパラメータと同じidをもつ企業だけを抽出して
-detail.htmlへ返す
-
-・変数名　
-comapny -> 選択中の企業の辞書
-data -> 全ての企業データ
-
 '''
-def detail(request):
-    con = int(request.GET.get('id'))
-    for one in company_data:
-        if one['unique_id'] == con:
-            res = one
-            break
-    params = {
-        'company':res,
-        'data':company_data,
-    }
-    return render(request,'detail.html', params)
-
-
-''' 
 ・ivents用関数　
 - 選択したクエリパラメータと同じidをもつ企業だけを抽出して
   detail.htmlへ返す
@@ -48,7 +25,8 @@ title -> 予定名
 start_time -> 予定開始時刻
 end_time -> 予定終了時刻
 '''
-def ivents(request):
+
+def detail(request):
     con = int(request.GET.get('id'))
     for one in company_data:
         if one['unique_id'] == con:
@@ -67,4 +45,4 @@ def ivents(request):
         event = calendar.credentials_account()
         calendar.add_calendar(event,d)
 
-    return render(request,'ivents.html',d)
+    return render(request,'detail.html',d)

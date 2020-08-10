@@ -82,3 +82,31 @@ function copyToClipboard(){
       //このように書くことができる
       });
   })();
+
+
+  /******************************************************/
+  /* メニュー詳細表示操作                                */
+  /******************************************************/
+  const event_content = document.getElementById("event").style.display;
+  const es_content = document.getElementById("ES").style.display;
+  document.getElementById("event").style.display = "none"; // イベントメニューは隠す
+  document.getElementById("ES").style.display = "none"; // ESメニューも隠す
+
+  function click_es(){
+    const elem = document.getElementById("ES");
+    if(elem.style.display==es_content){
+      elem.style.display = "none";
+    } else {
+      elem.style.display = es_content;
+      document.getElementById("event").style.display = "none";
+    }
+  }
+  function click_event(){
+    const elem = document.getElementById("event");
+    if(elem.style.display==event_content){
+      elem.style.display = "none";
+    } else {
+      elem.style.display = event_content;
+      document.getElementById("ES").style.display = "none";
+    }
+  }
