@@ -6,6 +6,7 @@ company_data = [{
             'URL':'https://nttdata.snar.jp/login.aspx',
             'Company':'NTTデータ',
             'memo':'株式会社エヌ・ティ・ティ・データは、東京都江東区にある、データ通信やシステム構築事業を行っている日本のシステムインテグレーター。情報サービス事業では業界最大手である',
+            'hope':5,
             'ES':[
                 {
                  'question_title':'学生時代に最も力を注いだことは？',
@@ -54,6 +55,7 @@ company_data = [{
             'URL':'https://working.nri.co.jp/careerexplorer/applicant/login/exclusive-login',
             'Company':'野村総合研究所',
             'memo':'株式会社野村総合研究所は、東京都千代田区大手町に本社を置く、日本の最大手シンクタンク、コンサルティングファーム、システムインテグレーター。略称はNRI、野村総研。',
+            'hope':4,
             'ES':[
                 {
                  'question_title':'学生時代に最も力を注いだことは？',

@@ -22,6 +22,7 @@
 
             <!-- ES画面 -->
             <div id="ES">
+                <h1>ES</h1>
                 {% for es in company.info.ES %}
                     <h3>{{ es.question_title }}（{{es.text_counts}}文字以内）</h3>
                     <p>{{ es.question_contents }}</p>
@@ -31,13 +32,15 @@
             
             <!-- 選考フロー画面 -->
             <div id="flow">
-                調整中
+                <h1>選考フロー</h1>
+                <div class="boldbottom"></div>
             </div>
             <!-- 選考フロー画面ここまで-->
 
             <!-- イベント画面 -->
             <div id="event">
                 <!-- カレンダー予定追加フォーム-->
+                <h1>イベント</h1>
                 <!-- モーダル画面を開くボタン -->
                 <div id="open_event" class="button_event">
                     <button>イベント登録</button>
@@ -74,13 +77,14 @@
 
             <!-- メモ画面 -->
             <div id="memo">
+                <h1>メモ</h1>
                 {{ company.info.memo }}
             </div>
             <!-- メモ画面ここまで-->
             <!-- 編集画面 -->
             <div id="editor">
+                <h1>編集</h1>
                 <form action="" method="get">
-                    <h1>編集</h1>
                     <p>企業名<input type="text" name="company_name" value="{{ company.info.Company }}"></p>
                     <p>my page URL<input type="text" name="company_url" value="{{company.info.URL}}"></p>
                     <p>my page ID<input type="text" name="company_id" value="{{company.info.id}}"></p>
