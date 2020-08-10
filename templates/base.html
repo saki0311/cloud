@@ -41,7 +41,7 @@
               </div>
             </div>
             {% for one in data%}
-              <p><a href="{% url 'rikumane_app:detail' %}?id={{one.unique_id}}">{{ one.info.Company }}</a></p>
+              <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.unique_id}}">{{ one.info.Company }}</a></p>
             {% endfor %}
           </li>
         </ul>

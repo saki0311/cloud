@@ -29,6 +29,13 @@
     padding-top: 10px;
 }
 
+.button button{
+    font-size: 15px;
+    color: white;
+    background-color: #1F609C;
+    font-family: Aldrich;
+    border: none;
+}
 /* 画面の左側 */
 #box1{
     background-color: #1F609C;
@@ -100,7 +107,31 @@ html,body{
     height: 100%;
 }
 
-
+/* 選考フローの調整 */
+.boldbottom{
+    position: relative;
+}
+.boldbottom::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    width: 16px;
+    height: 400px;
+    background: #999;
+}
+.boldbottom::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 400px;
+    left: 48%;
+    width: 0;
+    height: 0;
+    border: 20px solid;
+    border-color: #999 transparent transparent transparent;
+}
 
 /******************************************************************************/
 /* モーダル画面の定義                                                          */
@@ -215,7 +246,11 @@ input::placeholder {
 
 
 /* リンクに色づけと下線をなしにしている（企業名選択をaタグにしているため） */
-a {
+a{
     color: white;
     text-decoration: none;
-  }
+}
+
+a:hover{
+    color: #1DFF5C;
+}
