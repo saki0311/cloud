@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rikumane_app import calendar
 from .data import company_data
+from . import models
 
 '''
 index用関数　企業データを全てindexに返す
