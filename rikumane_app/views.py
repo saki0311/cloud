@@ -3,24 +3,63 @@ from rikumane_app import calendar
 from .data import company_data
 from . import models
 
+'''
+index用関数　企業データを全てindexに返す
+'''
 def index(request):
     params = {
-        # models.Company.objects.all()で企業のデータを全取得
-        # for文で1つづつ取り出し（HTML内）、
-        # XXXX.CompanyNameなどで値を取得できます（不要なら消して）
-        # 'Company0' : models.Company.objects.all(),
-        'Company0': company_data[0]['Company'],
-        'URL0': company_data[0]['URL'],
-        'ID0': company_data[0]['id'],
+        'data':company_data,
     }
     return render(request,'index.html', params)
 
+''' 
+・detail用関数　
+選択したクエリパラメータと同じidをもつ企業だけを抽出して
+detail.htmlへ返す
+
+・変数名　
+comapny -> 選択中の企業の辞書
+data -> 全ての企業データ
+
+'''
+def detail(request):
+    con = int(request.GET.get('id'))
+    for one in company_data:
+        if one['unique_id'] == con:
+            res = one
+            break
+    params = {
+        'company':res,
+        'data':company_data,
+    }
+    return render(request,'detail.html', params)
+
+
+''' 
+・ivents用関数　
+- 選択したクエリパラメータと同じidをもつ企業だけを抽出して
+  detail.htmlへ返す
+- 入力したカレンダーの予定をGoogleAPIと連携して自分のカレンダーへ登録
+
+・変数名　
+comapny -> 選択中の企業の辞書
+data -> 全ての企業データ
+title -> 予定名
+start_time -> 予定開始時刻
+end_time -> 予定終了時刻
+'''
 def ivents(request):
+    con = int(request.GET.get('id'))
+    for one in company_data:
+        if one['unique_id'] == con:
+            res = one
+            break
     d={
     'data':company_data,
     'title':request.GET.get('name'),
     'start_time':request.GET.get('start_time'),
     'end_time':request.GET.get('end_time'),
+    'company':res,
     }
     if request.GET.get('name') and request.GET.get('start_time') and request.GET.get('end_time'):
         d['start_time'] += ":00"
@@ -29,21 +68,3 @@ def ivents(request):
         calendar.add_calendar(event,d)
 
     return render(request,'ivents.html',d)
-
-    '''
-
-def add_event(request):
-    d={
-        'title':request.GET.get('name'),
-        'start_time':request.GET.get('start_time'),
-        'end_time':request.GET.get('end_time'),
-    }
-    
-    
-    if request.GET.get('name') and request.GET.get('start_time') and request.GET.get('end_time'):
-        d['start_time'] += ":00"
-        d['end_time'] += ":00"
-        event = calendar.credentials_account()
-        calendar.add_calendar(event,d)
-    return render(request,'add_event.html',d)
-    '''

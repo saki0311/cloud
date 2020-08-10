@@ -1,0 +1,22 @@
+<!--
+    2つ目の企業ごとの詳細情報のページ
+-->
+{% extends 'base.html' %}
+{% load static %}
+    <!-- 小メニュー選択（灰色部分）-->
+    {% block box2 %}
+        <div id="box2">
+            <ul>
+              <div id="mypage_id"></div>
+              <li><a href="{{company.info.URL}}" onclick="copyToClipboard()" target="_blank">マイページ</a></li><br>
+              <li>ES</li><br>
+              <li><a href="{% url  'rikumane_app:ivents' %}?id={{company.unique_id}}">イベント</a></li><br>
+            </ul>
+        </div>
+    {% endblock %}
+    <!-- ここまで -->
+
+    <!-- JS読みこみ（クリップボード用変数受け渡し記述）-->
+    {% block script %}
+    <script id="copy_text" type="rikumane_app/json">{"con":"{{company.info.id}}"}</script>
+    {% endblock %}
