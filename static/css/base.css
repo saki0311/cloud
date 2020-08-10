@@ -135,6 +135,7 @@ html,body{
      margin:0 auto; /*左右中央寄せ*/
      padding: 20px;/*内側に余白*/
      z-index: 2;
+     text-align: center; /*modal内のブロック要素を中央に寄せる*/
 }
 
 #mask.hidden{
@@ -142,6 +143,17 @@ html,body{
 }
 #modal.hidden{
     transform: translate(0px,-500px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
+}
+/*モーダル内の項目名の配置*/
+.item_name{
+    position: relative;
+    left: -30%;
+}
+/*モーダル内の入力の配置*/
+.modal_input{
+    position: absolute;
+    right: -20%;
+    top: 20%;
 }
 
 /* 予定登録のモーダル画面 */
