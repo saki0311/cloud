@@ -85,11 +85,11 @@
             <div id="editor">
                 <h1>編集</h1>
                 <form action="" method="get">
-                    <p>企業名<input type="text" name="company_name" value="{{ company.info.Company }}"></p>
-                    <p>my page URL<input type="text" name="company_url" value="{{company.info.URL}}"></p>
-                    <p>my page ID<input type="text" name="company_id" value="{{company.info.id}}"></p>
+                    <p class="item_name">企業名<input class="modal_input" type="text" name="company_name" value="{{ company.info.Company }}"></p>
+                    <p class="item_name">my page URL<input class="modal_input" type="text" name="company_url" value="{{company.info.URL}}"></p>
+                    <p class="item_name">my page ID<input class="modal_input" type="text" name="company_id" value="{{company.info.id}}"></p>
                     <input type="hidden" name="id" value={{company.unique_id}}>
-                    <input type="submit" value="更新">
+                    <input class="modal_button_size" type="submit" value="更新">
                 </form>
             </div>
             <!-- メモ画面ここまで-->

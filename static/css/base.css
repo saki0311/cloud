@@ -29,6 +29,13 @@
     padding-top: 10px;
 }
 
+.button button{
+    font-size: 15px;
+    color: white;
+    background-color: #1F609C;
+    font-family: Aldrich;
+    border: none;
+}
 /* 画面の左側 */
 #box1{
     background-color: #1F609C;
@@ -239,7 +246,11 @@ input::placeholder {
 
 
 /* リンクに色づけと下線をなしにしている（企業名選択をaタグにしているため） */
-a {
+a{
     color: white;
     text-decoration: none;
-  }
+}
+
+a:hover{
+    color: #1DFF5C;
+}
