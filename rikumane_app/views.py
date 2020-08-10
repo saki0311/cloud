@@ -32,11 +32,16 @@ def detail(request):
         if one['unique_id'] == con:
             res = one
             break
+    if request.GET.get('page_query'):
+        page_tag = request.GET.get('page_query')
+    else:
+        page_tag = ""
     d={
     'data':company_data,
     'title':request.GET.get('name'),
     'start_time':request.GET.get('start_time'),
     'end_time':request.GET.get('end_time'),
+    'page':page_tag,
     'company':res,
     }
     if request.GET.get('name') and request.GET.get('start_time') and request.GET.get('end_time'):

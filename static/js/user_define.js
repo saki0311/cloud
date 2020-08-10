@@ -87,10 +87,34 @@ function copyToClipboard(){
   /******************************************************/
   /* メニュー詳細表示操作                                */
   /******************************************************/
-  const event_content = document.getElementById("event").style.display;
+
   const es_content = document.getElementById("ES").style.display;
-  document.getElementById("event").style.display = "none"; // イベントメニューは隠す
-  document.getElementById("ES").style.display = "none"; // ESメニューも隠す
+  const flow_content = document.getElementById("flow").style.display;
+  const event_content = document.getElementById("event").style.display;
+  const memo_content = document.getElementById("memo").style.display;
+  const edit_content = document.getElementById("editor").style.display;
+
+  var page_param = JSON.parse(document.getElementById("copy_text").textContent).page;
+  if (page_param){
+    if (page_param == "event"){
+      document.getElementById("ES").style.display = "none"; // ESメニューも隠す
+      document.getElementById("flow").style.display = "none"; // ESメニューも隠す
+      document.getElementById("memo").style.display = "none"; // ESメニューも隠す
+      document.getElementById("editor").style.display = "none"; // ESメニューも隠す
+    } else {
+      document.getElementById("ES").style.display = "none"; // ESメニューも隠す
+      document.getElementById("flow").style.display = "none"; // ESメニューも隠す
+      document.getElementById("event").style.display = "none"; // イベントメニューは隠す
+      document.getElementById("memo").style.display = "none"; // ESメニューも隠す
+      document.getElementById("editor").style.display = "none"; // ESメニューも隠す
+    }
+  } else {
+    document.getElementById("ES").style.display = "none"; // ESメニューも隠す
+    document.getElementById("flow").style.display = "none"; // ESメニューも隠す
+    document.getElementById("event").style.display = "none"; // イベントメニューは隠す
+    document.getElementById("memo").style.display = "none"; // ESメニューも隠す
+    document.getElementById("editor").style.display = "none"; // ESメニューも隠す
+  }
 
   function click_es(){
     const elem = document.getElementById("ES");
@@ -98,9 +122,26 @@ function copyToClipboard(){
       elem.style.display = "none";
     } else {
       elem.style.display = es_content;
+      document.getElementById("flow").style.display = "none";
       document.getElementById("event").style.display = "none";
+      document.getElementById("memo").style.display = "none";
+      document.getElementById("editor").style.display = "none";
     }
   }
+
+  function click_flow(){
+    const elem = document.getElementById("flow");
+    if(elem.style.display==flow_content){
+      elem.style.display = "none";
+    } else {
+      elem.style.display = flow_content;
+      document.getElementById("ES").style.display = "none";
+      document.getElementById("event").style.display = "none";
+      document.getElementById("memo").style.display = "none";
+      document.getElementById("editor").style.display = "none";
+    }
+  }
+
   function click_event(){
     const elem = document.getElementById("event");
     if(elem.style.display==event_content){
@@ -108,5 +149,34 @@ function copyToClipboard(){
     } else {
       elem.style.display = event_content;
       document.getElementById("ES").style.display = "none";
+      document.getElementById("flow").style.display = "none";
+      document.getElementById("memo").style.display = "none";
+      document.getElementById("editor").style.display = "none";
+    }
+  }
+
+  function click_memo(){
+    const elem = document.getElementById("memo");
+    if(elem.style.display==memo_content){
+      elem.style.display = "none";
+    } else {
+      elem.style.display = memo_content;
+      document.getElementById("ES").style.display = "none";
+      document.getElementById("flow").style.display = "none";
+      document.getElementById("event").style.display = "none";
+      document.getElementById("editor").style.display = "none";
+    }
+  }
+
+  function click_edit(){
+    const elem = document.getElementById("editor");
+    if(elem.style.display==edit_content){
+      elem.style.display = "none";
+    } else {
+      elem.style.display = edit_content;
+      document.getElementById("ES").style.display = "none";
+      document.getElementById("flow").style.display = "none";
+      document.getElementById("event").style.display = "none";
+      document.getElementById("memo").style.display = "none";
     }
   }
