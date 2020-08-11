@@ -1,4 +1,7 @@
-
+<!--
+スーパークラス用のhtmlテンプレート
+左側のメインメニューを引き継ぐ
+  -->
 {% load static %}
 
 <!DOCTYPE html>
@@ -10,35 +13,48 @@
 </head>
 <body>
   <div id="main">
+   {% block box1 %}
     <div id="box1">
-      <h1 id="maintitle">リクマネ</h1>
+      <h1 id="maintitle"><a href="{% url 'rikumane_app:index' %}">リクマネ</a></h1>
       <!--<h2 id="subtitle">Recuruit<br>Management</h2>-->
       <div id="conpanylink">
         <ul>
           <li>
-            {% block box1 %}
-            {% endblock %}
+           <!-- モーダル画面を開くボタン -->
+            <div id="open" class="button">
+              <button>企業新規登録</button>
+            </div>
+            <!-- グレーの透過マスク -->
+            <div id="mask" class="hidden"></div>
+            <!-- モーダル画面 -->
+            <div id="modal" class="hidden">
+              <p class="modal_title">企業情報の入力</p>
+              <form action="{% url  'rikumane_app:index' %}" method="get">
+                <p class="item_name">企業名<input class="modal_input" type="text" name="company" size="35" placeholder="企業名を入力してください"></p>
+                <p class="item_name">マイページID<input class="modal_input" type="text" name="id" size="35" placeholder="マイページIDを入力してください"></p>
+                <p class="item_name">ログインURL<input class="modal_input" type="text" name="url" size="35" placeholder="マイページのURLを入力してください"></p>
+                <input class="modal_button_size" type="submit" value="新規登録">
+              </form>
+              <!-- モーダル画面を閉じるボタン -->
+              <div id="close" class="button">
+                <button class="modal_button_size">画面を閉じる</button>
+              </div>
+            </div>
+            {% for one in data%}
+              <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.unique_id}}">{{ one.info.Company }}</a></p>
+            {% endfor %}
           </li>
-      </ul>
+        </ul>
       </div>
     </div>
-    <div id="box2">
-      <h1>
-        {% block box2 %}
-        {% endblock %}
-      </h1>
-      <ul>
-        <li><a href="{% block box3 %}{% endblock %}">マイページ</a></li><br>
-        <li>ES</li><br>
-        <li>イベント</li><br>
-      </ul>
-     
-    </div>
-    <div id="box3">
-      {% block box4 %}
-      {% endblock %}
-  </div>
-
-  </div>
+   {% endblock %}
+   <!-- メインメニューより右側 -->
+   {% block box2 %}
+   {% endblock %}
+   <!--ここまで-->
 </body>
+<!--JS読み込み用-->
+{% block script %}
+{% endblock %}
+<script src="{% static 'js/user_define.js' %}"></script>
 </html>

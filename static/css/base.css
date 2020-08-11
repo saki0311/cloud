@@ -29,6 +29,13 @@
     padding-top: 10px;
 }
 
+.button button{
+    font-size: 15px;
+    color: white;
+    background-color: #1F609C;
+    font-family: Aldrich;
+    border: none;
+}
 /* 画面の左側 */
 #box1{
     background-color: #1F609C;
@@ -98,4 +105,152 @@
 }
 html,body{
     height: 100%;
+}
+
+/* 選考フローの調整 */
+.boldbottom{
+    position: relative;
+}
+.boldbottom::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    width: 16px;
+    height: 400px;
+    background: #999;
+}
+.boldbottom::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 400px;
+    left: 48%;
+    width: 0;
+    height: 0;
+    border: 20px solid;
+    border-color: #999 transparent transparent transparent;
+}
+
+/******************************************************************************/
+/* モーダル画面の定義                                                          */
+/******************************************************************************/
+/* 企業新規登録のモーダル画面 */
+
+/*ボタンを押してるっぽい動きをつける*/
+.button:active{
+    transform: translateY(3px);/*影の分だけ下にずらす*/
+    box-shadow: 0px 0px;/*影をなくす*/
+}
+/*企業登録モーダル内のボタン*/
+.modal_button_size{
+    width: 20%; /*ボタンのサイズ指定*/
+}
+/*マスクを作成する*/
+#mask {
+    background: rgba(0,0,0,0.4);/*[POINT]背景を40％の濃さで透過する*/
+    /*[POINT]画面全体を覆うようにする*/
+    /*[POINT]絶対位置で指定し、上下左右0距離から描画を始めることで画面全体に適用できる*/
+    position:fixed;/*絶対位置を指定*/
+    top: 0;/*上に0距離から描画を始める*/
+     bottom: 0;/*下に0距離から描画を始める*/
+     right: 0;/*右に0距離から描画を始める*/
+     left: 0;/*左に0距離から描画を始める*/
+      z-index: 1;
+}
+/*モーダル画面*/
+#modal {
+    /*background: #1F609C;/*背景は白(わかりやすさのため今は白じゃない)*/
+    background:white;/*背景は白(わかりやすさのため今は白じゃない)*/
+    border-radius: 10px;/*モーダル画面の角を丸する*/
+    width: 600px; /*横幅を指定*/
+    position:absolute;/*絶対位置を指定(スクロールで動く)*/
+    top:100px;/*縦に40pxの位置から描画*/
+     right: 0px;/*右に0距離から描画を始める*/
+     left:0px;/*左に0距離から描画を始める*/
+     margin:0 auto; /*左右中央寄せ*/
+     padding: 20px;/*内側に余白*/
+     z-index: 2;
+     text-align: center; /*modal内のブロック要素を中央に寄せる*/
+}
+/*モーダルのタイトル*/
+.modal_title{
+    color: black; /*文字色*/
+    border-bottom: solid 2px black; /*下線 2pxの黒色*/
+    padding-bottom: 20px; /*下部にゆとりを設けている*/
+}
+#mask.hidden{
+    display:none; /*非表示にする*/
+}
+#modal.hidden{
+    transform: translate(0px,-500px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
+}
+/*モーダル内の項目名の配置*/
+.item_name{
+    position: relative;
+    color: black; /*文字色*/
+    text-align: left; /*文字を左寄せにする*/
+    padding-left: 40px; /*左側に余白を設ける*/
+}
+/*モーダル内の入力欄の配置*/
+.modal_input{
+    position: absolute;
+    height: 24px;
+    background-color: #5F6E7C; /*入力欄の背景色*/
+    color: white; /*入力欄の文字色*/
+    right: 10%; /*配置場所の指定*/
+}
+/*入力欄に初期表示する文字に関して*/
+input::placeholder {
+    color: white; /*文字色の指定*/
+}
+
+/* 予定登録のモーダル画面 */
+/*マスクを作成する*/
+#mask_event {
+    background: rgba(0,0,0,0.4);/*[POINT]背景を40％の濃さで透過する*/
+    /*[POINT]画面全体を覆うようにする*/
+    /*[POINT]絶対位置で指定し、上下左右0距離から描画を始めることで画面全体に適用できる*/
+    position:fixed;/*絶対位置を指定*/
+    top: 0;/*上に0距離から描画を始める*/
+     bottom: 0;/*下に0距離から描画を始める*/
+     right: 0;/*右に0距離から描画を始める*/
+     left: 0;/*左に0距離から描画を始める*/
+      z-index: 1;
+}
+
+/*モーダル画面*/
+#modal_event {
+    /*background: #1F609C;/*背景は白(わかりやすさのため今は白じゃない)*/
+    background:white;/*背景は白(わかりやすさのため今は白じゃない)*/
+    border-radius: 10px;/*モーダル画面の角を丸する*/
+    width: 600px; /*横幅を指定*/
+    position:absolute;/*絶対位置を指定(スクロールで動く)*/
+    top:100px;/*縦に40pxの位置から描画*/
+     right: 0px;/*右に0距離から描画を始める*/
+     left:0px;/*左に0距離から描画を始める*/
+     margin:0 auto; /*左右中央寄せ*/
+     padding: 20px;/*内側に余白*/
+     z-index: 2;
+    text-align: center;
+    font-size: 24px; /*モーダル内の文字サイズを指定　企業登録モーダルと同じに設定*/
+}
+
+#mask_event.hidden_event{
+    display:none; /*非表示にする*/
+}
+#modal_event.hidden_event{
+    transform: translate(0px,-500px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
+}
+
+
+/* リンクに色づけと下線をなしにしている（企業名選択をaタグにしているため） */
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #1DFF5C;
 }

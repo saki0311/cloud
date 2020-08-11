@@ -1,0 +1,106 @@
+<!--
+    2つ目の企業ごとの詳細情報のページ
+-->
+{% extends 'base.html' %}
+{% load static %}
+    <!-- 小メニュー選択（灰色部分）-->
+    {% block box2 %}
+        <div id="box2">
+            <ul>
+              <div id="mypage_id"></div>
+              <li><a href="{{company.info.URL}}" onclick="copyToClipboard()" target="_blank">マイページ</a></li><br>
+              <li><a href="#" onclick='click_es();'>ES</a></li><br>
+              <li><a href="#" onclick='click_flow();'>選考フロー</a></li><br>
+              <li><a href="#" onclick='click_event();'>イベント</a></li><br>
+              <li><a href="#" onclick='click_memo();'>メモ</a></li><br>
+              <li><a href="#" onclick='click_edit();'>編集</a></li><br>
+            </ul>
+        </div>
+
+        <!-- 白部分（個別情報）-->
+        <div id="box3">
+
+            <!-- ES画面 -->
+            <div id="ES">
+                <h1>ES</h1>
+                {% for es in company.info.ES %}
+                    <h3>{{ es.question_title }}（{{es.text_counts}}文字以内）</h3>
+                    <p>{{ es.question_contents }}</p>
+                {% endfor %}
+            </div>
+            <!-- ES画面ここまで-->
+            
+            <!-- 選考フロー画面 -->
+            <div id="flow">
+                <h1>選考フロー</h1>
+                <div class="boldbottom"></div>
+            </div>
+            <!-- 選考フロー画面ここまで-->
+
+            <!-- イベント画面 -->
+            <div id="event">
+                <!-- カレンダー予定追加フォーム-->
+                <h1>イベント</h1>
+                <!-- モーダル画面を開くボタン -->
+                <div id="open_event" class="button_event">
+                    <button>イベント登録</button>
+                </div>
+                <!-- グレーの透過マスク -->
+                <div id="mask_event" class="hidden_event"></div>
+                <!-- モーダル画面 -->
+                <div id="modal_event" class="hidden_event">
+                    <p class="modal_title">予定の追加</p>
+                    <form action="{% url 'rikumane_app:detail'%}" method="get">
+                        <input type="hidden" name="id" value={{company.unique_id}}>
+                        <input type="hidden" name="page_query" value="event">
+                        <p class="item_name">イベント名<input class="modal_input" type="text" name="name" size="30" maxlength="20" placeholder="予定を入力してください"></p>
+                        <p class="item_name">イベント開始日時<input class="modal_input" type="datetime-local" name="start_time" min="2020-01-01T00:00" max="2022-01-01T00:00"></p>
+                        <p class="item_name">イベント終了日時<input class="modal_input" type="datetime-local" name="end_time" min="2020-01-01T00:00" max="2022-01-01T00:00"></p>
+                        <input class="modal_button_size" type="submit" value="追加">
+                    </form>
+                    <!-- モーダル画面を閉じるボタン -->
+                    <div id="close_event" class="button_event">
+                        <button>画面を閉じる</button>
+                    </div>
+                </div>
+                <!-- モーダル画面ここまで-->
+
+                <!--企業別イベント表示-->
+                <form action="" method="get" name="forms">
+                    {% for one in company.info.Events%}
+                        <h2><input type="checkbox">{{ one.event_name }}</h2><strong>{{ one.event_start}}～{{ one.event_end}}</strong>
+                        <p>{{one.event_discription}}</p>
+                    {% endfor %}
+                </form>
+            </div>
+            <!-- イベント画面ここまで -->
+
+            <!-- メモ画面 -->
+            <div id="memo">
+                <h1>メモ</h1>
+                {{ company.info.memo }}
+            </div>
+            <!-- メモ画面ここまで-->
+            <!-- 編集画面 -->
+            <div id="editor">
+                <h1>編集</h1>
+                <form action="" method="get">
+                    <p class="item_name">企業名<input class="modal_input" type="text" name="company_name" value="{{ company.info.Company }}"></p>
+                    <p class="item_name">my page URL<input class="modal_input" type="text" name="company_url" value="{{company.info.URL}}"></p>
+                    <p class="item_name">my page ID<input class="modal_input" type="text" name="company_id" value="{{company.info.id}}"></p>
+                    <input type="hidden" name="id" value={{company.unique_id}}>
+                    <input class="modal_button_size" type="submit" value="更新">
+                </form>
+            </div>
+            <!-- メモ画面ここまで-->
+
+        </div>
+        <!-- 白メニュー内容ここまで -->
+    {% endblock %}
+
+    <!-- 読みこみ（クリップボード用変数受け渡し記述）-->
+    {% block script %}
+    <script id="copy_text" type="rikumane_app/json">
+        {"con":"{{company.info.id}}","page":"{{page}}"}
+    </script>
+    {% endblock %}
