@@ -34,7 +34,7 @@ class Event(models.Model):
     # EventName:イベント名
     # EventStart:開始日時（ex. 2000-01-01 02:11:11+00:00）
     # EventEnd:終了日時
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE)
     EventName = models.CharField(max_length=100)
     EventStart = models.DateTimeField()
     EventEnd = models.DateTimeField()
