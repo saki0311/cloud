@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from rikumane_app import calendar
 from .data import company_data
-from . import models
+from rikumane_app.models import Company
 
 '''
 index用関数　企業データを全てindexに返す
 '''
 def index(request):
     params = {
+        # 'data': Company.objects.all(),
         'data':company_data,
     }
     return render(request,'index.html', params)
