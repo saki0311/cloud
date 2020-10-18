@@ -24,13 +24,13 @@ class Company(models.Model):
     # LoginId:ログインのためのID
     # Memo: メモ
 
-    URL = models.CharField(max_length=100)
-    CompanyName = models.CharField(max_length=100)
-    LoginId = models.CharField(max_length=100)
-    Memo = models.CharField(max_length=200)
+    URL = models.CharField(max_length=200)
+    CompanyName = models.CharField(max_length=200)
+    LoginId = models.CharField(max_length=200)
+    Memo = models.CharField(max_length=200,default='')
     
     def __str__(self):
-        return '<企業名：{0}>'.format(self.CompanyName)
+        return self.CompanyName
 
 # イベントのテーブル（親テーブル: Company）
 class Event(models.Model):
@@ -45,7 +45,7 @@ class Event(models.Model):
     EventEnd = models.DateTimeField()
     
     def __str__(self):
-        return '<{0}>'.format(self.EventName)
+        return self.EventName
 
 # ESのテーブル（親テーブル: Company）
 class ES(models.Model):
@@ -57,7 +57,7 @@ class ES(models.Model):
     Company = models.ForeignKey(Company, on_delete=models.CASCADE)
     QuestionTitle = models.CharField(max_length=100)
     TextCounts = models.IntegerField()
-    QuestionContents = models.CharField(max_length=1000)
+    QuestionContents = models.CharField(max_length=1000,default='')
 
     def __str__(self):
-        return '<{0}>'.format(self.QuestionTitle)
+        return self.QuestionTitle
