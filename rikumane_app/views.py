@@ -1,13 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from rikumane_app import calendar
 from .data import company_data
 from rikumane_app.models import Company
+from .forms import CompanyForm
 
 '''
 index用関数　企業データを全てindexに返す
 '''
 def index(request):
+    # msg = ''
+    if request.method == 'POST':
+        f = CompanyForm(request.POST)
+        # print(request.POST)
+        # print(f.is_valid())
+        # if f.is_valid():
+        Company(
+            URL = request.POST['URL'],
+            CompanyName=request.POST['CompanyName'],
+            LoginId=request.POST['LoginId']
+        ).save()
+            # msg='OK'
+        # else:
+            # msg='NG'
+        return redirect('/')
     params = {
+        # 'message':msg,
+        # 'form':CompanyForm(),
         # 'data': Company.objects.all(),
         'data':company_data,
     }
