@@ -22,7 +22,7 @@ def index(request):
             # msg='OK'
         # else:
             # msg='NG'
-        return redirect('/index/')
+        return redirect('/')
     params = {
         # 'message':msg,
         # 'form':CompanyForm(),
