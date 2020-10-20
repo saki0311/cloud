@@ -180,3 +180,28 @@ function copyToClipboard(){
       document.getElementById("memo").style.display = "none";
     }
   }
+
+  /******************************************************/
+  /* GoogleCalendar追加関数                              */
+  /******************************************************/
+  // 開始時間がなければ24時間前に初期設定
+  function addToGoogleCalendar(){
+    var text = document.getElementById('event_name').textContent;
+    var time = document.getElementById('company_time').textContent;
+    console.log(time);
+    var datefrom = '2020-10-20T18:00';
+    var dateto = '2020-10-25T18:00';
+    var description = document.getElementById('company_description').textContent;
+
+    var zero = function(n) { return ('0' + n).slice(-2); };
+    var formatdate = function(datestr) {
+        var date = new Date(datestr + '+09:00');
+        return date.getUTCFullYear() + zero(date.getUTCMonth()+1) + zero(date.getUTCDate()) + 'T' + 
+                zero(date.getUTCHours()) + zero(date.getUTCMinutes()) + zero(date.getUTCSeconds()) + 'Z';
+        };  
+    var url = 'http://www.google.com/calendar/event?action=TEMPLATE' +
+              '&text=' + encodeURIComponent(text) +
+              '&dates=' + formatdate(datefrom) + '/' + formatdate(dateto) + 
+              '&details=' + description;
+    //window.open(url);
+}
