@@ -6,6 +6,12 @@ from .data import company_data
 from .crud import *
 
 '''
+login/logout用関数
+'''
+def login(request):
+    return render(request,'login.html')
+
+'''
 index用関数　企業データを全てindexに返す
 '''
 def index(request):

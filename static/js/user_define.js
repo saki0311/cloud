@@ -187,10 +187,9 @@ function copyToClipboard(){
   // 開始時間がなければ24時間前に初期設定
   function addToGoogleCalendar(){
     var text = document.getElementById('event_name').textContent;
-    var time = document.getElementById('company_time').textContent;
-    console.log(time);
-    var datefrom = '2020-10-20T18:00';
-    var dateto = '2020-10-25T18:00';
+    var company_time = document.getElementById('company_time').textContent.split('-');
+    var start_date = Date.parse(company_time[0]);
+    var end_date = Date.parse(company_time[1]);
     var description = document.getElementById('company_description').textContent;
 
     var zero = function(n) { return ('0' + n).slice(-2); };
@@ -201,7 +200,8 @@ function copyToClipboard(){
         };  
     var url = 'http://www.google.com/calendar/event?action=TEMPLATE' +
               '&text=' + encodeURIComponent(text) +
-              '&dates=' + formatdate(datefrom) + '/' + formatdate(dateto) + 
+              '&dates=' + formatdate(company_time[0]) + '/' + formatdate(company_time[1]) + 
               '&details=' + description;
-    //window.open(url);
+
+    window.open(url);
 }
