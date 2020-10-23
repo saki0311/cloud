@@ -68,10 +68,15 @@
                 <!--企業別イベント表示-->
                 <form action="" method="get" name="forms">
                     {% for one in company.info.Events%}
-                        <h2 id="event_name">{{ one.event_name }}</h2>
-                        <strong id="company_time">{{ one.event_start}}-{{ one.event_end}}</strong>
-                        <input type="button" Onclick="addToGoogleCalendar();" value="GoogleCalendarに追加">
-                        <div id="company_description">{{one.event_discription}}</div>
+                        {% with id=one.id %}
+                        {{id}}
+                        <div id="{{id}}">
+                            <h2 id="event_name">{{ one.event_name }}</h2>
+                            <strong id="company_time">{{ one.event_start}}-{{ one.event_end}}</strong>
+                            <input type="button" Onclick="addToGoogleCalendar();" value="GoogleCalendarに追加">
+                            <div id="company_description">{{one.event_discription}}</div>
+                        </div>
+                        {% endwith %}
                     {% endfor %}
                 </form>
             </div>

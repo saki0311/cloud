@@ -5,6 +5,12 @@ from rikumane_app.models import Company
 from .forms import CompanyForm
 
 '''
+login/logout用関数
+'''
+def login(request):
+    return render(request,'login.html')
+
+'''
 index用関数　企業データを全てindexに返す
 '''
 def index(request):
