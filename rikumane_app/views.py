@@ -1,31 +1,18 @@
 from django.shortcuts import redirect, render
 from rikumane_app import calendar
 from .data import company_data
-from rikumane_app.models import Company
-from .forms import CompanyForm
+# from rikumane_app.models import Company,Account,ES,Event
+# from .forms import CompanyForm
+from .crud import *
 
 '''
 index用関数　企業データを全てindexに返す
 '''
 def index(request):
-    # msg = ''
     if request.method == 'POST':
-        f = CompanyForm(request.POST)
-        # print(request.POST)
-        # print(f.is_valid())
-        # if f.is_valid():
-        Company(
-            URL = request.POST['URL'],
-            CompanyName=request.POST['CompanyName'],
-            LoginId=request.POST['LoginId']
-        ).save()
-            # msg='OK'
-        # else:
-            # msg='NG'
-        return redirect('/')
+        Company_create(request)
+        return redirect('rikumane_app:index')
     params = {
-        # 'message':msg,
-        # 'form':CompanyForm(),
         # 'data': Company.objects.all(),
         'data':company_data,
     }
@@ -46,6 +33,8 @@ end_time -> 予定終了時刻
 '''
 
 def detail(request):
+    print(request.GET)
+    print(request.POST)
     con = int(request.GET.get('id'))
     for one in company_data:
         if one['unique_id'] == con:
@@ -68,5 +57,52 @@ def detail(request):
         d['end_time'] += ":00"
         event = calendar.credentials_account()
         calendar.add_calendar(event,d)
+
+    return render(request,'detail.html',d)
+
+
+    # 以下、編集部分（吉井）
+
+    # データを変更するものはここで
+    if request.method=='POST':
+        # データベースを取得
+        one = Company.objects.get(pk=request.POST['id'])
+        # t:操作するテーブル
+        # o:操作内容(Create,Update,Delete)
+        t = request.POST['table']
+        o = request.POST['operation']
+        if t == 'Account':
+            if o =='update':
+                pass
+            elif o =='delete':
+                pass
+        elif t == 'Company':
+            if o =='update':
+                pass
+            elif o =='delete':
+                pass
+        elif t == 'Event':
+            if o =='create':
+                pass
+            elif o =='update':
+                pass
+            elif o =='delete':
+                pass
+        elif t == 'ES':
+            if o =='create':
+                pass
+            elif o =='update':
+                pass
+            elif o =='delete':
+                pass
+        return redirect('rikumane_app:detail')
+        
+    # データベースを取得
+    one = Company.objects.get(pk=request.GET['id'])
+    d = {
+        company:one,
+        event:one.event_set.all(),
+        es:one.es_set.all()
+    }
 
     return render(request,'detail.html',d)
