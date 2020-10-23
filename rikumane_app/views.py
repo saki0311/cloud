@@ -1,42 +1,51 @@
 from django.shortcuts import redirect, render
-from rikumane_app import calendar
+#from rikumane_app import calendar
 from .data import company_data
 # from rikumane_app.models import Company,Account,ES,Event
 # from .forms import CompanyForm
 from .crud import *
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login
-from django.contrib.auth import logout
+from django.contrib.auth.models import User # Django認証用モデルのインポート
+from django.contrib.auth import authenticate # 認証設定用関数のインポート
+from django.contrib.auth import login as auth_login # ログイン認証用関数のインポート
+from django.contrib.auth import logout # ログアウト関数のインポート
 
 '''
 login/logout/sineup用関数
 '''
 def login(request):
+    # POSTパラメータの有無の確認
     if request.method=='POST':
+        # ログイン用パラメータの場合
         if (request.POST['action'] == 'login'):
             # login認証
             user = authenticate(username=request.POST['login_id'], password=request.POST['login_pass'])
-            print(request.POST['login_id'])
-            print(request.POST['login_pass'])
+            # ログイン認証に成功した場合
             if user is not None:
                 if user.is_active:
+                    # ログインの実行
                     auth_login(request,user)
+                    # カレンダー画面へリダイレクト
                     return redirect('rikumane_app:calendar')
+                # アカウントが無いユーザの場合
                 else:
                     print("Your account has been disabled!")
+            # IDとパスワードがない場合
             else:
                 print("Your username and password were incorrect.")
+        # アカウント作成パラメータの場合
         elif (request.GET['action'] == 'create'):
             # アカウント作成
             user = User.objects.create_user(request.POST['create_name'], request.POST['create_id'],request.POST['create_pass'])
+            # DBへ保存
             user.save()
+            # カレンダー画面へリダイレクト
             return redirect('rikumane_app:calendar')
     else:
-        # logout
+        # logoutパラメータの確認
         if (request.GET.get('logout') == 'true'):
+            # Logout
             logout(request)
-            print('logoutしました')
+            # トップ（login）画面へ移動
             return redirect('rikumane_app:top')
         return render(request,'top.html')
 
