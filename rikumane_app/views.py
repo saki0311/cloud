@@ -4,12 +4,54 @@ from .data import company_data
 # from rikumane_app.models import Company,Account,ES,Event
 # from .forms import CompanyForm
 from .crud import *
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
 
 '''
-login/logout用関数
+login/logout/sineup用関数
 '''
 def login(request):
-    return render(request,'login.html')
+    if request.method=='POST':
+        if (request.POST['action'] == 'login'):
+            # login認証
+            user = authenticate(username=request.POST['login_id'], password=request.POST['login_pass'])
+            print(request.POST['login_id'])
+            print(request.POST['login_pass'])
+            if user is not None:
+                if user.is_active:
+                    auth_login(request,user)
+                    return redirect('rikumane_app:calendar')
+                else:
+                    print("Your account has been disabled!")
+            else:
+                print("Your username and password were incorrect.")
+        elif (request.GET['action'] == 'create'):
+            # アカウント作成
+            user = User.objects.create_user(request.POST['create_name'], request.POST['create_id'],request.POST['create_pass'])
+            user.save()
+            return redirect('rikumane_app:calendar')
+    else:
+        # logout
+        if (request.GET.get('logout') == 'true'):
+            logout(request)
+            print('logoutしました')
+            return redirect('rikumane_app:top')
+        return render(request,'top.html')
+
+'''
+ホーム画面（カレンダー画面での操作）
+'''
+def calendar(request):
+    return render(request,'calendar.html')
+
+'''
+プロフィール画面
+'''
+def profile(request):
+    return render(request,'profile.html')
+
 
 '''
 index用関数　企業データを全てindexに返す

@@ -1,0 +1,22 @@
+<!-- base.htmlと同じ（スーパークラスを仕様しないため）-->
+<h1>Login</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="login_id" placeholder="login-ID">
+    <input type="text" name="login_pass" placeholder="password">
+    <input type="hidden" name="action" value="login">
+    <input type="submit" value="Login">
+</form>
+
+<h1>Register</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="create_name" placeholder="username">
+    <input type="text" name="create_id" placeholder="login-ID">
+    <input type="text" name="create_pass" placeholder="login-password">
+    <input type="text" name="create_confirm_pass" placeholder="confirm-password">
+    <input type="hidden" name="action" value="create">
+    <input type="submit" value="Create Account">
+</form>
+
+<a href="{% url 'social:begin' 'google-oauth2' %}">Googleでログイン</a>

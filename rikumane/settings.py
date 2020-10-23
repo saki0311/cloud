@@ -154,7 +154,7 @@ STATIC_URL = '/static/'
 
 #LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000'
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/calendar/'
 #LOGOUT_REDIRECT_URL = 'localhost:8000'
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True

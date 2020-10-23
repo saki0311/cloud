@@ -5,8 +5,9 @@ from django.contrib.auth import views as auth_views
 app_name='rikumane_app'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.login, name='top'),
     path('detail/',views.detail,name='detail'),
-    path('login/', views.login, name='login'),
-    path('logout/', views.login, name='logout'),
+    path('index/', views.index, name='index'),
+    path('calendar/', views.calendar, name='calendar'),
+    path('profile/',views.profile,name='profile'),
 ]
