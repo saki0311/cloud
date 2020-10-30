@@ -1,0 +1,232 @@
+
+/* トップ画面のデザイン */
+
+body {
+    background: #E3F6F5;
+}
+
+/* div box styling */
+.container {
+    margin: auto;
+    width: 650px;
+    height: 550px;
+    position: relative;
+}
+/*ログイン画面中央配置の背景*/
+.welcome {
+    background: #FFFFFE;
+    width: 650px;
+    height: 415px;
+    position: absolute;
+    top: 25%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+}
+
+.movebox {
+    position: absolute;
+    top: -10%;
+    left: 5%;
+    background: #272343;
+    width: 320px;
+    height: 500px;
+    border-radius: 5px;
+    box-shadow: 2px 0 10px rgba(0,0,0,.1);
+    transition: all .5s ease-in-out;
+    z-index: 2;
+}
+
+.nodisplay {
+    display:none;
+    transition: all .5s ease;
+}
+
+.leftbox, .rightbox {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    transition: 1s all ease;
+}
+
+.leftbox {
+    left: -2%;
+}
+.rightbox {
+    right: -2%;
+}
+
+.setrelative{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.leftbox .wrapper{
+    position: absolute;
+    top: 75%;
+    left: 30%;
+}
+
+.rightbox .wrapper{
+    position: absolute;
+    top: 73%;
+    left: 5%;
+}
+
+/* font & button styling */
+h1 {
+    font-family: 'Anaheim', sans-serif;
+    text-align: center;
+    margin-top: 95px;
+    text-transform: uppercase;
+    color: #f6f6f6;
+    font-size: 2em;
+    letter-spacing: 8px;
+}
+
+.title {
+    font-family: 'Anaheim', sans-serif;
+    color: #8E9AAF;
+    font-size: 1.8em;
+    line-height: 1.1em;
+    letter-spacing: 3px;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 20%;
+}
+p {
+    font-family: 'Anaheim', sans-serif;
+    font-size: .7em;
+    letter-spacing: 2px;
+    color: #8E9AAF;
+    text-align: center;
+}
+
+span {
+    color: #EAC7CC;
+}
+
+.logo {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+}
+.account {
+    margin-top: 10%;
+    font-size: 10px;
+}
+
+.smaller {
+    top: 48%;
+    left: 10%;
+    opacity: .9;
+}
+
+.button {
+    padding: 12px;
+    font-family: 'Anaheim', sans-serif;
+    letter-spacing: 3px;
+    font-size: 11px;
+    margin: auto;
+    outline: none;
+    display: block;
+    margin-top: 3%;
+    background: #FFFFFE;
+    color: darken(#EAC7CC, 20%);
+    border: solid 1px #272343;
+}
+
+.googlebtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding-top: 10px;
+    appearance: none;
+    font-family: 'Anaheim', sans-serif;
+    background: #272343;
+    color: #FFFFFE;
+}
+
+.button:hover {
+    background: #EAC7CC;
+    color: #f6f6f6;
+    transition: background-color 1s ease-out;
+}
+
+
+.movebox form .button{
+    background: #272343;
+    color: #FFFFFE;
+    border: solid 1px#FFFFFE;
+}
+
+/* form styling */
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 7px;
+}
+.more-padding{
+    padding-top: 35px;
+}
+.more-padding input {
+    padding: 12px;
+}
+.more-padding .submit {
+    margin-top: 45px;
+}
+.submit {
+    margin-top: 25px;
+    padding: 12px;
+    border-color: darken(#EAC7CC, 20%);
+}
+
+.submit:hover {
+    background: #CBC0D3;
+    border-color: darken(#CBC0D3, 5%);
+}
+
+input {
+    font-family: 'Anaheim', sans-serif;
+    background: #272343;
+    width: 65%;
+    color: #FFFFFE;
+    border: none;
+    border-bottom: 1px solid #FFFFFE;
+    padding: 9px;
+    margin: 7px;
+}
+input::placeholder {
+    font-family: 'Anaheim', sans-serif;
+    color: #FFFFFE;
+    letter-spacing: 2px;
+    font-size: 1.3em;
+    font-style: normal;
+    font-weight: normal;
+}
+input:focus {
+    color: darken(#EAC7CC, 20%);
+    outline: none;
+    border-bottom: 1.2px solid rgba(darken(#EAC7CC, 20%), 0.7);
+    font-size: 1em;
+    transition: .8s all ease;
+}
+input:focus::placeholder {
+    opacity: 0;
+}
+
+label {
+    font-family: 'Anaheim', sans-serif;
+    color: darken(#EAC7CC, 20%);
+    font-size: 0.8em;
+    letter-spacing: 1px;
+}
+
+.support{
+    text-decoration: none;
+    color: #FFFFFE;
+    padding-top: 10px;
+}
