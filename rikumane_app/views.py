@@ -16,7 +16,7 @@ def login(request):
     # POSTパラメータの有無の確認
     if request.method=='POST':
         # ログイン用パラメータの場合
-        if (request.POST['action'] == 'login'):
+        if (request.POST.get('action') == 'login'):
             # login認証
             user = authenticate(username=request.POST['login_id'], password=request.POST['login_pass'])
             # ログイン認証に成功した場合
@@ -33,7 +33,7 @@ def login(request):
             else:
                 print("Your username and password were incorrect.")
         # アカウント作成パラメータの場合
-        elif (request.GET['action'] == 'create'):
+        elif (request.POST.get('action') == 'create'):
             # アカウント作成
             user = User.objects.create_user(request.POST['create_name'], request.POST['create_id'],request.POST['create_pass'])
             # DBへ保存
