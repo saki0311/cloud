@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 #from rikumane_app import calendar
 from .data import company_data
-# from rikumane_app.models import Company,Account,ES,Event
+from rikumane_app.models import Company,Account,ES,Event
 # from .forms import CompanyForm
 from .crud import *
 from django.contrib.auth.models import User # Django認証用モデルのインポート
@@ -35,7 +35,7 @@ def login(request):
         # アカウント作成パラメータの場合
         elif (request.POST.get('action') == 'create'):
             # アカウント作成
-            user = User.objects.create_user(request.POST['create_name'], request.POST['create_id'],request.POST['create_pass'])
+            user = User.objects.create_user(request.POST['create_name'], request.POST.get('create_id'),request.POST['create_pass'])
             # DBへ保存
             user.save()
             # カレンダー画面へリダイレクト
@@ -53,7 +53,15 @@ def login(request):
 ホーム画面（カレンダー画面での操作）
 '''
 def calendar(request):
-    return render(request,'calendar.html')
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    else:
+        if request.method == 'POST':
+            user = Account.objects.get(id=0)
+            print(user)
+            print(request.user.id)
+            Company_create(request,request.user)
+        return render(request,'calendar.html')
 
 '''
 プロフィール画面

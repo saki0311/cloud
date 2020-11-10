@@ -27,6 +27,7 @@ class Company(models.Model):
     LoginId:ログインのためのID\n
     Memo: メモ\n
     Rate:志望度\n
+    Category:カテゴリ\n
     '''
 
     Account = models.ForeignKey(
@@ -38,6 +39,7 @@ class Company(models.Model):
     LoginId = models.CharField(max_length=100)
     Memo = models.CharField(max_length=500, default='')
     Rate = models.IntegerField(default=0)
+    Category = models.CharField(max_length=100,default='')
 
     def __str__(self):
         return self.CompanyName
