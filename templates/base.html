@@ -51,6 +51,28 @@
             {% for one in data%}
               <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
             {% endfor %}
+            
+            <!-- アカウント編集 -->
+            <div id="account_body">
+              <form action="" method="post">
+              {% csrf_token %}
+                <p>自己分析</p>
+                <textarea name="self_analysis"></textarea>
+
+                <p>共通ES</p>
+                <textarea name="entrysheet"></textarea>
+
+                <p>MEMO</p>
+                <textarea name="memo"></textarea>
+                <input type="hidden" name="action" value="update_account">
+                <input type="submit" value="アカウント情報更新">
+              </form>
+            </div>
+
+            <!-- アカウントメニュー -->
+            <div id="account-menu">
+
+            </div>
             <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
             <li><a href="{% url 'rikumane_app:profile'%}">プロフィール画面</a>
             <li><a href="{% url 'rikumane_app:top'%}?logout=true">ログアウト</a>

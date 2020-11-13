@@ -65,8 +65,8 @@ def calendar(request):
                     'data':Company.objects.all().filter(Account_id=request.user.id),
                     'user':request.user,
                 }
-            elif post_action == "account_update":
-                print("aieuo")
+            elif post_action == "update_account":
+                Account_update(request,request.user)
             else:
                 print("aiueo")
         d = {

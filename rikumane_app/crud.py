@@ -1,4 +1,6 @@
 from rikumane_app.models import Company, Account, ES, Event
+from django.contrib.auth.models import User
+
 '''
 データベースの操作全般を担う
 共通の引数：viewに送信されたリクエスト
@@ -6,7 +8,6 @@ from rikumane_app.models import Company, Account, ES, Event
 ***_update:データを更新
 ***_delete:データを削除
 '''
-
 
 # CompanyのCRUD
 def Company_create(req, account):
@@ -37,9 +38,13 @@ def Account_create(req):
     pass
 
 
-def Account_update(req):
-    pass
-
+def Account_update(req,account):
+    user = User.objects.get(id=account.id)
+    user.entrysheet = req.POST.get('entrysheet')
+    user.self_analysis = req.POST.get('self_analysis')
+    user.memo = req.POST.get('memo')
+    print(user.memo)
+    user.save()
 
 def Account_delete(data):
     data.delete()
