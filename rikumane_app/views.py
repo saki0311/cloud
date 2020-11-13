@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 #from rikumane_app import calendar
 from .data import company_data
-from rikumane_app.models import Company,Account,ES,Event
+from rikumane_app.models import Company,ES,Event
 # from .forms import CompanyForm
 from .crud import *
 from django.contrib.auth.models import User # Django認証用モデルのインポート
@@ -57,18 +57,19 @@ def calendar(request):
         return redirect('rikumane_app:top')
     else:
         if request.method == 'POST':
-            user = Account.objects.get(id=0)
-            print(user)
-            print(request.user.id)
             Company_create(request,request.user)
-        return render(request,'calendar.html')
+        d = {
+            'data':Company.objects.all().filter(Account_id=request.user.id),
+            'user':request.user,
+        }
+        print(d)
+        return render(request,'calendar.html',d)
 
 '''
 プロフィール画面
 '''
 def profile(request):
     return render(request,'profile.html')
-
 
 '''
 index用関数　企業データを全てindexに返す

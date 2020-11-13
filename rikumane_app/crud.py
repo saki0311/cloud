@@ -1,4 +1,4 @@
-from rikumane_app.models import Company, Account, ES, Event
+from rikumane_app.models import Company, ES, Event
 '''
 データベースの操作全般を担う
 共通の引数：viewに送信されたリクエスト
@@ -7,6 +7,9 @@ from rikumane_app.models import Company, Account, ES, Event
 ***_delete:データを削除
 '''
 
+# 認証ユーザの更新
+def userUpadate(req,account):
+    
 
 # CompanyのCRUD
 def Company_create(req, account):

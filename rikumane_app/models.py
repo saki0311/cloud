@@ -1,22 +1,57 @@
 
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
+'''
+# ユーザモデルのカスタマイズ
+class AccountUserManager(BaseUserManager):
+    def create_user(self, email, first_name, last_name, date_of_birth, password=None):
+        if not email:
+            raise ValueError('Users must have a email address')
 
-class Account(models.Model):
-    '''
-    UserName:なまえ\n
-    Password:パスワード\n
-    Email:メアド\n
-    Image:画像（証明写真など）\n
-    Memo(ESと自己分析でそれぞれ)\n
-    '''
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            date_of_birth=date_of_birth,
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-    UserName = models.CharField(max_length=20)
-    Password = models.CharField(max_length=20)
-    Email = models.EmailField(max_length=100, unique=True)
+    def create_superuser(self, email, password):
+        return self.create_user(
+            email,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+class AccountUser(AbstractBaseUser):
+    email = models.EmailField(max_length=128, unique=True)
     Image = models.ImageField(upload_to='files/',null=True)
     MemoAnalysis = models.CharField(max_length=1000,default='')
     MemoES = models.CharField(max_length=1000,default='')
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    objects = AccountUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['date_of_birth']
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+'''
 
 
 class Company(models.Model):
@@ -31,9 +66,9 @@ class Company(models.Model):
     '''
 
     Account = models.ForeignKey(
-        Account,
+        get_user_model(),
         on_delete=models.CASCADE,
-        null=True)
+        )
     URL = models.CharField(max_length=200)
     CompanyName = models.CharField(max_length=100)
     LoginId = models.CharField(max_length=100)
