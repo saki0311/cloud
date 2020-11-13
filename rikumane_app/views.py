@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 #from rikumane_app import calendar
 from .data import company_data
-# from rikumane_app.models import Company,Account,ES,Event
+from rikumane_app.models import Company,ES,Event
 # from .forms import CompanyForm
 from .crud import *
 from django.contrib.auth.models import User # Django認証用モデルのインポート
@@ -14,6 +14,7 @@ login/logout/sineup用関数
 '''
 def login(request):
     # POSTパラメータの有無の確認
+
     if request.method=='POST':
         # ログイン用パラメータの場合
         if (request.POST.get('action') == 'login'):
@@ -35,7 +36,7 @@ def login(request):
         # アカウント作成パラメータの場合
         elif (request.POST.get('action') == 'create'):
             # アカウント作成
-            user = User.objects.create_user(request.POST['create_name'], request.POST['create_id'],request.POST['create_pass'])
+            user = User.objects.create_user(request.POST['create_name'], request.POST.get('create_id'),request.POST['create_pass'])
             # DBへ保存
             user.save()
             # カレンダー画面へリダイレクト
@@ -53,14 +54,28 @@ def login(request):
 ホーム画面（カレンダー画面での操作）
 '''
 def calendar(request):
-    return render(request,'calendar.html')
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    else:
+        if request.method == 'POST':
+            post_action = request.POST.get('action')
+            if  post_action == "add_company":
+                Company_create(request,request.user)
+                d = {
+                    'data':Company.objects.all().filter(Account_id=request.user.id),
+                    'user':request.user,
+                }
+            elif post_action == "account_update":
+                print("aiueo")
+        d = {'data':'aieuo'}
+        print(d)
+        return render(request,'calendar.html',d)
 
 '''
 プロフィール画面
 '''
 def profile(request):
     return render(request,'profile.html')
-
 
 '''
 index用関数　企業データを全てindexに返す
