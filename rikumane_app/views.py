@@ -66,9 +66,13 @@ def calendar(request):
                     'user':request.user,
                 }
             elif post_action == "account_update":
+                print("aieuo")
+            else:
                 print("aiueo")
-        d = {'data':'aieuo'}
-        print(d)
+        d = {
+            'data':Company.objects.all().filter(Account_id=request.user.id),
+            'user':request.user,
+            }
         return render(request,'calendar.html',d)
 
 '''

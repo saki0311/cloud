@@ -9,12 +9,14 @@ from rikumane_app.models import Company, Account, ES, Event
 
 
 # CompanyのCRUD
-def Company_create(req, account=None):
+def Company_create(req, account):
     Company(
         Account=account,
         URL=req.POST['URL'],
         CompanyName=req.POST['CompanyName'],
-        LoginId=req.POST['LoginId']
+        LoginId=req.POST['LoginId'],
+        Rate=req.POST.get('want'),
+        Category=req.POST.get('category')
     ).save()
 
 
