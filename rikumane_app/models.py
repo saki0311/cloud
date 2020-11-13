@@ -1,5 +1,6 @@
 
 from django.db import models
+from django.contrib.auth import get_user_model
 
 
 class Account(models.Model):
@@ -27,16 +28,18 @@ class Company(models.Model):
     LoginId:ログインのためのID\n
     Memo: メモ\n
     Rate:志望度\n
+    category：カテゴリ\n
     '''
 
     Account = models.ForeignKey(
-        Account,
+        get_user_model(),
         on_delete=models.CASCADE,
         null=True)
     URL = models.CharField(max_length=200)
     CompanyName = models.CharField(max_length=100)
     LoginId = models.CharField(max_length=100)
     Memo = models.CharField(max_length=500, default='')
+    Category = models.CharField(max_length=500)
     Rate = models.IntegerField(default=0)
 
     def __str__(self):
