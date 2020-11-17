@@ -24,7 +24,7 @@
                 <input type="password" placeholder="password" name="create_pass">
                 <input type="password" placeholder="confirm password" name="create_confirm_pass">
                 <input type="hidden" name="action" value="create">
-                <button class="button submit">CREATE ACCOUNT </button>
+                <button class="button submit">SIGN UP </button>
                 <button class="googlebtn" onclick="location.href='{% url 'social:begin' 'google-oauth2' %}'">googleでログイン </button>
             </form>
             </div>
@@ -62,7 +62,7 @@
         </div>
         </div>
     </div>
-    <script src="{% static 'js/user_define.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/signin.js' %}"></script>
 </body>
 </html>
 

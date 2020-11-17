@@ -1,6 +1,16 @@
 
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
 #main{
     display: flex;
+    background: linear-gradient(180deg, #3B5986 0%, rgba(113, 128, 150, 0) 100%), #111C2B;
+    box-sizing: border-box;
+    width: 100%;
     height: 100%;
 }
 
@@ -18,11 +28,19 @@
 
 /* 企業ごとのリンク */
 #conpanylink{
+    width: 100%;
+    height: 60%; 
     font-size: 24px;
-    text-align: right;
+    /* text-align: right; */
+    text-align: left;
     color: white;
     margin-right: 30px;
-    
+    overflow: scroll;
+    -ms-overflow-style: none;    /* IE, Edge スクロールバー非表示 */
+    scrollbar-width: none;       /* Firefox スクロールバー非表示 */
+}
+#conpanylink::-webkit-scrollbar {  /* Chrome, Safari スクロールバー非表示 */
+    display:none;
 }
 
 #conpanylink li{
@@ -39,8 +57,8 @@
 }
 /* 画面の左側 */
 #box1{
-    background-color: #1F609C;
-    width: 30%;
+    /* background-color: #1F609C; */
+    width: 20%;
     height: 100%;
 }
 
@@ -93,12 +111,24 @@
 
 /* 画面の右側 */
 #box3{
-    background-color: white;
-    width: 50%;
-    height: 100%;
-    margin-left: 100px;
-    margin-top: 120px;
-    margin-right: 54px;
+    position: relative;
+    /* background-color: white; */
+    background-color: transparent;
+    top:20%;
+    left: 5%;
+    width: 70%;
+    height: 70%;
+    box-sizing: border-box;
+    /* margin-left: 100px; */
+    /* margin-top: 120px; */
+    /* margin-right: 54px; */
+    /* padding: 20px 50px; */
+    overflow: scroll;
+    -ms-overflow-style: none;    /* IE, Edge スクロールバー非表示 */
+    scrollbar-width: none;       /* Firefox スクロールバー非表示 */
+}
+#box3::-webkit-scrollbar {  /* Chrome, Safari スクロールバー非表示 */
+    display:none;
 }
 
 #box3 h1{
@@ -185,7 +215,7 @@ html,body{
     display:none; /*非表示にする*/
 }
 #modal.hidden{
-    transform: translate(0px,-500px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
+    transform: translate(0px,-600px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
 }
 /*モーダル内の項目名の配置*/
 .item_name{
@@ -254,4 +284,13 @@ a{
 
 a:hover{
     color: #1DFF5C;
+}
+
+/******************************************************************************/
+/* 企業内データ                                                                 */
+/******************************************************************************/
+
+#ES, #flow, #event, #memo, #editor{
+    background-color: white;
+    border-radius: 5px;
 }

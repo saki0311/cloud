@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="ja">
-  <!--<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">-->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <meta charset="UTF-8">
   <title>リクマネ 就活タスク管理</title>
 </head>
@@ -29,11 +29,18 @@
             <!-- モーダル画面 -->
             <div id="modal" class="hidden">
               <p class="modal_title">企業情報の入力</p>
-              <form action="{% url  'rikumane_app:index' %}" method="post">
+              <form action="" method="post">
                 {% csrf_token %}
                 <p class="item_name">企業名<input class="modal_input" type="text" name="CompanyName" size="35" placeholder="企業名を入力してください"></p>
                 <p class="item_name">マイページID<input class="modal_input" type="text" name="LoginId" size="35" placeholder="マイページIDを入力してください"></p>
                 <p class="item_name">ログインURL<input class="modal_input" type="text" name="URL" size="35" placeholder="マイページのURLを入力してください"></p>
+                <p class="item_name">カテゴリ<input class="modal_input" type="text" name="category" size="35" placeholder="例：SIer 金融"></p>
+                <input type="radio" name="want" value=1>1
+                <input type="radio" name="want" value=2>2
+                <input type="radio" name="want" value=3>3
+                <input type="radio" name="want" value=4>4
+                <input type="radio" name="want" value=5>5
+                <input type="hidden" name="action" value="add_company">
                 <input class="modal_button_size" type="submit" value="新規登録">
               </form>
               <!-- モーダル画面を閉じるボタン -->
@@ -42,8 +49,9 @@
               </div>
             </div>
             {% for one in data%}
-              <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.unique_id}}">{{ one.info.Company }}</a></p>
-              <!-- <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.id}}">{{ one.CompanyName }}</a></p> -->
+              <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
+              {% block box2 %}
+              {% endblock %}
             {% endfor %}
             <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
             <li><a href="{% url 'rikumane_app:profile'%}">プロフィール画面</a>
@@ -52,11 +60,11 @@
         </ul>
       </div>
     </div>
+    <div id="box3">
+      {% block box3 %}
+      {% endblock %}
+    </div>
    {% endblock %}
-   <!-- メインメニューより右側 -->
-   {% block box2 %}
-   {% endblock %}
-   <!--ここまで-->
 </body>
 <!--JS読み込み用-->
 {% block script %}
