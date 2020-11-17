@@ -5,7 +5,17 @@
 {% load static %}
     <!-- 小メニュー選択（灰色部分）-->
     {% block box2 %}
-        <div id="box2">
+        <ul>
+            <div id="mypage_id"></div>
+            <li><a href="{{company.info.URL}}" onclick="copyToClipboard()" target="_blank">マイページ</a></li><br>
+            <li><a href="#ES">ES</a></li><br>
+            <li><a href="#flow">選考フロー</a></li><br>
+            <li><a href="#event">イベント</a></li><br>
+            <li><a href="#memo">メモ</a></li><br>
+            <li><a href="#editor">編集</a></li><br>
+        </ul>
+
+        <!-- <div id="box2">
             <ul>
               <div id="mypage_id"></div>
               <li><a href="{{company.info.URL}}" onclick="copyToClipboard()" target="_blank">マイページ</a></li><br>
@@ -15,7 +25,7 @@
               <li><a href="#" onclick='click_memo();'>メモ</a></li><br>
               <li><a href="#" onclick='click_edit();'>編集</a></li><br>
             </ul>
-        </div>
+        </div> -->
 
         <!-- 白部分（個別情報）-->
         <div id="box3">

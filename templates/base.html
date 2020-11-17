@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="ja">
-  <!--<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">-->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <meta charset="UTF-8">
   <title>リクマネ 就活タスク管理</title>
 </head>
@@ -50,6 +50,8 @@
             </div>
             {% for one in data%}
               <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
+              {% block box2 %}
+              {% endblock %}
             {% endfor %}
             <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
             <li><a href="{% url 'rikumane_app:profile'%}">プロフィール画面</a>
@@ -58,11 +60,11 @@
         </ul>
       </div>
     </div>
+    <div id="box3">
+      {% block box3 %}
+      {% endblock %}
+    </div>
    {% endblock %}
-   <!-- メインメニューより右側 -->
-   {% block box2 %}
-   {% endblock %}
-   <!--ここまで-->
 </body>
 <!--JS読み込み用-->
 {% block script %}

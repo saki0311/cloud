@@ -1,24 +1,31 @@
 
 /* トップ画面のデザイン */
-
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
 body {
-    background: #E3F6F5;
+    background: linear-gradient(180deg, #C7EFEF 13.43%, rgba(255, 255, 255, 0) 100%), #68A8B6;
 }
 
 /* div box styling */
 .container {
     margin: auto;
-    width: 650px;
-    height: 550px;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 /*ログイン画面中央配置の背景*/
 .welcome {
-    background: #FFFFFE;
-    width: 650px;
-    height: 415px;
     position: absolute;
-    top: 25%;
+    background: #FFFFFE;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(0,0,0,.1);
 }
@@ -26,10 +33,10 @@ body {
 .movebox {
     position: absolute;
     top: -10%;
-    left: 5%;
-    background: #272343;
-    width: 320px;
-    height: 500px;
+    left: 3%;
+    width: 50%;
+    height: 120%;
+    background: linear-gradient(180deg, #4E5B70 0%, #0F1928 99.99%, rgba(255, 255, 255, 0) 100%), #3B5986;
     border-radius: 5px;
     box-shadow: 2px 0 10px rgba(0,0,0,.1);
     transition: all .5s ease-in-out;
@@ -49,10 +56,10 @@ body {
 }
 
 .leftbox {
-    left: -2%;
+    left: 0%;
 }
 .rightbox {
-    right: -2%;
+    right: 0%;
 }
 
 .setrelative{
@@ -63,25 +70,33 @@ body {
 
 .leftbox .wrapper{
     position: absolute;
-    top: 75%;
+    top: 70%;
     left: 30%;
 }
 
 .rightbox .wrapper{
     position: absolute;
-    top: 73%;
-    left: 5%;
+    top: 68%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 60%;
 }
 
 /* font & button styling */
 h1 {
     font-family: 'Anaheim', sans-serif;
+    font-style: normal;
+    font-weight: normal;
     text-align: center;
     margin-top: 95px;
+    margin-bottom: 15%;
     text-transform: uppercase;
     color: #f6f6f6;
-    font-size: 2em;
     letter-spacing: 8px;
+    font-size: 64px;
+    line-height: 82px;
 }
 
 .title {
@@ -113,7 +128,11 @@ span {
 }
 .account {
     margin-top: 10%;
-    font-size: 10px;
+    font-family: 'Hiragino Kaku Gothic ProN';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
 }
 
 .smaller {
@@ -125,40 +144,58 @@ span {
 .button {
     padding: 12px;
     font-family: 'Anaheim', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 46px;
     letter-spacing: 3px;
-    font-size: 11px;
     margin: auto;
     outline: none;
     display: block;
     margin-top: 3%;
-    background: #FFFFFE;
-    color: darken(#EAC7CC, 20%);
-    border: solid 1px #272343;
+
+    background: #FAFAFA;
+    border: 3px solid #272343;
+    box-sizing: border-box;
+    border-radius: 10px;
+
 }
 
 .googlebtn{
+    position: absolute;
+    bottom: 10%;
     background-color: transparent;
     border: none;
     cursor: pointer;
     outline: none;
     padding-top: 10px;
     appearance: none;
-    font-family: 'Anaheim', sans-serif;
-    background: #272343;
+    font-family: 'Hiragino Kaku Gothic ProN';
+    font-style: normal;
+    font-weight: normal;
     color: #FFFFFE;
 }
 
-.button:hover {
+/*ホバーした際のボタンの色変えはコメントアウトしてますので必要だと感じたら好きにいじってくださいbyおがた*/
+/* .button:hover {
     background: #EAC7CC;
     color: #f6f6f6;
     transition: background-color 1s ease-out;
-}
+} */
 
 
 .movebox form .button{
-    background: #272343;
-    color: #FFFFFE;
-    border: solid 1px#FFFFFE;
+    background: rgba(196, 196, 196, 0.1);
+    border: 5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: white;
+
+    font-family: 'Anaheim', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 46px;
 }
 
 /* form styling */
@@ -175,12 +212,16 @@ form {
 .more-padding input {
     padding: 12px;
 }
-.more-padding .submit {
+/* .more-padding .submit {
     margin-top: 45px;
-}
+} */
 .submit {
+    position: absolute;
+    bottom: 15%;
     margin-top: 25px;
     padding: 12px;
+    padding-left: 15%;
+    padding-right: 15%;
     border-color: darken(#EAC7CC, 20%);
 }
 
@@ -191,7 +232,7 @@ form {
 
 input {
     font-family: 'Anaheim', sans-serif;
-    background: #272343;
+    background-color: transparent;
     width: 65%;
     color: #FFFFFE;
     border: none;
@@ -202,17 +243,20 @@ input {
 input::placeholder {
     font-family: 'Anaheim', sans-serif;
     color: #FFFFFE;
-    letter-spacing: 2px;
-    font-size: 1.3em;
+    /* letter-spacing: 2px; */
     font-style: normal;
     font-weight: normal;
+
+    font-size: 14px;
+    line-height: 18px;
 }
+/*フォーカスがいった時にサイズが大きくなります。不要なら消してくださいbyおがた*/
 input:focus {
     color: darken(#EAC7CC, 20%);
     outline: none;
     border-bottom: 1.2px solid rgba(darken(#EAC7CC, 20%), 0.7);
-    font-size: 1em;
-    transition: .8s all ease;
+    font-size: 28px;
+    transition: .5s all ease;
 }
 input:focus::placeholder {
     opacity: 0;
@@ -229,4 +273,9 @@ label {
     text-decoration: none;
     color: #FFFFFE;
     padding-top: 10px;
+    font-family: 'Hiragino Kaku Gothic ProN';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
 }
