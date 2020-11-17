@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 #from rikumane_app import calendar
 from .data import company_data
-from rikumane_app.models import Company,ES,Event
+from rikumane_app.models import Company,ES,Event,CommonInfo
 # from .forms import CompanyForm
 from .crud import *
 from django.contrib.auth.models import User # Django認証用モデルのインポート
@@ -37,6 +37,7 @@ def login(request):
         elif (request.POST.get('action') == 'create'):
             # アカウント作成
             user = User.objects.create_user(request.POST['create_name'], request.POST.get('create_id'),request.POST['create_pass'])
+            CommonInfo(Account=user,MemoES='',MemoAnalysis='',Image="").save()
             # DBへ保存
             user.save()
             # カレンダー画面へリダイレクト
@@ -61,38 +62,38 @@ def calendar(request):
             post_action = request.POST.get('action')
             if  post_action == "add_company":
                 Company_create(request,request.user)
-                d = {
-                    'data':Company.objects.all().filter(Account_id=request.user.id),
-                    'user':request.user,
-                }
-            elif post_action == "account_update":
-                print("aieuo")
+            elif post_action == "update_account":
+                CommonInfo_update(request,request.user)
             else:
                 print("aiueo")
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,
+            'common':CommonInfo.objects.get(id=request.user.id)
             }
         return render(request,'calendar.html',d)
-
-'''
-プロフィール画面
-'''
-def profile(request):
-    return render(request,'profile.html')
-
 '''
 index用関数　企業データを全てindexに返す
 '''
 def index(request):
-    if request.method == 'POST':
-        Company_create(request)
-        return redirect('rikumane_app:index')
-    params = {
-        # 'data': Company.objects.all(),
-        'data':company_data,
-    }
-    return render(request,'index.html', params)
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    else:
+        if request.method == 'POST':
+            post_action = request.POST.get('action')
+            if  post_action == "add_company":
+                Company_create(request,request.user)
+            elif post_action == "update_account":
+                CommonInfo_update(request,request.user)
+            else:
+                print("aiueo")
+        d = {
+            'data':Company.objects.all().filter(Account_id=request.user.id),
+            'user':request.user,
+            'common':CommonInfo.objects.get(id=request.user.id)
+            }
+        return render(request,'index.html',d)
+
 
 '''
 ・ivents用関数　
@@ -109,34 +110,10 @@ end_time -> 予定終了時刻
 '''
 
 def detail(request):
-    print(request.GET)
-    print(request.POST)
-    con = int(request.GET.get('id'))
-    for one in company_data:
-        if one['unique_id'] == con:
-            res = one
-            break
-    if request.GET.get('page_query'):
-        page_tag = request.GET.get('page_query')
-    else:
-        page_tag = ""
-    d={
-    'data':company_data,
-    'title':request.GET.get('name'),
-    'start_time':request.GET.get('start_time'),
-    'end_time':request.GET.get('end_time'),
-    'page':page_tag,
-    'company':res,
-    }
-    if request.GET.get('name') and request.GET.get('start_time') and request.GET.get('end_time'):
-        d['start_time'] += ":00"
-        d['end_time'] += ":00"
-        event = calendar.credentials_account()
-        calendar.add_calendar(event,d)
 
     return render(request,'detail.html',d)
 
-
+'''
     # 以下、編集部分（吉井）
 
     # データを変更するものはここで
@@ -182,3 +159,4 @@ def detail(request):
     }
 
     return render(request,'detail.html',d)
+    '''

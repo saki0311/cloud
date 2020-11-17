@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
-class Account(models.Model):
+class CommonInfo(models.Model):
     '''
     UserName:なまえ\n
     Password:パスワード\n
@@ -12,12 +12,15 @@ class Account(models.Model):
     Memo(ESと自己分析でそれぞれ)\n
     '''
 
-    UserName = models.CharField(max_length=20)
-    Password = models.CharField(max_length=20)
-    Email = models.EmailField(max_length=100, unique=True)
+    Account = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        null=True
+    )
     Image = models.ImageField(upload_to='files/',null=True)
-    MemoAnalysis = models.CharField(max_length=1000,default='')
-    MemoES = models.CharField(max_length=1000,default='')
+    MemoAnalysis = models.CharField(max_length=4096,default='')
+    MemoES = models.CharField(max_length=4096,default='')
+    Memo = models.CharField(max_length=4096,default='')
 
 
 class Company(models.Model):
