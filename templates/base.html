@@ -49,12 +49,21 @@
               </div>
             </div>
             {% for one in data%}
-              <p><a class="company_name" href="{% url 'rikumane_app:detail' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
+              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
               {% block box2 %}
               {% endblock %}
             {% endfor %}
+            
+            <!-- アカウント編集 -->
+            {%block content%}
+              
+            {%endblock%}
+            <!-- アカウントメニュー -->
+            <div id="account-menu">
+
+            </div>
             <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
-            <li><a href="{% url 'rikumane_app:profile'%}">プロフィール画面</a>
+            <li><a href="#">プロフィール画面</a>
             <li><a href="{% url 'rikumane_app:top'%}?logout=true">ログアウト</a>
           </li>
         </ul>
