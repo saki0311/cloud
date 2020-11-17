@@ -2,5 +2,26 @@
 <!-- base.htmlと同じ（スーパークラスを仕様しないため）-->
 {% extends 'base.html' %}
 {% load static %}
-{% block content%}
+{% block box2%}
+    <ul id="company-menu">
+        <li onclick="aiueo();">マイページ</li>
+        <li>ES</li>
+        <li>選考フロー</li>
+        <li>イベント</li>
+        <li>MEMO</li>
+    </ul>
+{% endblock %}
+
+{% block box3%}
+    <ul id="company-con">
+        <li>ES<br>
+            <textarea></textarea>
+        </li>
+        <li>選考フロー<br>
+        </li>
+        <li>イベント<br>
+        </li>
+        <li>メモ<br>
+        </li>
+    </ul>
 {% endblock %}

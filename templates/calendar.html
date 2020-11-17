@@ -15,4 +15,32 @@
                   <input type="submit" value="アカウント情報更新">
                 </form>
     </div>
+
+    <div id="prof_edit">
+        <form action="" method="post">
+            <h3>プロフィール編集</h3>
+            {% csrf_token%}
+            <p>username<input name="edit-name" value={{user.username}}></p>
+
+            <p>ID<input name="edit-mail" value={{user.email}}></p>
+
+            <input type="hidden" name="action" value="prof_edit">
+            <input type="submit" value="プロフィール更新">
+        </form>
+    </div>
+
+    <div id="pass_edit">
+        <form action="" method="post">
+            <h3>パスワード編集</h3>
+            {% csrf_token%}
+            <p>currentpassword<input name="current-pass" value={{user.password}}></p>
+
+            <p>newpassword<input name="new-pass"></p>
+
+            <p>confirmpassword<input name="confirm-pass"></p>
+
+            <input type="hidden" name="action" value="pass_edit">
+            <input type="submit" value="パスワード変更">
+        </form>
+    </div>
 {% endblock %}
