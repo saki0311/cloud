@@ -1,2 +1,3 @@
 rikumane/
 *.pyc
+rikumane_app/__pycache__/
