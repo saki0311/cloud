@@ -1,7 +1,4 @@
 rikumane/
 *.pyc
-<<<<<<< HEAD
 rikumane_app/__pycache__/
-=======
-rikumane_app/__pycache__/
->>>>>>> d8f7256f15fe97d850fe2380d3e53a5e4fc90278
+
