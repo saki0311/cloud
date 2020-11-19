@@ -21,14 +21,18 @@ def Company_create(req, account):
     ).save()
 
 
-def Company_update(req, data):
-    data.URL=req.POST['URL']
-    data.CompanyName=req.POST['CompanyName']
-    data.LoginId=req.POST['LoginId']
+def Company_update(req, account):
+    data = Company.objects.get(Account_id=account.id,id=req.POST.get('id'))
+    data.URL=req.POST.get('URL')
+    data.CompanyName=req.POST.get('CompanyName')
+    data.LoginId=req.POST.get('LoginId')
+    data.Rate=req.POST.get('want')
+    data.Category=req.POST.get('category')
     data.save()
 
 
-def Company_delete(data):
+def Company_delete(req,account):
+    data = Company.objects.get(Account_id=account.id,id=req.POST.get('id'))
     data.delete()
 
 # AccountのCRUD
