@@ -54,6 +54,8 @@ function copyToClipboard(){
         });
     })();
 
+
+    
 // モーダルウィンドウの処理（予定追加）
 (function(){
     'use strict';

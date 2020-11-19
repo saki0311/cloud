@@ -85,6 +85,10 @@ def index(request):
                 Company_create(request,request.user)
             elif post_action == "update_account":
                 CommonInfo_update(request,request.user)
+            elif post_action == "edit-company":
+                Company_update(request,request.user)
+            elif post_action == "delete-company":
+                Company_delete(request,request.user)
             else:
                 print("aiueo")
         d = {

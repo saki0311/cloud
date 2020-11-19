@@ -50,6 +50,8 @@
             </div>
             {% for one in data%}
               <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
+              {% block company_edit%}
+              {% endblock %}
               {% block box2 %}
               {% endblock %}
             {% endfor %}
