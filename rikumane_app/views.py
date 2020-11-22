@@ -1,6 +1,9 @@
 from django.shortcuts import redirect, render
 #from rikumane_app import calendar
 from .data import company_data
+from django.contrib.auth.views import (
+    LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
+)
 from rikumane_app.models import Company,ES,Event,CommonInfo
 # from .forms import CompanyForm
 from .crud import *
@@ -64,6 +67,8 @@ def calendar(request):
                 Company_create(request,request.user)
             elif post_action == "update_account":
                 CommonInfo_update(request,request.user)
+            elif post_action == "prof_edit":
+                Account_update(request)
             else:
                 print("aiueo")
         d = {
@@ -98,6 +103,18 @@ def index(request):
             }
         return render(request,'index.html',d)
 
+
+
+class PasswordChange(PasswordChangeView):
+    """パスワード変更ビュー"""
+    form_class = MyPasswordChangeForm
+    success_url = reverse_lazy('register:password_change_done')
+    template_name = 'register/password_change.html'
+
+
+class PasswordChangeDone(PasswordChangeDoneView):
+    """パスワード変更しました"""
+    template_name = 'register/password_change_done.html'
 
 '''
 ・ivents用関数　

@@ -41,6 +41,15 @@ def Company_delete(req,account):
 def Account_create(req):
     pass
 
+def Account_update(req):
+    user = User.objects.get(id=req.user.id)
+    user.username = req.POST.get("edit-user")
+    user.first_name = req.POST.get("edit-firstname")
+    user.last_name = req.POST.get("edit-lastname")
+    user.email = req.POST.get("edit-mail")
+    user.save()
+
+
 def CommonInfo_update(req,account):
     user = User.objects.get(id=account.id)
     com_info = CommonInfo.objects.get(id=account.id)
