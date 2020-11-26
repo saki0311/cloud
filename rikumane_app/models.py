@@ -44,6 +44,7 @@ class Company(models.Model):
     Memo = models.CharField(max_length=500, default='')
     Category = models.CharField(max_length=500)
     Rate = models.IntegerField(default=0)
+    ES = models.CharField(max_length=500,default='')
 
     def __str__(self):
         return self.CompanyName
