@@ -1,2 +1,4 @@
 rikumane/
 *.pyc
+rikumane_app/__pycache__/
+rikumane_app/migrations/
