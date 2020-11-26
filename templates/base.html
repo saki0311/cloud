@@ -28,18 +28,26 @@
             <div id="mask" class="hidden"></div>
             <!-- モーダル画面 -->
             <div id="modal" class="hidden">
-              <p class="modal_title">企業情報の入力</p>
+              <p class="modal_title">企業登録</p>
               <form action="" method="post">
                 {% csrf_token %}
-                <p class="item_name">企業名<input class="modal_input" type="text" name="CompanyName" size="35" placeholder="企業名を入力してください"></p>
-                <p class="item_name">マイページID<input class="modal_input" type="text" name="LoginId" size="35" placeholder="マイページIDを入力してください"></p>
-                <p class="item_name">ログインURL<input class="modal_input" type="text" name="URL" size="35" placeholder="マイページのURLを入力してください"></p>
-                <p class="item_name">カテゴリ<input class="modal_input" type="text" name="category" size="35" placeholder="例：SIer 金融"></p>
-                <input type="radio" name="want" value=1>1
-                <input type="radio" name="want" value=2>2
-                <input type="radio" name="want" value=3>3
-                <input type="radio" name="want" value=4>4
-                <input type="radio" name="want" value=5>5
+                <p class="item_name">企業名<input class="modal_input" type="text" name="CompanyName" size="35" placeholder="企業名"></p>
+                <p class="item_name">mypage URL<input class="modal_input" type="text" name="URL" size="35" placeholder="mypage URL"></p>
+                <p class="item_name">mypage ID<input class="modal_input" type="text" name="LoginId" size="35" placeholder="mypage ID"></p>
+                <p class="item_name">カテゴリ<input class="modal_input" type="text" name="category" size="35" placeholder="カテゴリ　例：SIer 金融"></p>
+                <p class="shiboudo_name">志望度</p>
+                <div class="shiboudo">
+                  <input id="1" type="radio" name="want" value="1" />
+                  <label for="1">★</label>
+                  <input id="2" type="radio" name="want" value="2" />
+                  <label for="2">★</label>
+                  <input id="3" type="radio" name="want" value="3" />
+                  <label for="3">★</label>
+                  <input id="4" type="radio" name="want" value="4" />
+                  <label for="4">★</label>
+                  <input id="5" type="radio" name="want" value="5" />
+                  <label for="5">★</label>
+                </div>
                 <input type="hidden" name="action" value="add_company">
                 <input class="modal_button_size" type="submit" value="新規登録">
               </form>
