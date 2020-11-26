@@ -220,3 +220,22 @@ function copyToClipboard(){
 
     window.open(url);
 }
+
+
+  /******************************************************/
+  /* 編集モードと表示モード切り替え                     */
+  /******************************************************/
+  function editTextArea(button_id,con_area){
+    var button_elem = document.getElementById(button_id);
+    var content_area = document.getElementById(con_area);
+
+    if(button_elem.innerText == "編集"){
+      content_area.readOnly = false;
+      button_elem.innerText = '保存'
+      button_elem.addEventListener('click', function() {
+        console.log("aaaa");
+        //submit()でフォームの内容を送信
+        document.com_info_form.submit();
+      })
+    }
+  }

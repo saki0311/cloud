@@ -41,18 +41,25 @@
 {% endblock %}
 
 {% block box3%}
-    <ul id="company-con">
-        <li>ES<br>
-            <textarea name="ES"></textarea>
-        </li>
-        <li>選考フロー<br>
-            <textarea name="flow"></textarea>
-        </li>
-        <li>イベント<br>
-            <textarea name="event"></textarea>
-        </li>
-        <li>メモ<br>
-            <textarea name="memo"></textarea>
-        </li>
-    </ul>
+    <form id="company_info" method="post" name="com_info_form">
+        {% csrf_token %}
+        <ul id="company-con">
+            <li>ES<button id="es_edit" onclick="editTextArea('es_edit','es_area');" type="button">編集</button><br>
+                <textarea id="es_area" name="ES" readonly>{{company.ES}}</textarea>
+            </li>
+            <li>選考フロー<br>
+                <textarea name="flow"></textarea>
+            </li>
+            <li>イベント<button id="add_event">追加</button><br>
+                <textarea name="event"></textarea>
+            </li>
+            <li>メモ<button id="memo_edit" onclick="editTextArea('memo_edit','memo_area');" type="button">編集</button><br>
+                <textarea id="memo_area" name="memo" readonly>{{company.Memo}}</textarea>
+            </li>
+        </ul>
+        <input type="hidden" name="action" value="update-company-data">
+        <input type="hidden" name="com_id" value={{company.id}}>
+    </form>
 {% endblock %}
+<script src="{% static 'js/user_define.js' %}"></script>
+</html>
