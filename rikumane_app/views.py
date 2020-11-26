@@ -81,20 +81,21 @@ def index(request):
     else:
         if request.method == 'POST':
             post_action = request.POST.get('action')
-            if  post_action == "add_company":
+            if  post_action == "add_company": # 企業登録のイベント
                 Company_create(request,request.user)
-            elif post_action == "update_account":
+            elif post_action == "update_account": # アカウント情報更新イベント
                 CommonInfo_update(request,request.user)
-            elif post_action == "edit-company":
+            elif post_action == "edit-company": # 企業情報編集イベント
                 Company_update(request,request.user)
-            elif post_action == "delete-company":
+            elif post_action == "delete-company": # 企業情報削除イベント
                 Company_delete(request,request.user)
-            else:
-                print("aiueo")
+            elif post_action == "update-company-data": # 企業詳細情報更新イベント
+                Company_data_update(request)
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,
-            'common':CommonInfo.objects.get(id=request.user.id)
+            'common':CommonInfo.objects.get(id=request.user.id),
+            'company':Company.objects.get(Account_id=request.user.id,id=request.GET.get('id')),
             }
         return render(request,'index.html',d)
 
