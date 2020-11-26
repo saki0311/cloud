@@ -1,6 +1,18 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import (
+    AuthenticationForm, UserCreationForm, PasswordChangeForm
+)
+from django.contrib.auth import get_user_model
 
+class MyPasswordChangeForm(PasswordChangeForm):
+    """パスワード変更フォーム"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+        
 class TestForm(forms.Form):
     text = forms.CharField(label='文字入力')
     num = forms.IntegerField(label='数量')

@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('rikumane_app.urls', 'rikumane_app')),
     path('oauth/', include('social_django.urls',namespace='social')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

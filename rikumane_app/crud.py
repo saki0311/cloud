@@ -11,14 +11,15 @@ from django.contrib.auth.models import User
 
 # CompanyのCRUD
 def Company_create(req, account):
-    Company(
+    company = Company(
         Account=account,
         URL=req.POST['URL'],
         CompanyName=req.POST['CompanyName'],
         LoginId=req.POST['LoginId'],
         Rate=req.POST.get('want'),
         Category=req.POST.get('category')
-    ).save()
+    )
+    company.save()
 
 
 def Company_update(req, account):
@@ -41,6 +42,16 @@ def Company_delete(req,account):
 def Account_create(req):
     pass
 
+def Account_update(req):
+    user = User.objects.get(id=req.user.id)
+    user.username = req.POST.get("edit-user")
+    user.first_name = req.POST.get("edit-firstname")
+    user.last_name = req.POST.get("edit-lastname")
+    user.email = req.POST.get("edit-mail")
+    user.save()
+
+
+    
 def CommonInfo_update(req,account):
     user = User.objects.get(id=account.id)
     com_info = CommonInfo.objects.get(id=account.id)
@@ -52,11 +63,16 @@ def CommonInfo_update(req,account):
 def Account_delete(data):
     data.delete()
 
+def Company_data_update(req):
+    user = req.user
+    company_memo = req.POST.get('memo')
+    company_es = req.POST.get('ES')
+    company = Company.objects.get(Account_id=user.id,id=req.POST.get('com_id'))
+    company.Memo = company_memo
+    company.ES = company_es
+    company.save()
+
 # ESのCRUD
-
-
-def ES_create(req):
-    pass
 
 
 def ES_update(req):
