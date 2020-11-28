@@ -395,3 +395,39 @@ a:hover{
     color: rgba(250, 250, 250, 0.9);
 
 }
+
+/******************************************************************************/
+/* 企業詳細情報のデザイン（マイページとかESとか）                                    */
+/******************************************************************************/
+#company-menu{
+    /* background-color: chartreuse; */
+    /* display: inline-block; */
+}
+
+#company-menu li{
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#company-menu li:hover{
+    color: #F8E53D;
+}
+
+
+#company-menu li:hover::after {
+    transform: scale(1, 1);
+}
+
+#company-menu li::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #F8E53D;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: transform .3s;
+}

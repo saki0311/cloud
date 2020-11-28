@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 {% block company_edit %}
     <p>企業編集</p>
     <form action="" method="post">
@@ -32,11 +32,11 @@
 
 {% block box2%}
     <ul id="company-menu">
-        <li onclick="aiueo();">マイページ</li>
-        <li>ES</li>
-        <li>選考フロー</li>
-        <li>イベント</li>
-        <li>MEMO</li>
+        <li onclick="aiueo();">マイページ</li><br>
+        <li>ES</li><br>
+        <li>選考フロー</li><br>
+        <li>イベント</li><br>
+        <li>MEMO</li><br>
     </ul>
 {% endblock %}
 
