@@ -102,10 +102,11 @@
       <div id="conpanylink">
         <ul>
           <li>
-            <div>
+            <!--カレンダーに戻るボタン-->
+            <div id="calendar_button">
               <a href="{% url 'rikumane_app:calendar'%}">カレンダー</a>
             </div>
-           <!-- モーダル画面を開くボタン -->
+            <!-- モーダル画面を開くボタン -->
             <div id="open" class="button">
               <button>企業新規登録</button>
             </div>
@@ -142,7 +143,7 @@
               </div>
             </div>
             {% for one in data%}
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
+              <p><a id="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
               {% block company_edit%}
               {% endblock %}
               {% block box2 %}

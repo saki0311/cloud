@@ -30,7 +30,7 @@ body{
 #conpanylink{
     width: 100%;
     height: 60%; 
-    font-size: 24px;
+    /*font-size: 24px;*/
     /* text-align: right; */
     text-align: left;
     color: white;
@@ -48,6 +48,11 @@ body{
     padding-top: 10px;
 }
 
+#calender_button{
+    background-color: #1DFF5C;
+    font-size: 1px;
+}
+
 .button button{
     font-size: 15px;
     color: white;
@@ -55,6 +60,7 @@ body{
     font-family: Aldrich;
     border: none;
 }
+
 /* 画面の左側 */
 #box1{
     /* background-color: #1F609C; */
@@ -364,6 +370,7 @@ a{
 
 a:hover{
     color: #1DFF5C;
+
 }
 
 /******************************************************************************/
@@ -373,4 +380,18 @@ a:hover{
 #ES, #flow, #event, #memo, #editor{
     background-color: white;
     border-radius: 5px;
+}
+
+/******************************************************************************/
+/* 企業名デザイン                                                               */
+/******************************************************************************/
+#company_name{
+    /*background-color: #1F609C;*/
+    font-family: Hiragino Kaku Gothic ProN;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    color: rgba(250, 250, 250, 0.9);
+
 }
