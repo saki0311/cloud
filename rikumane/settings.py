@@ -83,19 +83,11 @@ WSGI_APPLICATION = 'rikumane.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< HEAD
         'NAME': 'rikumanedb',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
         'PORT': '3306'
-=======
-        'NAME': 'rikumane',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'PORT':'3306',
-        'HOST':'/Applications/MAMP/tmp/mysql/mysql.sock',
->>>>>>> f10fa73fa97301810e34e273c31b09dff921fe55
     }
 }
 
