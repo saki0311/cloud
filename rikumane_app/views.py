@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 #from rikumane_app import calendar
 from .data import company_data
-from rikumane_app.models import Company,ES,Event
+# from rikumane_app.models import Company,Account,ES,Event
 # from .forms import CompanyForm
 from .crud import *
 from django.contrib.auth.models import User # Django認証用モデルのインポート
@@ -14,7 +14,6 @@ login/logout/sineup用関数
 '''
 def login(request):
     # POSTパラメータの有無の確認
-
     if request.method=='POST':
         # ログイン用パラメータの場合
         if (request.POST.get('action') == 'login'):
@@ -34,9 +33,9 @@ def login(request):
             else:
                 print("Your username and password were incorrect.")
         # アカウント作成パラメータの場合
-        elif (request.POST.get('action') == 'create'):
+        elif (request.POST['action'] == 'create'):
             # アカウント作成
-            user = User.objects.create_user(request.POST['create_name'], request.POST.get('create_id'),request.POST['create_pass'])
+            user = User.objects.create_user(request.POST.get('create_name'), request.POST.get('create_id'),request.POST.get('create_pass'))
             # DBへ保存
             user.save()
             # カレンダー画面へリダイレクト
@@ -53,7 +52,7 @@ def login(request):
 '''
 ホーム画面（カレンダー画面での操作）
 '''
-def calendar(request):
+def calendar(request, format=None):
     if not request.user.is_authenticated:
         return redirect('rikumane_app:top')
     else:
@@ -80,6 +79,7 @@ def calendar(request):
 '''
 def profile(request):
     return render(request,'profile.html')
+
 
 '''
 index用関数　企業データを全てindexに返す
@@ -121,19 +121,20 @@ def detail(request):
     else:
         page_tag = ""
     d={
-    'data':company_data,
-    'title':request.GET.get('name'),
-    'start_time':request.GET.get('start_time'),
-    'end_time':request.GET.get('end_time'),
-    'page':page_tag,
-    'company':res,
+        'data':company_data,
+        'title':request.GET.get('name'),
+        'start_time':request.GET.get('start_time'),
+        'end_time':request.GET.get('end_time'),
+        'page':page_tag,
+        'company':res,
+        'form':None
     }
-    if request.GET.get('name') and request.GET.get('start_time') and request.GET.get('end_time'):
+    if request.method == 'POST': # and request.GET.get('start_time') and request.GET.get('end_time'):
+        d['title'] = request.GET.get('name')
         d['start_time'] += ":00"
         d['end_time'] += ":00"
-        event = calendar.credentials_account()
-        calendar.add_calendar(event,d)
-
+        # event = calendar().credentials_account()
+        # calendar.add_calendar(event,d)
     return render(request,'detail.html',d)
 
 
