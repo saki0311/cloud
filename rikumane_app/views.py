@@ -127,10 +127,10 @@ def detail(request):
         'end_time':request.GET.get('end_time'),
         'page':page_tag,
         'company':res,
-        'form':None
+        # 'form':None
     }
     if request.method == 'POST': # and request.GET.get('start_time') and request.GET.get('end_time'):
-        d['title'] = request.GET.get('name')
+        d['title'] = request.GET.get['data']
         d['start_time'] += ":00"
         d['end_time'] += ":00"
         # event = calendar().credentials_account()

@@ -61,19 +61,30 @@
                 <div id="modal_event" class="hidden_event">
                     <p class="modal_title">予定の追加</p>
                     <form name="form" action="{% url 'rikumane_app:detail'%}" method="get">
+                    <table>
+                
                         <input type="hidden" name="id" value={{company.unique_id}}>
                         <input type="hidden" name="page_query" value="event">
-                        <p class="item_name">イベント名<input class="modal_input" type="text" name="name" size="30" maxlength="20" placeholder="予定を入力してください"></p>
+                        <p class="item_name">イベント名 <input class="modal_input" type="text" name="name" size="30" maxlength="20" placeholder="予定を入力してください"></p>
                         <p class="item_name">イベント開始日時<input class="modal_input" type="datetime-local" name="start_time" min="2020-01-01T00:00" max="2022-01-01T00:00"></p>
                         <p class="item_name">イベント終了日時<input class="modal_input" type="datetime-local" name="end_time" min="2020-01-01T00:00" max="2022-01-01T00:00"></p>
-                        <input type="checkbox" name="options" value="選考フローにも追加" > 選考フローにも追加 <br>
+                        <input type="checkbox" name="options" value="add_flow" > 選考フローにも追加 <br>
                         <input type="hidden" name="action" value="add_event">
-                        <input class="modal_button_size" type="submit" value="追加" onclick="Check();">
-                        {{ form.as_p }}
+                        <input class="modal_button_size" type="submit" value="追加" onclick="Check();"><br>
+                        <input type="checkbox" name="options" value="title" > {{ title }}
+                    {{ start_time }}
+                    {{ end_time }}
+                    </table>
                     </form>
-                    <p>{{ title }}</p>
-                    <p>{{ start_time }}</p> 
-                    <p> {{ end_time }}</p>
+                    <script language="javascript" type="text/javascript">
+                        function Check(){
+                            var flag = false;
+                            if (document.form.elements[i].checked) {
+                                flag = true;
+                                document.getElementsByName(titile);
+                            }
+                        }
+                    </script>
             </div>
                     <!-- モーダル画面を閉じるボタン -->
                     <div id="close_event" class="button_event">

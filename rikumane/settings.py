@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'database_rikumane',
         'USER': 'root',
         'PASSWORD': 'norisuke',
-        'PORT':'3306',
+        # 'PORT':'3306',
         'HOST':'localhost',
     }
 }
