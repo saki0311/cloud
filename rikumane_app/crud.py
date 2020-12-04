@@ -67,6 +67,7 @@ def Company_data_update(req):
     user = req.user
     company_memo = req.POST.get('memo')
     company_es = req.POST.get('ES')
+    
     company = Company.objects.get(Account_id=user.id,id=req.POST.get('com_id'))
     company.Memo = company_memo
     company.ES = company_es

@@ -225,16 +225,44 @@ function copyToClipboard(){
   /******************************************************/
   /* 編集モードと表示モード切り替え                     */
   /******************************************************/
-  function editTextArea(button_id,con_area){
-    var button_elem = document.getElementById(button_id);
-    var content_area = document.getElementById(con_area);
 
+  function editTextArea(button_id,menu,area){
+    var button_elem = document.getElementById(button_id);
+    var menu_bar = document.getElementById(menu);
+    var area_con = document.getElementById(area);
+
+   
     if(button_elem.innerText == "編集"){
-      content_area.readOnly = false;
+      area_con.contentEditable = true;
+      menu_bar.innerHTML = `<select onchange="document.execCommand('fontsize',false,this[this.selectedIndex].value);this.selectedIndex=0;">
+                              <option class="heading" selected>- size -</option>
+                              <option value="1">Very small</option>
+                              <option value="2">A bit small</option>
+                              <option value="3">Normal</option>
+                              <option value="4">Medium-large</option>
+                              <option value="5">Big</option>
+                              <option value="6">Very big</option>
+                              <option value="7">Maximum</option>
+                            </select>
+                            <select onchange="document.execCommand('forecolor',false,this[this.selectedIndex].value);this.selectedIndex=0;">
+                                <option class="heading" selected>- color -</option>
+                                <option value="red">Red</option>
+                                <option value="blue">Blue</option>
+                                <option value="green">Green</option>
+                                <option value="black">Black</option>
+                            </select>
+                            <select onchange="document.execCommand('backcolor',false,this[this.selectedIndex].value);this.selectedIndex=0;">
+                                <option class="heading" selected>- background -</option>
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="black">Black</option>
+                            </select>
+                            <img class="intLink" title="Bold" onclick="document.execCommand('bold');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" />`;
       button_elem.innerText = '保存'
       button_elem.addEventListener('click', function() {
-        console.log("aaaa");
         //submit()でフォームの内容を送信
+        document.getElementById('value_es').value = document.getElementById('es_textBox').innerHTML;
+        document.getElementById('value_memo').value = document.getElementById('memo_textBox').innerHTML;
         document.com_info_form.submit();
       })
     }
