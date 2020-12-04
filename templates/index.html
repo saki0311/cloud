@@ -2,3 +2,64 @@
 <!-- base.htmlと同じ（スーパークラスを仕様しないため）-->
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% block company_edit %}
+    <p>企業編集</p>
+    <form action="" method="post">
+        {% csrf_token %}
+            <p>企業名<input type="text" name="CompanyName" size="35" placeholder="企業名を入力してください" value={{one.CompanyName}}></p>
+            <p>マイページID<input type="text" name="LoginId" size="35" placeholder="マイページIDを入力してください" value={{one.LoginId}}></p>
+            <p>ログインURL<input type="text" name="URL" size="35" placeholder="マイページのURLを入力してください" value={{one.URL}}></p>
+            <p>カテゴリ<input type="text" name="category" size="35" placeholder="例：SIer 金融" value={{one.Category}}></p>
+            <input type="radio" name="want" value=1>1
+            <input type="radio" name="want" value=2>2
+            <input type="radio" name="want" value=3>3
+            <input type="radio" name="want" value=4>4
+            <input type="radio" name="want" value=5>5
+            <input type="hidden" name="action" value="edit-company">
+            <input type="hidden" name="id" value={{one.id}}>
+            <input class="modal_button_size" type="submit" value="企業編集">
+    </form>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+            <input type="hidden" name="action" value="delete-company">
+            <input type="hidden" name="id" value={{one.id}}>
+            <input type="submit" value="企業削除">
+    </form>
+{% endblock %}
+
+{% block box2%}
+    <ul id="company-menu">
+        <li onclick="aiueo();">マイページ</li>
+        <li>ES</li>
+        <li>選考フロー</li>
+        <li>イベント</li>
+        <li>MEMO</li>
+    </ul>
+{% endblock %}
+
+{% block box3%}
+    <form id="company_info" method="post" name="com_info_form">
+        {% csrf_token %}
+        <ul id="company-con">
+            <li>ES<button id="es_edit" onclick="editTextArea('es_edit','es_area');" type="button">編集</button><br>
+                <textarea id="es_area" name="ES" readonly>{{company.ES}}</textarea>
+            </li>
+            <li>選考フロー<br>
+                <textarea name="flow"></textarea>
+            </li>
+            <li>イベント<button id="add_event">追加</button><br>
+                <textarea name="event"></textarea>
+            </li>
+            <li>メモ<button id="memo_edit" onclick="editTextArea('memo_edit','memo_area');" type="button">編集</button><br>
+                <textarea id="memo_area" name="memo" readonly>{{company.Memo}}</textarea>
+            </li>
+        </ul>
+        <input type="hidden" name="action" value="update-company-data">
+        <input type="hidden" name="com_id" value={{company.id}}>
+    </form>
+{% endblock %}
+<script src="{% static 'js/user_define.js' %}"></script>
+</html>

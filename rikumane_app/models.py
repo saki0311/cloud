@@ -1,8 +1,9 @@
 
 from django.db import models
+from django.contrib.auth import get_user_model
 
 
-class Account(models.Model):
+class CommonInfo(models.Model):
     '''
     UserName:なまえ\n
     Password:パスワード\n
@@ -11,12 +12,15 @@ class Account(models.Model):
     Memo(ESと自己分析でそれぞれ)\n
     '''
 
-    UserName = models.CharField(max_length=20)
-    Password = models.CharField(max_length=20)
-    Email = models.EmailField(max_length=100, unique=True)
+    Account = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        null=True
+    )
     Image = models.ImageField(upload_to='files/',null=True)
-    MemoAnalysis = models.CharField(max_length=1000,default='')
-    MemoES = models.CharField(max_length=1000,default='')
+    MemoAnalysis = models.CharField(max_length=4096,default='')
+    MemoES = models.CharField(max_length=4096,default='')
+    Memo = models.CharField(max_length=4096,default='')
 
 
 class Company(models.Model):
@@ -27,17 +31,20 @@ class Company(models.Model):
     LoginId:ログインのためのID\n
     Memo: メモ\n
     Rate:志望度\n
+    category：カテゴリ\n
     '''
 
     Account = models.ForeignKey(
-        Account,
+        get_user_model(),
         on_delete=models.CASCADE,
         null=True)
     URL = models.CharField(max_length=200)
     CompanyName = models.CharField(max_length=100)
     LoginId = models.CharField(max_length=100)
     Memo = models.CharField(max_length=500, default='')
+    Category = models.CharField(max_length=500)
     Rate = models.IntegerField(default=0)
+    ES = models.CharField(max_length=500,default='')
 
     def __str__(self):
         return self.CompanyName

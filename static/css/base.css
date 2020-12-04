@@ -1,6 +1,16 @@
 
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
 #main{
     display: flex;
+    background: linear-gradient(180deg, #3B5986 0%, rgba(113, 128, 150, 0) 100%), #111C2B;
+    box-sizing: border-box;
+    width: 100%;
     height: 100%;
 }
 
@@ -9,6 +19,7 @@
     color: white;
     text-align: center;
     font-size: 60px;
+    margin-left: 20px;
 }
 
 /* RecruitManagementに関して */
@@ -18,11 +29,19 @@
 
 /* 企業ごとのリンク */
 #conpanylink{
+    width: 100%;
+    height: 60%; 
     font-size: 24px;
-    text-align: right;
+    /* text-align: right; */
+    text-align: left;
     color: white;
     margin-right: 30px;
-    
+    overflow: scroll;
+    -ms-overflow-style: none;    /* IE, Edge スクロールバー非表示 */
+    scrollbar-width: none;       /* Firefox スクロールバー非表示 */
+}
+#conpanylink::-webkit-scrollbar {  /* Chrome, Safari スクロールバー非表示 */
+    display:none;
 }
 
 #conpanylink li{
@@ -39,8 +58,8 @@
 }
 /* 画面の左側 */
 #box1{
-    background-color: #1F609C;
-    width: 30%;
+    /* background-color: #1F609C; */
+    width: 20%;
     height: 100%;
 }
 
@@ -93,12 +112,24 @@
 
 /* 画面の右側 */
 #box3{
-    background-color: white;
-    width: 50%;
-    height: 100%;
-    margin-left: 100px;
-    margin-top: 120px;
-    margin-right: 54px;
+    position: relative;
+    /* background-color: white; */
+    background-color: transparent;
+    top:20%;
+    left: 5%;
+    width: 70%;
+    height: 70%;
+    box-sizing: border-box;
+    /* margin-left: 100px; */
+    /* margin-top: 120px; */
+    /* margin-right: 54px; */
+    /* padding: 20px 50px; */
+    overflow: scroll;
+    -ms-overflow-style: none;    /* IE, Edge スクロールバー非表示 */
+    scrollbar-width: none;       /* Firefox スクロールバー非表示 */
+}
+#box3::-webkit-scrollbar {  /* Chrome, Safari スクロールバー非表示 */
+    display:none;
 }
 
 #box3 h1{
@@ -163,48 +194,128 @@ html,body{
 /*モーダル画面*/
 #modal {
     /*background: #1F609C;/*背景は白(わかりやすさのため今は白じゃない)*/
-    background:white;/*背景は白(わかりやすさのため今は白じゃない)*/
+    background:#FAFAFA;/*背景は#FAFAFA*/
     border-radius: 10px;/*モーダル画面の角を丸する*/
-    width: 600px; /*横幅を指定*/
+    width: 966px; /*横幅を指定*/
     position:absolute;/*絶対位置を指定(スクロールで動く)*/
-    top:100px;/*縦に40pxの位置から描画*/
-     right: 0px;/*右に0距離から描画を始める*/
-     left:0px;/*左に0距離から描画を始める*/
-     margin:0 auto; /*左右中央寄せ*/
-     padding: 20px;/*内側に余白*/
-     z-index: 2;
-     text-align: center; /*modal内のブロック要素を中央に寄せる*/
+    top:42px;/*縦に40pxの位置から描画*/
+    /*right: 0px;*//*右に0距離から描画を始める*/
+    height:510px;/*モーダル画面の縦幅を指定*/
+    left:300px;/*左に471pxの位置から描画を始める*/
+    margin:0 auto; /*左右中央寄せ*/
+    padding: 20px;/*内側に余白*/
+    z-index: 2;
+    text-align: center; /*modal内のブロック要素を中央に寄せる*/
 }
 /*モーダルのタイトル*/
 .modal_title{
-    color: black; /*文字色*/
-    border-bottom: solid 2px black; /*下線 2pxの黒色*/
-    padding-bottom: 20px; /*下部にゆとりを設けている*/
+    /*タイトルの位置*/
+    width: 209px;
+    height: 55px;
+    left: 574px;
+    top: 144px;
+
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    color: #272343; /*タイトルの文字の色*/
+    font-style: normal; /*フォントスタイルは初期値*/
+    font-weight: 500; /*フォントの太さを指定*/
+    font-size: 40px; /*フォントの大きさを指定*/
+    line-height: 60px; /*行の高さを指定*/
 }
 #mask.hidden{
     display:none; /*非表示にする*/
 }
 #modal.hidden{
-    transform: translate(0px,-500px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
+    transform: translate(0px,-600px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
 }
 /*モーダル内の項目名の配置*/
 .item_name{
     position: relative;
-    color: black; /*文字色*/
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    color: #FAFAFA; /*文字色*/
     text-align: left; /*文字を左寄せにする*/
-    padding-left: 40px; /*左側に余白を設ける*/
+    padding-left: 200px; /*左側に余白を設ける*/
 }
 /*モーダル内の入力欄の配置*/
 .modal_input{
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
     position: absolute;
-    height: 24px;
-    background-color: #5F6E7C; /*入力欄の背景色*/
-    color: white; /*入力欄の文字色*/
-    right: 10%; /*配置場所の指定*/
+    height: 30px;
+    width: 700px;
+    background-color: #FAFAFA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 14%; /*配置場所の指定*/
+    border-color: #272343; /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 2px 0px; /*テキストフィールドの枠線を下線のみにする*/
 }
 /*入力欄に初期表示する文字に関して*/
 input::placeholder {
-    color: white; /*文字色の指定*/
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    color: #272343; /*文字色の指定*/
+    font-size: 15px;
+}
+
+input:focus{
+    outline: none; /*テキストボックスフォーカス時の枠線を非表示*/
+}
+/*志望度に関して*/
+.shiboudo_name{
+    /*position: left;*/
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    color: #272343; /*文字色*/
+    text-align: left; /*文字を左寄せにする*/
+    padding-left: 130px; /*左側に余白を設ける*/
+}
+.shiboudo{
+ display: -ms-flex;
+ display: -webkit-flex;
+ display: -moz-flex;
+ display: -o-flex;
+ display: flex;
+ 
+ flex-direction: -ms-row-reverse;
+ flex-direction: -webkit-row-reverse;
+ flex-direction: -moz-row-reverse;
+ flex-direction: -o-row-reverse; 
+ flex-direction: row-reverse;
+  
+justify-content: -ms-right;
+justify-content: -webkit-right;
+justify-content: -moz-right;
+justify-content: -o-right;
+justify-content: right;
+
+}
+.shiboudo input[type='radio']{
+  display: none;
+}
+.shiboudo input[type='radio']{
+  display: none;
+}
+.shiboudo label{
+  position: relative;
+  padding: 0px 50px 50px 0px;
+  display: inline-block;
+  color: #FAFAFA;
+  text-shadow: 
+    0.6px  0.6px 0.6px #272343,
+   -0.6px  0.6px 0.6px #272343,
+    0.6px -0.6px 0.6px #272343,
+   -0.6px -0.6px 0.6px #272343,
+    0.6px  0.6px 0.6px #272343,
+    0.6px  0.6px 0.6px #272343,
+   -0.6px  0.6px 0.6px #272343,
+    0.6px -0.6px 0.6px #272343; 
+  cursor: pointer;
+  font-size: 30px;
+}
+ 
+.shiboudo label:hover,
+.shiboudo label:hover ~ label,
+.shiboudo input[type='radio']:checked ~ label{
+  color: #faee2e;
 }
 
 /* 予定登録のモーダル画面 */
@@ -254,4 +365,13 @@ a{
 
 a:hover{
     color: #1DFF5C;
+}
+
+/******************************************************************************/
+/* 企業内データ                                                                 */
+/******************************************************************************/
+
+#ES, #flow, #event, #memo, #editor{
+    background-color: white;
+    border-radius: 5px;
 }
