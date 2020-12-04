@@ -86,8 +86,8 @@ DATABASES = {
         'NAME': 'rikumane',
         'USER': 'root',
         'PASSWORD': 'password',
-        'PORT':'3306',
-        'HOST':'localhost',
+        'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
+        'PORT': '3306'
     }
 }
 
