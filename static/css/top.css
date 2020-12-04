@@ -124,14 +124,15 @@ span {
 .logo {
     position: absolute;
     top: 40%;
-    left: 15%;
+    left: 10%;
 }
 .account {
     margin-top: 10%;
+    margin-bottom: 5%;
     font-family: 'Hiragino Kaku Gothic ProN';
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 10.5px;
     line-height: 18px;
 }
 
