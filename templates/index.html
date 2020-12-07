@@ -57,10 +57,10 @@
                     </svg>
                     ES   <button class="kodaimurakami" id="es_edit" onclick="editTextArea('es_edit','toolbar_es','es_textBox');" type="button">編集</button><br>
             </div>
-            <div id="toolbar_es" style="background-color:#FFFFFF;">
+            <div id="toolbar_es">
                 
             </div>
-            <div style="background-color:#FFFFFF;" id="es_textBox" contenteditable="false">
+            <div id="es_textBox" contenteditable="false">
             {% autoescape off %}
                 {{company.ES| safe}}
             {% endautoescape %}
@@ -103,8 +103,8 @@
                     </defs>
                     </svg>メモ<button class="kodaimurakami" id="memo_edit" onclick="editTextArea('memo_edit','toolbar_memo','memo_textBox');" type="button">編集</button><br>
             </div>
-                <div id="toolbar_memo" style="background-color:#FFFFFF;"></div>
-                <div style="background-color:#FFFFFF;" id="memo_textBox" contenteditable="false">
+                <div id="toolbar_memo"></div>
+                <div id="memo_textBox" contenteditable="false">
                 {% autoescape off %}
                     {{company.Memo}}
                 {% endautoescape %}
