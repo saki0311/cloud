@@ -1,1 +1,17 @@
-{% extends 'base.html' %}
+
+
+<div id="account_body">
+    <form action="{% url 'rikumane_app:profile'%}" method="post">
+    {% csrf_token %}
+      <p>自己分析</p>
+      <textarea name="MemoAnalysis">{{common.MemoAnalysis}}</textarea>
+
+      <p>共通ES</p>
+      <textarea name="MemoES">{{common.MemoES}}</textarea>
+
+      <p>MEMO</p>
+      <textarea name="Memo">{{common.Memo}}</textarea>
+      <input type="hidden" name="account" value={{common.Account_id}}>
+      <input type="submit" value="保存">
+    </form>
+</div>
