@@ -12,11 +12,30 @@
   }
 
 
+/* ESの本文をかくところ */
 #es_textBox{
-    color: black;
+    /* ボックス内の余白の調整 */
+    padding: 1% 2%;
 
+    /* ボタンの角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;  
 
 }
+
+/* メモの本文を書くところ */
+#memo_textBox{
+    /* ボックス内の余白の調整 */
+    padding: 1% 2%;
+
+    /* ボタンの角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;  
+}
+
+
 
 
 /* 編集画面のcss */
