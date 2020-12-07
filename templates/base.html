@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
   <link href='/static/lib/main.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <script src='/static/lib/main.js'></script>
 <script>
 
@@ -117,6 +118,10 @@
             <div id="mask" class="hidden"></div>
             <!-- モーダル画面 -->
             <div id="modal" class="hidden">
+              <!-- モーダル画面を閉じるボタン -->
+              <div id="close">
+                <button class="batsu_button">×</button>
+              </div>
               <p class="modal_title">企業登録</p>
               <form action="" method="post">
                 {% csrf_token %}
@@ -124,8 +129,23 @@
                 <p class="item_name">mypage URL<input class="modal_input" type="text" name="URL" size="35" placeholder="mypage URL"></p>
                 <p class="item_name">mypage ID<input class="modal_input" type="text" name="LoginId" size="35" placeholder="mypage ID"></p>
                 <p class="item_name">カテゴリ<input class="modal_input" type="text" name="category" size="35" placeholder="カテゴリ　例：SIer 金融"></p>
-                <p class="shiboudo_name">志望度</p>
                 <div class="shiboudo">
+                  <p class="shiboudo_name">志望度</p>
+                  <div class="shiboudo_checkbox">
+                    <input id="1" type="radio" name="want" value="5" />
+                    <label for="1">★</label>
+                    <input id="2" type="radio" name="want" value="4" />
+                    <label for="2">★</label>
+                    <input id="3" type="radio" name="want" value="3" />
+                    <label for="3">★</label>
+                    <input id="4" type="radio" name="want" value="2" />
+                    <label for="4">★</label>
+                    <input id="5" type="radio" name="want" value="1" />
+                    <label for="5">★</label>
+                  </div>
+                </div>
+                <!-- <p class="shiboudo_name">志望度</p>
+                <div class="shiboudo_checkbox">
                   <input id="1" type="radio" name="want" value="1" />
                   <label for="1">★</label>
                   <input id="2" type="radio" name="want" value="2" />
@@ -136,14 +156,10 @@
                   <label for="4">★</label>
                   <input id="5" type="radio" name="want" value="5" />
                   <label for="5">★</label>
-                </div>
+                </div> -->
                 <input type="hidden" name="action" value="add_company">
-                <input class="modal_button_size" type="submit" value="新規登録">
+                <input class="modal_button_size" type="submit" value="登録">
               </form>
-              <!-- モーダル画面を閉じるボタン -->
-              <div id="close" class="button">
-                <button class="modal_button_size">画面を閉じる</button>
-              </div>
             </div>
             {% for one in data%}
               <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
@@ -157,15 +173,34 @@
             {%block content%}
               
             {%endblock%}
-            <!-- アカウントメニュー -->
-            <div id="account-menu">
-
-            </div>
             <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
             <li><a href="#">プロフィール画面</a>
             <li><a href="{% url 'rikumane_app:top'%}?logout=true">ログアウト</a>
           </li>
         </ul>
+      </div>
+      <!-- アカウントメニュー -->
+      <div id="account-menu-area">
+        <div id="account-menu">
+          <i class="fas fa-ellipsis-v triple_dot cursor" onclick="detailDisplay()"></i>
+          <h3>アカウント管理</h3>
+          <div id="detail-area">
+            <p class="cursor" onclick="profileEditDisplay()">プロフィール編集</p>
+            <a href="{% url 'rikumane_app:top'%}?logout=true">サインアウト</a>
+          </div>
+          <div id="menu-link">
+            <a href="">自己分析</a>
+            <a href="">共通ES</a>
+            <a href="">MEMO</a>
+          </div>
+        </div>
+        <div id="user-info">
+          <div id="user-icon-area">
+            <i class="fas fa-user-alt user-icon"></i>
+          </div>
+          <div id="username">username</div>
+          <button id="edit-user-info" class="cursor">◀</button>
+        </div>
       </div>
     </div>
     <div id="box3">
@@ -173,10 +208,25 @@
       
       {% endblock %}
     </div>
+    <!-- プロフィール編集 -->
+    <div id="profile-edit-window">
+      <p class="profile-window-title">プロフィール編集</p>
+      <button id="exit-profile-window" class="batsu_button">×</button>
+      <div id="input-area">
+        <!-- <p class="item_name">氏名：<input class="modal_input" type="text" name="CompanyName" size="35" placeholder="氏名"></p> -->
+        <!-- <p class="item_name">ID:<input class="modal_input" type="text" name="CompanyName" size="35" placeholder="ID"></p> -->
+        <!-- <p class="item_name">Mail:<input class="modal_input" type="text" name="CompanyName" size="35" placeholder="Mail"></p> -->
+        <p>氏名:<input type="text" placeholder="氏名を入力してください"></p>
+        <p>ID:<input type="text" placeholder="IDを入力してください"></p>
+        <p>Mail:<input type="text" placeholder="メールアドレスを入力してください"></p>
+        <button>保存</button>
+      </div>
+    </div>
    {% endblock %}
 </body>
 <!--JS読み込み用-->
 {% block script %}
 {% endblock %}
 <script src="{% static 'js/user_define.js' %}"></script>
+<script src="{% static 'js/account_menu.js' %}"></script>
 </html>
