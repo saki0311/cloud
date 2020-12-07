@@ -4,6 +4,14 @@
 {% load static %}
 
 {% block company_edit %}
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <script src="{% static 'js/user_define.js' %}"></script>
+    <script src="{% static 'js/event.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+</head>
     <p>企業編集</p>
     <form action="" method="post">
         {% csrf_token %}
@@ -58,9 +66,38 @@
             <li>選考フロー<br>
                 <textarea name="flow"></textarea>
             </li>
-            <li>イベント<button id="add_event">追加</button><br>
-                <textarea name="event"></textarea>
-            </li>
+            <!-- モーダル画面を開くボタン -->
+            <div id="open" class="e_button">
+                イベント<button id="open_btn">追加</button>
+            </div>
+            <section id="modalArea" class="modalArea">
+                <!-- グレーの透過マスク -->
+                <div id="e_mask" class="hidden"></div>
+                <!-- モーダル画面 -->
+                <div id="e_modal" class="hidden"></div>
+                    <p class="e_title">イベント登録</p>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <p class="event_name">イベント名<input class="modal_input" type="text" name="EventName" size="35" placeholder="イベント名"></p>
+                        <p class="event_place">住所<input class="modal_input" type="text" name="EventPlace" size="100" placeholder="住所"></p>
+                        <p class="start_time">開始日時<input class="modal_input" type="datetime-local" name="StartTime" min="2020-01-01T00:00" max="2050-12-31T23:59"></p>
+                        <p class="end_time">終了日時<input class="modal_input" type="datetime-local" name="EndTime" min="2020-01-01T00:00" max="2050-12-31T23:59"></p>
+                        <p class="event_remarks">詳細<input class="modal_input" type="text" name="EventRemarks" size="1000" placeholder="詳細"></p>
+                        <p class="addflow">選考フローにも追加する<input type="checkbox" name="Addflow" value="フロー">
+                        <br>
+                        <!-- <input type="hidden" name="action" value="add_event"> -->
+                        <input type="submit" value="追加">
+                    </form>
+                    <!-- モーダル画面を閉じるボタン -->
+                    <div id="close" class="button">×閉じる</div>
+                </div>
+                <!-- {% for post in posts %}
+                <p>イベント名：{{ post.EventName }}</p>
+                <p>開始日時：{{ post.StartTime }}</p>
+                <p>終了日時：{{ post.EndTime }}</p>
+                <hr>
+                {% endfor %} -->
+            </section>
             <li>メモ<button id="memo_edit" onclick="editTextArea('memo_edit','toolbar_memo','memo_textBox');" type="button">編集</button><br>
                 <div id="toolbar_memo" style="background-color:#FFFFFF;"></div>
                 <div style="background-color:#FFFFFF;" id="memo_textBox" contenteditable="false">
@@ -74,5 +111,4 @@
         <input type="hidden" name="com_id" value={{company.id}}>
     </form>
 {% endblock %}
-<script src="{% static 'js/user_define.js' %}"></script>
 </html>
