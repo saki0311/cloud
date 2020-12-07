@@ -12,7 +12,7 @@ class MyPasswordChangeForm(PasswordChangeForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
-        
+
 class TestForm(forms.Form):
     text = forms.CharField(label='文字入力')
     num = forms.IntegerField(label='数量')
@@ -34,11 +34,8 @@ class CompanyForm(forms.Form):
     #         raise forms.ValidationError('errorrrrr')
     #     return cleaned_data
 
-# class EventDataForm(forms.Form):
-#     # 
-#     # 
-
-#     EventName = forms.CharField(
+class EventDataForm(forms.Form):
+    EventName = forms.CharField(max_lenght=20, required=False)
 #         label='イベント名',
 #         required = True,
 #         )
