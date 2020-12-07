@@ -9,3 +9,40 @@
     color: #FFFFFF;
     font-size: 41px;
   }
+
+
+
+
+/* 編集画面のcss */
+.kodaimurakami{ 
+
+    margin-left: 83%;
+    margin-bottom: 1%;
+    width: 51px;
+    height: 29px;
+    /* left: 1000px;
+    top: 117px; */
+
+    /* 文字の色を白色にする */
+    color: #FFFFFF;
+
+    /* 背景を透明にする */
+    background-color: Transparent;
+
+    /* ボタンの角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    /* figmaからなんかとってきた */
+    border: 2px solid #FAFAFA;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px; 
+}
+
+button.kodaimurakami:hover{
+  /* ホバーしたときに透明度を20%に指定 */
+  opacity: 0.8;
+    
+}
