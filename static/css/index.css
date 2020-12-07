@@ -1,3 +1,11 @@
-ul{
+#company-con{
+    /* リストの"・"を消す */
     list-style: none;
+
+    /* フォント */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 41px;
   }
