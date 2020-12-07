@@ -169,3 +169,24 @@ def detail(request):
 
     return render(request,'detail.html',d)
     '''
+
+
+def profile(request):
+    # print(request.POST)
+    # print(request.GET)
+    if request.method == 'POST':
+        # print(request.POST.get('account'))
+        data = CommonInfo.objects.get(Account_id=request.POST.get('account'))
+        data.MemoAnalysis = request.POST.get('MemoAnalysis')
+        data.MemoES = request.POST.get('MemoES')
+        data.Memo = request.POST.get('Memo')
+        data.save()
+        # redirect('rikumane_app:profile')
+    else:
+        data = CommonInfo.objects.get(Account_id=request.GET.get('account'))
+
+    d = {
+        'common':data,
+    }
+    # print(d['common'].Memo)
+    return render(request,'profile.html',d)
