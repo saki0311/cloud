@@ -56,11 +56,65 @@
             </div>
             </li>
             <li>選考フロー<br>
-                <textarea name="flow"></textarea>
+                <div id='flow_box'>
+                    <div id='evnet_1'>
+                        <p>説明会</p>
+                        <p>住所</p>
+                        <p>zoomURL</p>
+                        <p>2020/1/12</p><!--日付はエンドタイム-->
+                    </div>
+                    <div id='evnet_2'>
+                        <p>Webテスト</p>
+                        <p>住所A</p>
+                        <p>URL</p>
+                        <p>2020/1/20</p>
+                    </div>
+                    <div id='evnet_3'>
+                        <p>1次面接</p>
+                        <p>住所B</p>
+                        <p>zoomURL</p>
+                        <p>2020/1/31</p>
+                    </div>
+                    <div id='evnet_4'>
+                        <p>２じ面接</p>
+                        <p>住所C</p>
+                        <p>zoomURL</p>
+                        <p>2020/2/5</p>
+                    </div>
+                    <div id='evnet_5'>
+                       <p>内定</p>
+                        <p>住所C</p>
+                        <p>zoomURL</p>
+                        <p>2020/2/12</p>
+                    </div>
+                </div>
             </li>
-            <li>イベント<button id="add_event">追加</button><br>
-                <textarea name="event"></textarea>
-            </li>
+            <li>イベント<button id="add_event">追加</button><br></li>
+                <div id='event_box'>
+                    <div id='event_1_box'>
+                        <li>1次面接</li>
+                            <li id='location'>福岡県北九州市戸畑区仙水町1-1</li>
+                            <li id='detail'>
+                                Web面接
+                                zoomのURLはメール参照
+                                集団面接で全体の時間は40分    
+                            </li>
+                    </div>
+                    <div id='event_2_box'>
+                        <li>Webテスト</li>
+                            <li id='detail'>WEBテストの形式はSPI</li>
+                    </div>
+                    <div id='event_3_box'>
+                        <li>説明会</li>
+                            <li id='location'>福岡県北九州市戸畑区仙水町1-1</li>
+                            <li id='detail'>
+                                Web面接
+                                zoomのURLはメール参照
+                                集団面接で全体の時間は40分    
+                            </li>
+                    </div>
+                </div>
+<!--             </li> -->
             <li>メモ<button id="memo_edit" onclick="editTextArea('memo_edit','toolbar_memo','memo_textBox');" type="button">編集</button><br>
                 <div id="toolbar_memo" style="background-color:#FFFFFF;"></div>
                 <div style="background-color:#FFFFFF;" id="memo_textBox" contenteditable="false">
