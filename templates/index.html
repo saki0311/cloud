@@ -7,8 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head lang="ja">
-    <script src="{% static 'js/user_define.js' %}"></script>
-    <script src="{% static 'js/event.js' %}"></script>
+    <!-- <script src="{% static 'js/user_define.js' %}"></script> -->
+    <!-- <script src="{% static 'js/event.js' %}"></script> -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </head>
@@ -110,5 +110,9 @@
         <input type="hidden" name="action" value="update-company-data">
         <input type="hidden" name="com_id" value={{company.id}}>
     </form>
+<script src="{% static 'js/event.js' %}"></script>
 {% endblock %}
+<script src="{% static 'js/user_define.js' %}"></script>
+
+
 </html>

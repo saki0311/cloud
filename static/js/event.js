@@ -9,12 +9,12 @@
 
 var btn = document.getElementById('open_btn');
 var modal = document.getElementById('modalArea');
-var closeBtn = document.getElementById('close');
+// var closeBtn = document.getElementById('close');
 
 btn.addEventListener('click', function() {
   modal.style.display = 'block';
-})
+}
 
-closeBtn.addEventListener('click', function() {
-  modal.style.display = 'none';
-})
+// closeBtn.addEventListener('click', function() {
+//   modal.style.display = 'none';
+// })

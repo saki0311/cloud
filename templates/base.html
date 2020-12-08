@@ -8,8 +8,8 @@
 <html>
 <head lang="ja">
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-  <link href='/static/lib/main.css' rel='stylesheet' />
-<script src='/static/lib/main.js'></script>
+  <link href='/static/lib/main.css' rel='stylesheet'>
+
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -169,6 +169,7 @@
     </div>
     <div id="box3">
       {% block box3 %}
+      
       {% endblock %}
     </div>
    {% endblock %}
@@ -177,4 +178,6 @@
 {% block script %}
 {% endblock %}
 <script src="{% static 'js/user_define.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
+<script src='/static/lib/main.js'></script>
 </html>
