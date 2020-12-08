@@ -106,13 +106,23 @@
         </svg>
         </a></h1>
       <!--<h2 id="subtitle">Recuruit<br>Management</h2>-->
+      <div id="menu">
+        <p>
+          <i class="far fa-calendar-alt calender-icon"></i>
+          <a href="{% url 'rikumane_app:calendar'%}">カレンダー</a>
+        </p>
+        <p><i class="far fa-building building-icon"></i>企業一覧</p>
+        <div id="open" class="button">
+          <button>企業新規登録</button>
+        </div>
+      </div>
       <div id="conpanylink">
         <ul>
           <li>
            <!-- モーダル画面を開くボタン -->
-            <div id="open" class="button">
+            <!-- <div id="open" class="button">
               <button>企業新規登録</button>
-            </div>
+            </div> -->
             <!-- グレーの透過マスク -->
             <div id="mask" class="hidden"></div>
             <!-- モーダル画面 -->
@@ -182,7 +192,6 @@
             {%block content%}
               
             {%endblock%}
-            <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
             <li><a href="#">プロフィール画面</a>
           </li>
         </ul>
