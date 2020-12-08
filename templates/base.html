@@ -174,7 +174,9 @@
               <!-- <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p> -->
               <!-- <p>{{ one.CompanyName }}</p> -->
               <input id="company{{one.id}}" class="company-acd-check" type="checkbox">
-              <label class="company-acd-label" for="company{{one.id}}">{{ one.CompanyName }}</label>
+              <label class="company-acd-label" for="company{{one.id}}">{{ one.CompanyName }}
+                <p id="mypageid">mypageID: {{one.LoginId}}</p>
+              </label>
               <div class="company-content">
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">マイページ</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
