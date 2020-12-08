@@ -6,8 +6,7 @@
 //     $('#modalArea').fadeOut();
 //   });
 // });
-
-var btn = document.getElementById('add_event');
+var btn = document.getElementById('open_btn');
 var modal = document.getElementById('modalArea');
 var closeBtn = document.getElementById('close_modal');
 
