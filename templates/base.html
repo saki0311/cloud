@@ -174,7 +174,7 @@
               <!-- <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p> -->
               <!-- <p>{{ one.CompanyName }}</p> -->
               <input id="company{{one.id}}" class="company-acd-check" type="checkbox">
-              <label class="company-acd-label" for="company{{one.id}}">{{ one.CompanyName }}
+              <label class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
                 <p id="mypageid">mypageID: {{one.LoginId}}</p>
               </label>
               <div class="company-content">
@@ -213,19 +213,6 @@
         </div>
       </div>
       <div id="account-menu-area">
-        <!-- <div id="account-menu">
-          <i class="fas fa-ellipsis-v triple_dot cursor" onclick="detailDisplay()"></i>
-          <h3>アカウント管理</h3>
-          <div id="detail-area">
-            <p class="cursor" onclick="profileEditDisplay()">プロフィール編集</p>
-            <a href="{% url 'rikumane_app:top'%}?logout=true">サインアウト</a>
-          </div>
-          <div id="menu-link">
-            <a href="">自己分析</a>
-            <a href="">共通ES</a>
-            <a href="">MEMO</a>
-          </div>
-        </div> -->
         <div id="user-info">
           <div id="user-icon-area">
             <i class="fas fa-user-alt user-icon"></i>

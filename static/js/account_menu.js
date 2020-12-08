@@ -4,14 +4,14 @@ const conpanyLink = document.getElementById("conpanylink")
 document.getElementById("edit-user-info").onclick = function (){
     const account_menu_area = document.getElementById("account-menu-area");
     if(account_menu.style.display == "none"){
-        conpanyLink.style.height = "45%";
-        // account_menu_area.style.display = "25%";
+        conpanyLink.style.height = "38%";
         account_menu.style.display = "block";
         detail_area.style.display = "none";
+        document.getElementById("edit-user-info").style.transform = "rotate(90deg)"
     }else{
-        conpanyLink.style.height = "60%";
-        // account_menu_area.style.display = "10%";
+        conpanyLink.style.height = "58%";
         account_menu.style.display = "none";
+        document.getElementById("edit-user-info").style.transform = "rotate(0deg)"
     }
 }
 
