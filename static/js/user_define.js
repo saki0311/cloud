@@ -53,8 +53,6 @@ function copyToClipboard(){
         //このように書くことができる
         });
     })();
-
-
     
 // モーダルウィンドウの処理（予定追加）
 (function(){
@@ -230,7 +228,6 @@ function copyToClipboard(){
     var button_elem = document.getElementById(button_id);
     var menu_bar = document.getElementById(menu);
     var area_con = document.getElementById(area);
-
    
     if(button_elem.innerText == "編集"){
       area_con.contentEditable = true;

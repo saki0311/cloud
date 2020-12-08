@@ -68,6 +68,7 @@ class Event(models.Model):
     Flow = models.BooleanField(default=True)
     Complete = models.BooleanField(default=False)
     Address = models.CharField(max_length=200,default='')
+    Description = models.CharField(max_length=1024)
 
     def __str__(self):
         return self.EventName

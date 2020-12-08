@@ -86,8 +86,25 @@ def ES_delete(data):
 # EventのCRUD
 
 
-def Event_create(req):
-    pass
+def Event_create(req,account):
+    company = Company.objects.get(Account_id=account.id,id=req.POST.get('id'))
+
+    event_name = req.POST.get('EventName')
+    locate = req.POST.get('EventPlace')
+    start_time = req.POST.get('StartTime')
+    end_time = req.POST.get('EndTime')
+    description = req.POST.get('EventReamarks')
+    flow_flag = req.POST.get('Addflow')
+
+    Event(
+        Company=company,
+        EventName=event_name,
+        EventStart = start_time,
+        EventEnd = end_time,
+        Flow = flow_flag,
+        Address = locate,
+        Description=description
+    ).save()
 
 
 def Event_update(req):

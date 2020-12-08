@@ -96,6 +96,8 @@ def index(request):
                 Company_delete(request,request.user)
             elif post_action == "update-company-data": # 企業詳細情報更新イベント
                 Company_data_update(request)
+            elif post_action == "add_event": # イベント追加
+                Event_create(request,request.user)
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,
