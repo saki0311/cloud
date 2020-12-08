@@ -162,6 +162,11 @@
             </div>
             {% for one in data%}
               <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
+              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">マイページ</a></p>
+              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
+              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
+              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
+              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">MEMO</a></p>
               {% block company_edit%}
               {% endblock %}
               {% block box2 %}
@@ -174,13 +179,25 @@
             {%endblock%}
             <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
             <li><a href="#">プロフィール画面</a>
-            <li><a href="{% url 'rikumane_app:top'%}?logout=true">ログアウト</a>
           </li>
         </ul>
       </div>
       <!-- アカウントメニュー -->
+      <div id="account-menu">
+        <i class="fas fa-ellipsis-v triple_dot cursor" onclick="detailDisplay()"></i>
+        <h3>アカウント管理</h3>
+        <div id="detail-area">
+          <p class="cursor" onclick="profileEditDisplay()">プロフィール編集</p>
+          <a href="{% url 'rikumane_app:top'%}?logout=true">サインアウト</a>
+        </div>
+        <div id="menu-link">
+          <a href="">自己分析</a>
+          <a href="">共通ES</a>
+          <a href="">MEMO</a>
+        </div>
+      </div>
       <div id="account-menu-area">
-        <div id="account-menu">
+        <!-- <div id="account-menu">
           <i class="fas fa-ellipsis-v triple_dot cursor" onclick="detailDisplay()"></i>
           <h3>アカウント管理</h3>
           <div id="detail-area">
@@ -192,12 +209,12 @@
             <a href="">共通ES</a>
             <a href="">MEMO</a>
           </div>
-        </div>
+        </div> -->
         <div id="user-info">
           <div id="user-icon-area">
             <i class="fas fa-user-alt user-icon"></i>
           </div>
-          <div id="username">username</div>
+          <div id="username">{{user.username}}</div>
           <button id="edit-user-info" class="cursor">◀</button>
         </div>
       </div>
