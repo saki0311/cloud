@@ -64,13 +64,16 @@
             <li>選考フロー<br>
                 <textarea name="flow"></textarea>
             </li>
+
             <!-- モーダル画面を開くボタン -->
             <div id="open" class="open">
                 イベント<input type="button" id="open_btn" value='追加'>
             </div>
             <section id="modalArea" class="modalArea">
+
                 <!-- グレーの透過マスク -->
                 <div id="e_mask" class="hidden"></div>
+                
                 <!-- モーダル画面 -->
                 <div id="e_modal" class="hidden">
                     <p class="e_title">イベント登録</p>
@@ -83,18 +86,12 @@
                         <p class="event_remarks">詳細<input class="modal_input" type="text" name="EventRemarks" size="10" placeholder="詳細"></p>
                         <p class="addflow">選考フローにも追加する<input type="checkbox" name="Addflow" value="フロー">
                         <br>
-                        <!-- <input type="hidden" name="action" value="add_event"> -->
                         <input type="submit" value="追加">
                     </form>
+
                     <!-- モーダル画面を閉じるボタン -->
                     <div id="close_modal" class="button">×閉じる</div>
                 </div>
-                <!-- {% for post in posts %}
-                <p>イベント名：{{ post.EventName }}</p>
-                <p>開始日時：{{ post.StartTime }}</p>
-                <p>終了日時：{{ post.EndTime }}</p>
-                <hr>
-                {% endfor %} -->
             </section>
             <li>メモ<button id="memo_edit" onclick="editTextArea('memo_edit','toolbar_memo','memo_textBox');" type="button">編集</button><br>
                 <div id="toolbar_memo" style="background-color:#FFFFFF;"></div>
