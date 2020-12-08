@@ -34,21 +34,17 @@ class CompanyForm(forms.Form):
     #         raise forms.ValidationError('errorrrrr')
     #     return cleaned_data
 
-# class EventDataForm(forms.Form):
-#     # 
-#     # 
-
-#     EventName = forms.CharField(
-#         label='イベント名',
-#         required = True,
-#         )
-#     EventStart = forms.DateTimeField(
-#         label='開始日時',
-#         required=True,
-#     )
-    
-#     EventEnd = forms.DateTimeField(
-#         label='終了日時',
-#         required=True,
-#     )
+class EventDataForm(forms.Form):
+    EventName = forms.CharField(
+            label='イベント名',
+            required = True,
+    )
+    EventStart = forms.DateTimeField(
+        label='開始日時',
+        required=True,
+    )
+    EventEnd = forms.DateTimeField(
+        label='終了日時',
+        required=True,
+    )
     

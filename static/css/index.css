@@ -1,3 +1,139 @@
+/* モーダルCSS */
+#modalArea{
+    display: none;
+    position: fixed;
+    /* position: fixed; */
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    /* background-color: rgba(0,0,0,0.5); */
+}
+
+#e_mask{
+    background-color: white;
+    width: 500px;
+    margin: 40% auto;
+}
+
+#e_modal{
+    position: absolute;
+    top: 50%;
+    left: 62%;
+    transform:translate(-50%,-50%);
+    width: 1000px;
+    height: 720px;
+    /* max-width: 500px; */
+    padding: 10px 30px;
+    background-color:#FAFAFA;
+
+        /* 角を丸くする */
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; 
+}
+  
+#close_modal{
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    cursor: pointer;
+
+    margin-top: 2%;
+    margin-right:4%;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 53px;
+    text-align: center;
+
+    color: #272343;
+}
+
+
+/* モーダル画面のタイトル */
+.e_title{
+    font-family: Hiragino Kaku Gothic Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 60px;
+
+    color: #272343;
+
+    margin-top: 9%;
+    margin-left: 9%;
+}
+
+/* イベント追加モーダル画面に表示される追加ボタン */
+.genosono{
+
+    /* ボタンの大きさ */
+    padding: 1.5% 10%; 
+
+    margin-left:35%;
+    margin-top: 10%;
+
+    /* 背景を透明にする */
+    background-color: Transparent;
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    /* figmaからなんかとってきた */
+    background: #FAFAFA;
+    border: 3px solid #272343;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    /* フォントのあれこれ */
+    font-family: Quattrocento Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 33px;
+    color: #272343;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .detail_title{
+    display: flex;
+    width: 10%;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ESとかのタイトルのとこ */
 .ogata{
     /* リストの"・"を消す */
@@ -111,7 +247,7 @@ select::-ms-expand {
     /* 背景色の変更 */
     background-color: #F0F0F0;
 
-    /* ボタンの角を丸くする */
+    /* 角を丸くする */
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     /* border-radius: 5px;   */
@@ -129,7 +265,7 @@ select::-ms-expand {
     /* 背景色の変更 */
     background-color: #E8E8E8;
 
-    /* ボタンの角を丸くする */
+    /* 角を丸くする */
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;  
@@ -165,4 +301,85 @@ select::-ms-expand {
 button.kodaimurakami:hover{
   /* ホバーしたときに透明度を20%に指定 */
   opacity: 0.8;   
+}
+
+
+
+#flow_box{
+    background-color: #B9C1D6;
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+#event_box{
+    padding-top: 5%;
+    padding-left: 7%;
+    padding-bottom: 3%;
+
+    background-color: #E3EBF6;
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+.event_top_con{
+    display: flex;
+}
+
+.event_title{
+    font-family: Hiragino Kaku Gothic Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+    color: #272343;
+    width: 50%;
+    margin-right: 50%;
+
+    margin-bottom: 1%;
+}
+
+
+#event_date{
+    font-family: DIN Alternate;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: rgba(39, 35, 67, 0.8);
+
+    list-style: none;
+    /* float: right; */
+    padding-right: 3%;
+    padding-top: 1%;
+
+}
+
+#event_edit_menu{
+    padding-right: 6%;
+    padding-top: 1.5%;
+}
+
+#detail{
+    font-family: Hiragino Kaku Gothic Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color:rgba(39, 35, 67, 0.8);
+    margin-bottom: 4%;
+
+    list-style: none;
+}
+
+#location{
+    list-style: none;
+    margin-bottom: 1%;
+    color:rgba(39, 35, 67, 0.8);
 }
