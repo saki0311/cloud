@@ -1,7 +1,7 @@
 const account_menu = document.getElementById("account-menu");
 account_menu.style.display = "none";
+const conpanyLink = document.getElementById("conpanylink")
 document.getElementById("edit-user-info").onclick = function (){
-    const conpanyLink = document.getElementById("conpanylink")
     const account_menu_area = document.getElementById("account-menu-area");
     if(account_menu.style.display == "none"){
         conpanyLink.style.height = "55%";
@@ -39,6 +39,7 @@ function profileEditDisplay(){
     const target = document.getElementById("profile-edit-window");
     account_menu.style.display = "none";
     detail_area.style.display = "none";
+    conpanyLink.style.height = "75%";
     if(target.style.display == "none"){
         target.style.display = "block";
     }else{
