@@ -7,7 +7,7 @@
 //   });
 // });
 
-var btn = document.getElementById('open_btn');
+var btn = document.getElementById('add_event');
 var modal = document.getElementById('modalArea');
 var closeBtn = document.getElementById('close_modal');
 
