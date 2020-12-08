@@ -39,7 +39,7 @@ function profileEditDisplay(){
     const target = document.getElementById("profile-edit-window");
     account_menu.style.display = "none";
     detail_area.style.display = "none";
-    conpanyLink.style.height = "75%";
+    conpanyLink.style.height = "58%";
     if(target.style.display == "none"){
         target.style.display = "block";
     }else{
