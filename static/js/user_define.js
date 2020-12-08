@@ -53,37 +53,35 @@ function copyToClipboard(){
         //このように書くことができる
         });
     })();
-
-
     
 // モーダルウィンドウの処理（予定追加）
-(function(){
-    'use strict';
-    //[POINT]idを取得する
-    var open = document.getElementById('open_event');
-    var close = document.getElementById('close_event');
-    var mask = document.getElementById('mask_event');
-    var modal = document.getElementById('modal_event');
-    //[POINT]クリックイベントを定義
-    open.addEventListener('click',function(){
-      //openではマスクとモーダル画面が表示できるようにする
-      //[POINT]クラス名を変えてCSSを当て込まないようにする
-      mask.className = '';
-      modal.className = '';
-      });
-      close.addEventListener('click',function(){
-       //closeではマスクとモーダル画面を非表示にする
-       //[POINT]クラス名を再定義し、CSSを当て込む
-        mask.className = 'hidden_event';
-         modal.className = 'hidden_event';
-      });
-         //モーダル画面外をクリックしてもモーダル画面が閉じるようにする
-      mask.addEventListener('click',function(){
-      //closeと同じなので、closeのクリックイベントを呼び出せば良い
-      close.click(); 
-      //このように書くことができる
-      });
-  })();
+// (function(){
+//     'use strict';
+//     //[POINT]idを取得する
+//     var open = document.getElementById('open_event');
+//     var close = document.getElementById('close_event');
+//     var mask = document.getElementById('mask_event');
+//     var modal = document.getElementById('modal_event');
+//     //[POINT]クリックイベントを定義
+//     open.addEventListener('click',function(){
+//       //openではマスクとモーダル画面が表示できるようにする
+//       //[POINT]クラス名を変えてCSSを当て込まないようにする
+//       mask.className = '';
+//       modal.className = '';
+//       });
+//       close.addEventListener('click',function(){
+//        //closeではマスクとモーダル画面を非表示にする
+//        //[POINT]クラス名を再定義し、CSSを当て込む
+//         mask.className = 'hidden_event';
+//          modal.className = 'hidden_event';
+//       });
+//          //モーダル画面外をクリックしてもモーダル画面が閉じるようにする
+//       mask.addEventListener('click',function(){
+//       //closeと同じなので、closeのクリックイベントを呼び出せば良い
+//       close.click(); 
+//       //このように書くことができる
+//       });
+//   })();
 
   /******************************************************/
   /* SignIn SignOut SignUp                              */
@@ -230,7 +228,6 @@ function copyToClipboard(){
     var button_elem = document.getElementById(button_id);
     var menu_bar = document.getElementById(menu);
     var area_con = document.getElementById(area);
-
    
     if(button_elem.innerText == "編集"){
       area_con.contentEditable = true;
