@@ -85,13 +85,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rikumanedb',
         'USER': 'root',
-<<<<<<< HEAD
         'PASSWORD': 'root',
         'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
-=======
-        'PASSWORD': 'password',
-        # 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
->>>>>>> 0aaf0302d084bca262820b36a955319cbe299f66
         'PORT': '3306'
     }
 }
