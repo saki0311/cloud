@@ -161,12 +161,17 @@
               </form>
             </div>
             {% for one in data%}
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">マイページ</a></p>
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">MEMO</a></p>
+              <!-- <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p> -->
+              <!-- <p>{{ one.CompanyName }}</p> -->
+              <input id="company{{one.id}}" class="company-acd-check" type="checkbox">
+              <label class="company-acd-label" for="company{{one.id}}">{{ one.CompanyName }}</label>
+              <div class="company-content">
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">マイページ</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">MEMO</a></p>
+              </div>
               {% block company_edit%}
               {% endblock %}
               {% block box2 %}

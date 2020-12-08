@@ -55,6 +55,38 @@ body{
     padding-top: 10px;
 }
 
+/*カンパニーリンク内のアコーディオンメニュー*/
+.company-acd-check{
+    display: none;
+}
+.company-acd-label{
+    color: #fff;
+    display: block;
+    padding: 10px;
+}
+.company-acd-label:hover{
+    color: #F8E53D;
+    background: rgba(240, 240, 240, 0.11);
+}
+.company-content{
+    background: rgba(240, 240, 240, 0.11);
+    border: 1px solid transparent;
+    height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    transition: .5s;
+    visibility: hidden;
+}
+.company-acd-check:checked + .company-acd-label + .company-content{
+    height: 350px;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
+}
+
+.company-content p{
+    margin-left: 40px;
+}
 .button button{
     font-size: 15px;
     color: white;
