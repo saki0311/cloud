@@ -8,8 +8,6 @@
 <html>
 <head lang="ja">
     <script src="{% static 'js/user_define.js' %}"></script>
-    <script src="{% static 'js/event.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </head>
     <p>企業編集</p>
@@ -67,29 +65,29 @@
                 <textarea name="flow"></textarea>
             </li>
             <!-- モーダル画面を開くボタン -->
-            <div id="open" class="e_button">
-                イベント<button id="open_btn">追加</button>
+            <div id="open" class="open">
+                イベント<input type="button" id="open_btn" value='追加'>
             </div>
             <section id="modalArea" class="modalArea">
                 <!-- グレーの透過マスク -->
                 <div id="e_mask" class="hidden"></div>
                 <!-- モーダル画面 -->
-                <div id="e_modal" class="hidden"></div>
+                <div id="e_modal" class="hidden">
                     <p class="e_title">イベント登録</p>
                     <form action="" method="post">
                         {% csrf_token %}
-                        <p class="event_name">イベント名<input class="modal_input" type="text" name="EventName" size="35" placeholder="イベント名"></p>
-                        <p class="event_place">住所<input class="modal_input" type="text" name="EventPlace" size="100" placeholder="住所"></p>
+                        <p class="event_name">イベント名<input class="modal_input" type="text" name="EventName" size="10" placeholder="イベント名"></p>
+                        <p class="event_place">住所<input class="modal_input" type="text" name="EventPlace" size="10" placeholder="住所"></p>
                         <p class="start_time">開始日時<input class="modal_input" type="datetime-local" name="StartTime" min="2020-01-01T00:00" max="2050-12-31T23:59"></p>
                         <p class="end_time">終了日時<input class="modal_input" type="datetime-local" name="EndTime" min="2020-01-01T00:00" max="2050-12-31T23:59"></p>
-                        <p class="event_remarks">詳細<input class="modal_input" type="text" name="EventRemarks" size="1000" placeholder="詳細"></p>
+                        <p class="event_remarks">詳細<input class="modal_input" type="text" name="EventRemarks" size="10" placeholder="詳細"></p>
                         <p class="addflow">選考フローにも追加する<input type="checkbox" name="Addflow" value="フロー">
                         <br>
                         <!-- <input type="hidden" name="action" value="add_event"> -->
                         <input type="submit" value="追加">
                     </form>
                     <!-- モーダル画面を閉じるボタン -->
-                    <div id="close" class="button">×閉じる</div>
+                    <div id="close_modal" class="button">×閉じる</div>
                 </div>
                 <!-- {% for post in posts %}
                 <p>イベント名：{{ post.EventName }}</p>
@@ -110,5 +108,7 @@
         <input type="hidden" name="action" value="update-company-data">
         <input type="hidden" name="com_id" value={{company.id}}>
     </form>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/event.js' %}"></script>
 {% endblock %}
 </html>
