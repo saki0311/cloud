@@ -10,10 +10,10 @@
     <!-- <script src="{% static 'js/user_define.js' %}"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </head>
-    <p>企業編集</p>
-    <form action="" method="post">
-        {% csrf_token %}
-            <p>企業名<input type="text" name="CompanyName" size="35" placeholder="企業名を入力してください" value={{one.CompanyName}}></p>
+    <!-- <p>企業編集</p>
+    <form action="" method="post"> -->
+        <!-- {% csrf_token %} -->
+            <!-- <p>企業名<input type="text" name="CompanyName" size="35" placeholder="企業名を入力してください" value={{one.CompanyName}}></p>
             <p>マイページID<input type="text" name="LoginId" size="35" placeholder="マイページIDを入力してください" value={{one.LoginId}}></p>
             <p>ログインURL<input type="text" name="URL" size="35" placeholder="マイページのURLを入力してください" value={{one.URL}}></p>
             <p>カテゴリ<input type="text" name="category" size="35" placeholder="例：SIer 金融" value={{one.Category}}></p>
@@ -25,24 +25,24 @@
             <input type="hidden" name="action" value="edit-company">
             <input type="hidden" name="id" value={{one.id}}>
             <input class="modal_button_size" type="submit" value="企業編集">
-    </form>
+    </form> -->
     
-    <form action="" method="post">
-        {% csrf_token %}
-            <input type="hidden" name="action" value="delete-company">
+    <!-- <form action="" method="post"> -->
+        <!-- {% csrf_token %} -->
+            <!-- <input type="hidden" name="action" value="delete-company">
             <input type="hidden" name="id" value={{one.id}}>
             <input type="submit" value="企業削除">
-    </form>
+    </form> -->
 {% endblock %}
 
 {% block box2%}
-    <ul id="company-menu">
+    <!-- <ul id="company-menu">
         <li onclick="aiueo();">マイページ</li>
         <li>ES</li>
         <li>選考フロー</li>
         <li>イベント</li>
         <li>MEMO</li>
-    </ul>
+    </ul> -->
 {% endblock %}
 
 {% block box3%}

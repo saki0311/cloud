@@ -37,7 +37,7 @@ body{
 #menu{
     width: 100%;
     height: 15%;
-    padding-left: 20px;
+    padding-left: 40px;
 }
 #menu p{
     font-family: "Hiragino Kaku Gothic ProN";
@@ -59,12 +59,22 @@ body{
     font-size: 1.5em; /*通常の２倍の大きさ*/
     margin-right: 17px;
 }
-
+/*企業登録ボタンエリア*/
 #open{
-    width: 40%;
+    width: 45%;
     margin-left: 40px;
 }
 
+/*企業登録ボタンエリアのボタン*/
+#open button{
+    border: 2px solid #FAFAFA;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    outline: none; /*ボタン押したときの枠線消去*/ 
+}
 /* 企業ごとのリンク */
 #conpanylink{
     width: 100%;
@@ -84,6 +94,7 @@ body{
 
 #conpanylink ul{
     margin-top: 0px;
+    padding-left: 72px;
 }
 
 #conpanylink li{
@@ -130,7 +141,7 @@ body{
 }
 
 #mypageid{
-    font-size: 18px;
+    font-size: 15px;
     margin: 0;
     display: none;
 }
@@ -148,13 +159,13 @@ body{
 /*カンパニーリンクのアコーディオンメニューに関してはここまで*/
 
 
-.button button{
+/* .button button{
     font-size: 15px;
     color: white;
     background-color: #1F609C;
     font-family: Aldrich;
     border: none;
-}
+} */
 /* 画面の左側 */
 #box1{
     /* background-color: white; */
@@ -180,12 +191,12 @@ body{
 #account-menu{
     position: absolute;
     bottom: 6%;
-    width: 17%;
+    width: 15%;
     height: 20%;
     margin: 0 auto;
     border-radius: 5px;
     padding: 5px;
-    margin-left: 40px;
+    margin-left: 72px;
     background: rgba(240, 240, 240, 0.11);
 }
 
@@ -281,10 +292,10 @@ body{
 /*プロフィール編集画面*/
 #profile-edit-window{
     position: absolute;
-    top:10%;
+    top:5%;
     right: 5%;
-    width: 75%;
-    height: 80%;
+    width: 71%;
+    height: 90%;
     background: #FAFAFA;
     border-radius: 10px;
     z-index: 1; /*カレンダーの上に表示させるため*/
@@ -403,10 +414,12 @@ body{
     position: relative;
     /* background-color: white; */
     background-color: transparent;
-    top:20%;
+    /* top:20%; */
+    top:4.5%;
     left: 5%;
     width: 70%;
-    height: 70%;
+    /* height: 70%; */
+    height: 90%;
     box-sizing: border-box;
     /* margin-left: 100px; */
     /* margin-top: 120px; */
@@ -484,15 +497,13 @@ html,body{
     /*background: #1F609C; /*背景は白(わかりやすさのため今は白じゃない)*/
     background:#FAFAFA; /*背景は#FAFAFA*/
     border-radius: 10px;/*モーダル画面の角を丸する*/
-    /* width: 966px; 横幅を指定 */
-    width: 1080px; /*横幅を指定*/
+    width: 1010px; /*横幅を指定*/
     position:absolute;/*絶対位置を指定(スクロールで動く)*/
-    /* top:42px;縦に40pxの位置から描画 */
-    top:142px;/*縦に40pxの位置から描画*/
+    top:33px;/*縦に40pxの位置から描画*/
     /*right: 0px;*//*右に0距離から描画を始める*/
     /* height:510px;モーダル画面の縦幅を指定 */
-    height:610px;/*モーダル画面の縦幅を指定*/
-    left:300px;/*左に471pxの位置から描画を始める*/
+    height:725px;/*モーダル画面の縦幅を指定*/
+    left:360px;/*左に471pxの位置から描画を始める*/
     margin:0 auto; /*左右中央寄せ*/
     padding: 20px;/*内側に余白*/
     z-index: 2;
@@ -511,6 +522,7 @@ html,body{
     font-weight: 500; /*フォントの太さを指定*/
     font-size: 40px; /*フォントの大きさを指定*/
     line-height: 60px; /*行の高さを指定*/
+    margin: 70px 0px 100px 40px;
 }
 #mask.hidden{
     display:none; /*非表示にする*/
