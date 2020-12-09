@@ -7,11 +7,11 @@ document.getElementById("edit-user-info").onclick = function (){
         conpanyLink.style.height = "38%";
         account_menu.style.display = "block";
         detail_area.style.display = "none";
-        document.getElementById("edit-user-info").style.transform = "rotate(90deg)"
+        document.getElementById("edit-user-info").style.transform = "rotate(90deg)";
     }else{
         conpanyLink.style.height = "58%";
         account_menu.style.display = "none";
-        document.getElementById("edit-user-info").style.transform = "rotate(0deg)"
+        document.getElementById("edit-user-info").style.transform = "rotate(0deg)";
     }
 }
 
@@ -40,6 +40,7 @@ function profileEditDisplay(){
     account_menu.style.display = "none";
     detail_area.style.display = "none";
     conpanyLink.style.height = "58%";
+    document.getElementById("edit-user-info").style.transform = "rotate(0deg)";
     if(target.style.display == "none"){
         target.style.display = "block";
     }else{
