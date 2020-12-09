@@ -105,35 +105,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* .detail_title{
-    display: flex;
-    width: 10%;
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ESとかのタイトルのとこ */
 .ogata{
     /* リストの"・"を消す */
@@ -420,6 +391,59 @@ button.kodaimurakami:hover{
     text-decoration: line-through;
     color:#272343;
 }
+
+
+/* 元々のチェックボックス（非表示） */
+.event_title input[type="checkbox"]{
+    display: none;
+}
+/* チェックボックスの代わりを成すラベル */
+.event_title input[type="checkbox"]{
+    display: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    padding-right: 10px;
+}
+/* ラベルの左に表示させる正方形のボックス□ */
+.event_title input[type="checkbox"]::before{
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    left: 0;
+    top: 50%;
+    border: 1px solid;
+    border-color:  #585753;
+    background-color: #FFF;
+
+     /* 角を丸くする */
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px; 
+
+}
+/* チェックが入った時のレ点 */
+.event_title input[type="checkbox"]:checked::after{
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 18px;
+    height: 9px;
+    margin-top: -9px;
+    top: 50%;
+    left: 3px;
+    transform: rotate(-45deg);
+    border-bottom: 3px solid;
+    border-left: 3px solid;
+    border-color:  #585753; 
+}
+
 
 
 

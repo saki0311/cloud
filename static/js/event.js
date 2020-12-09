@@ -51,4 +51,5 @@ function eventTitleClick(e) {
 function moveEvent(e){
   // console.log(e.currentTarget);
   event_box.appendChild(e.currentTarget);
+  // ifチェックボックスにチェック入ってなかったらいれる
 }
