@@ -10,6 +10,7 @@ var btn = document.getElementById('open_btn');
 var modal = document.getElementById('modalArea');
 var closeBtn = document.getElementById('close_modal');
 
+
 btn.addEventListener('click', function() {
   modal.style.display = 'block';
 });
@@ -23,3 +24,11 @@ window.addEventListener('click', function(e) {
       modal.style.display = 'none';
     }
 });
+
+
+
+document.getElementById('event_1_box').addEventListener('click',function(){
+  //クリックしたとき⇒クラスがついていたら外す、外れていたらつける
+  document.getElementById('event_1_box').classList.toggle('event_1_box_class_checked');
+});
+

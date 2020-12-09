@@ -413,6 +413,14 @@ button.kodaimurakami:hover{
 
 
 /* イベント */
+.event_1_box_class_checked{
+    /* background-color: cyan; */
+
+    /* クリックされたら打ち消し線 */
+    text-decoration: line-through;
+    color:#272343;
+}
+
 #event_box{
     padding-top: 5%;
     padding-left: 7%;
@@ -482,3 +490,5 @@ button.kodaimurakami:hover{
     margin-bottom: 1%;
     color:rgba(39, 35, 67, 0.8);
 }
+
+
