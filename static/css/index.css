@@ -312,6 +312,23 @@ button.kodaimurakami:hover{
     border-radius: 5px; 
 }
 
+/* イベント次のところ */
+#evnet_1_detail_now{
+    margin-left: 12%;
+
+    color: #FFFFFF;
+    background-color: #2D334A;
+    border: 4px solid rgba(248, 229, 61, 0.9);
+
+
+    width: 35%;
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
 #evnet_1_detail_title{
     margin-top:0;
     margin-bottom: 2%;
@@ -374,7 +391,7 @@ button.kodaimurakami:hover{
 }
 
 /* 選考フローの三角作るやつ */
-  .triangle{
+.triangle{
 
     position: absolute;
     /* display: inline-block; */
@@ -387,8 +404,23 @@ button.kodaimurakami:hover{
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
     border-top: 30px solid #272343;
-  }
+}
 
+/* 黄色の三角 */
+.triangle_done{
+
+    position: absolute;
+    /* display: inline-block; */
+    margin-top:13%;
+    margin-left: 25.5%;
+
+    /* 三角の色とか */
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #F8E53D;
+}
 
 /* イベント */
 .event_1_box_class_checked{
