@@ -40,7 +40,7 @@
 
 {% block box3%}
     <form id="company_info" method="post" name="com_info_form" action="">
-        <input type="hidden" name="action" value="update-company-data">
+        <input id="action_type" type="hidden" name="action" value="update-company-data">
         <input type="hidden" name="com_id" value={{company.id}}>
         <input type="hidden" id="value_es" name="ES" value="">
         <input type="hidden" id="value_memo" name="memo" value="">
@@ -79,7 +79,20 @@
                     </svg>選考フロー<br>
             </div>
             <div id='flow_box'>
-                <div class="evnet_1" id='evnet_1'>
+            {% for flow in flows %}
+            <div class="evnet_1" id='evnet_1'>
+                    <div id="evnet_1_detail">
+                        <p id="evnet_1_detail_title">{{flow.EventName}}</p>
+                        <p id="evnet_1_detail_address">{{flow.Address}}</p>
+                        <p id="evnet_1_detail_zoom">{{flow.Description}}</p>
+                    </div>
+                    <p id="evnet_1_detail_date">{{flow.EventEnd}}</p><!--日付はエンドタイム-->
+                    <!-- 選考フローの下向き三角 -->
+                    <div class="triangle" id="triangle_id">
+                    </div>
+                </div>
+            {% endfor %}
+                {% comment %} <div class="evnet_1" id='evnet_1'>
                     <div id="evnet_1_detail">
                         <p id="evnet_1_detail_title">説明会</p>
                         <p id="evnet_1_detail_address">福岡県北九州市戸畑区仙水町1-1</p>
@@ -140,7 +153,7 @@
                     <!-- 選考フローの下向き三角 -->
                     <!-- <div class="triangle">
                     </div>   -->
-                </div>
+                </div> {% endcomment %}
             </div>
 
             </li>
@@ -164,9 +177,9 @@
                 <!-- モーダル画面 -->
                 <div id="e_modal" class="hidden">
                     <p class="e_title">イベント追加</p>
-                    <form action="" method="post">
+                    <form id="add_event_form" action="" method="post">
                         {% csrf_token %}
-                        <input type="hidden" name="action" value="add_event">
+                        {% comment %} <input type="hidden" name="action" value="add_event"> {% endcomment %}
                         <div class="osono_group">
                             <p class="event_name">イベント名<input class="modal_input" type="text" name="EventName" size="10" placeholder="イベント名"></p>
                             <p class="event_place">住所<input class="modal_input" type="text" name="EventPlace" size="10" placeholder="住所"></p>
@@ -187,7 +200,7 @@
             
             <div id='event_box'>
                 {% for event in events %}
-                <div class='event_1_box' onclick="moveEvent(event)">
+                <div class='event_{{event.id}}_box' onclick="moveEvent(event)">
                     <div class="event_top_con">
                         <li class="event_title" onclick="eventTitleClick(event);">{{event.EventName}}</li>
                         <li id="event_date">{{event.EventEnd}}</li>

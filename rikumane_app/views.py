@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from datetime import datetime as dt
 #from rikumane_app import calendar
 from .data import company_data
 from django.contrib.auth.views import (
@@ -99,13 +100,20 @@ def index(request):
             elif post_action == "add_event": # イベント追加
                 Event_create(request)
         company = Company.objects.get(Account_id=request.user.id,id=request.GET.get('id'))
-        Events = Event.objects.all().filter(Company=company)
+        Events = Event.objects.all().filter(Company=company).order_by('EventEnd')
+        for event in Events:
+            event.EventEnd = event.EventEnd.strftime('%Y/%m/%d')
+        
+        Flows = Event.objects.all().filter(Company=company,Flow=True).order_by('EventEnd')
+        for flow in Flows:
+            flow.EventEnd = flow.EventEnd.strftime('%Y/%m/%d')
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,
             'common':CommonInfo.objects.get(id=request.user.id),
             'company':company,
             'events':Events,
+            'flows':Flows,
             }
         return render(request,'index.html',d)
 

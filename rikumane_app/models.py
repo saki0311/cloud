@@ -73,7 +73,6 @@ class Event(models.Model):
     def __str__(self):
         return self.EventName
 
-
 class ES(models.Model):
     '''
     Company: そのイベントの属する企業\n
