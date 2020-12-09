@@ -107,13 +107,23 @@
         </svg>
         </a></h1>
       <!--<h2 id="subtitle">Recuruit<br>Management</h2>-->
+      <div id="menu">
+        <p>
+          <i class="far fa-calendar-alt calender-icon"></i>
+          <a href="{% url 'rikumane_app:calendar'%}">カレンダー</a>
+        </p>
+        <p><i class="far fa-building building-icon"></i>企業一覧</p>
+        <div id="open" class="button">
+          <button>企業新規登録</button>
+        </div>
+      </div>
       <div id="conpanylink">
         <ul>
           <li>
            <!-- モーダル画面を開くボタン -->
-            <div id="open" class="button">
+            <!-- <div id="open" class="button">
               <button>企業新規登録</button>
-            </div>
+            </div> -->
             <!-- グレーの透過マスク -->
             <div id="mask" class="hidden"></div>
             <!-- モーダル画面 -->
@@ -162,7 +172,19 @@
               </form>
             </div>
             {% for one in data%}
-              <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p>
+              <!-- <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">{{ one.CompanyName }}</a></p> -->
+              <!-- <p>{{ one.CompanyName }}</p> -->
+              <input id="company{{one.id}}" class="company-acd-check" type="checkbox">
+              <label class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
+                <p id="mypageid">mypageID: {{one.LoginId}}</p>
+              </label>
+              <div class="company-content">
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">マイページ</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
+                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">MEMO</a></p>
+              </div>
               {% block company_edit%}
               {% endblock %}
               {% block box2 %}
@@ -173,32 +195,30 @@
             {%block content%}
               
             {%endblock%}
-            <li><a href="{% url 'rikumane_app:calendar'%}">カレンダー表示に戻る</a>
             <li><a href="#">プロフィール画面</a>
-            <li><a href="{% url 'rikumane_app:top'%}?logout=true">ログアウト</a>
           </li>
         </ul>
       </div>
       <!-- アカウントメニュー -->
-      <div id="account-menu-area">
-        <div id="account-menu">
-          <i class="fas fa-ellipsis-v triple_dot cursor" onclick="detailDisplay()"></i>
-          <h3>アカウント管理</h3>
-          <div id="detail-area">
-            <p class="cursor" onclick="profileEditDisplay()">プロフィール編集</p>
-            <a href="{% url 'rikumane_app:top'%}?logout=true">サインアウト</a>
-          </div>
-          <div id="menu-link">
-            <a href="">自己分析</a>
-            <a href="">共通ES</a>
-            <a href="">MEMO</a>
-          </div>
+      <div id="account-menu">
+        <i class="fas fa-ellipsis-v triple_dot cursor" onclick="detailDisplay()"></i>
+        <h3>アカウント管理</h3>
+        <div id="detail-area">
+          <p class="cursor" onclick="profileEditDisplay()">プロフィール編集</p>
+          <a href="{% url 'rikumane_app:top'%}?logout=true">サインアウト</a>
         </div>
+        <div id="menu-link">
+          <a href="">自己分析</a>
+          <a href="">共通ES</a>
+          <a href="">MEMO</a>
+        </div>
+      </div>
+      <div id="account-menu-area">
         <div id="user-info">
           <div id="user-icon-area">
             <i class="fas fa-user-alt user-icon"></i>
           </div>
-          <div id="username">username</div>
+          <div id="username">{{user.username}}</div>
           <button id="edit-user-info" class="cursor">◀</button>
         </div>
       </div>
