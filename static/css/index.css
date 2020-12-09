@@ -304,7 +304,7 @@ button.kodaimurakami:hover{
 }
 
 
-
+/* 選考フロー */
 #flow_box{
     background-color: #B9C1D6;
     /* 角を丸くする */
@@ -312,6 +312,115 @@ button.kodaimurakami:hover{
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
+
+#evnet_1{
+    display: flex;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    /* background-color: cyan; */
+}
+
+#evnet_1_detail{
+    margin-left: 12%;
+
+    color: #FFFFFF;
+    background-color: #2D334A;
+
+    width: 35%;
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+#evnet_1_detail_title{
+    margin-top:0;
+    margin-bottom: 2%;
+
+    padding-top:5%;
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 35px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#evnet_1_detail_address{
+    margin-top:0;
+    margin-bottom: 1%;
+
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#evnet_1_detail_zoom{
+    margin-top:0;
+    /* padding-bottom: 5%; */
+
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#evnet_1_detail_date{
+    margin-left: 10%;
+    /* background-color: blueviolet; */
+
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+
+    color: #FFFFFF;
+
+    /* 文字の縁取りをつけるやつ */
+    text-shadow:0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343;
+    
+}
+
+/* 選考フローの三角作るやつ */
+  .triangle{
+
+    position: absolute;
+    /* display: inline-block; */
+    margin-top:13%;
+    margin-left: 25.5%;
+
+    /* 三角の色とか */
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #272343;
+  }
+
+
+/* イベント */
+.event_1_box_class_checked{
+    /* background-color: cyan; */
+
+    /* クリックされたら打ち消し線 */
+    text-decoration: line-through;
+    color:#272343;
+}
+
 
 
 #event_box{
@@ -383,3 +492,5 @@ button.kodaimurakami:hover{
     margin-bottom: 1%;
     color:rgba(39, 35, 67, 0.8);
 }
+
+
