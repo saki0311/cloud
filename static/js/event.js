@@ -28,6 +28,8 @@ window.addEventListener('click', function(e) {
     }
 });
 
+const event_box = document.getElementById('event_box');
+console.log(event_box.childNodes);
 
 // 打ち消し線を出すところ
 test.forEach(function(target) {
@@ -38,4 +40,5 @@ test.forEach(function(target) {
 
 function eventTitleClick() {
   document.div.insertBefore(test, owari);
+  
 }
