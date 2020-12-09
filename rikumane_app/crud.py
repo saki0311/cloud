@@ -87,7 +87,27 @@ def ES_delete(data):
 
 
 def Event_create(req):
-    pass
+    company = Company.objects.get(Account_id=req.user.id,id=req.POST.get('com_id'))
+
+    event_name = req.POST.get('EventName')
+    locate = req.POST.get('EventPlace')
+    start_time = req.POST.get('StartTime')
+    end_time = req.POST.get('EndTime')
+    description = req.POST.get('EventRemarks')
+    if req.POST.get('Addflow') == "1":
+        flow_flag = True
+    else:
+        flow_flag = False
+
+    Event(
+        Company=company,
+        EventName=event_name,
+        EventStart = start_time,
+        EventEnd = end_time,
+        Flow = flow_flag,
+        Address = locate,
+        Description=description
+    ).save()
 
 
 def Event_update(req):
