@@ -159,7 +159,7 @@
                 <p id="mypageid">mypageID: {{one.LoginId}}</p>
               </label>
               <div class="company-content">
-                <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">マイページ</a></p>
+                <p><a class="company_name" href="{{one.URL}}">マイページ</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
