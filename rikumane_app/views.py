@@ -97,12 +97,15 @@ def index(request):
             elif post_action == "update-company-data": # 企業詳細情報更新イベント
                 Company_data_update(request)
             elif post_action == "add_event": # イベント追加
-                Event_create(request,request.user)
+                Event_create(request)
+        company = Company.objects.get(Account_id=request.user.id,id=request.GET.get('id'))
+        Events = Event.objects.all().filter(Company=company)
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,
             'common':CommonInfo.objects.get(id=request.user.id),
-            'company':Company.objects.get(Account_id=request.user.id,id=request.GET.get('id')),
+            'company':company,
+            'events':Events,
             }
         return render(request,'index.html',d)
 
