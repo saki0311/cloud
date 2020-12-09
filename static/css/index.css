@@ -315,8 +315,9 @@ button.kodaimurakami:hover{
 
 #evnet_1{
     display: flex;
-    padding-top: 5%;
-    background-color: cyan;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    /* background-color: cyan; */
 }
 
 #evnet_1_detail{
@@ -378,7 +379,7 @@ button.kodaimurakami:hover{
 
 #evnet_1_detail_date{
     margin-left: 10%;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 
     /* フォントのあれこれ */
     font-family: Helvetica;
@@ -393,6 +394,22 @@ button.kodaimurakami:hover{
     text-shadow:0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343;
     
 }
+
+/* 選考フローの三角作るやつ */
+  .triangle{
+
+    position: absolute;
+    /* display: inline-block; */
+    margin-top:13%;
+    margin-left: 25.5%;
+
+    /* 三角の色とか */
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #272343;
+  }
 
 
 /* イベント */
