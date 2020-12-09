@@ -27,8 +27,12 @@ window.addEventListener('click', function(e) {
 
 
 
-document.getElementById('event_1_box').addEventListener('click',function(){
-  //クリックしたとき⇒クラスがついていたら外す、外れていたらつける
-  document.getElementById('event_1_box').classList.toggle('event_1_box_class_checked');
+// const test = document.getElementsByClassName('event_1_box');
+const test = document.querySelectorAll(".event_1_box");
+// var test = Array.from(test);
+// const btn = document.getElementById('btn');
+test.forEach(function(target) {
+  target.addEventListener('click', () => {
+  　target.classList.toggle('event_1_box_class_checked');
+  　});
 });
-
