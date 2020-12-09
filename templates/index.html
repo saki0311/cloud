@@ -85,10 +85,12 @@
             </div>
             <div id='flow_box'>
                 <div id='evnet_1'>
-                    <p>説明会</p>
-                    <p>住所</p>
-                    <p>zoomURL</p>
-                    <p>2020/1/12</p><!--日付はエンドタイム-->
+                    <div id="evnet_1_detail">
+                        <p id="evnet_1_detail_title">説明会</p>
+                        <p id="evnet_1_detail_address">福岡県北九州市戸畑区仙水町1-1</p>
+                        <p id="evnet_1_detail_zoom">zoomURL</p>
+                    </div>
+                    <p id="evnet_1_detail_date">2020/1/12</p><!--日付はエンドタイム-->
                 </div>
                 <div id='evnet_2'>
                     <p>Webテスト</p>
@@ -128,8 +130,8 @@
                     </svg>EVENT<button type="button" id="open_btn">追加</button><br>
             </div>
 
+            <!-- イベント追加のモーダル画面 -->
             <section id="modalArea" class="modalArea">
-
                 <!-- グレーの透過マスク -->
                 <div id="e_mask" class="hidden"></div>
                 

@@ -304,7 +304,7 @@ button.kodaimurakami:hover{
 }
 
 
-
+/* 選考フロー */
 #flow_box{
     background-color: #B9C1D6;
     /* 角を丸くする */
@@ -313,7 +313,89 @@ button.kodaimurakami:hover{
     border-radius: 5px;
 }
 
+#evnet_1{
+    display: flex;
+    padding-top: 5%;
+    background-color: cyan;
+}
 
+#evnet_1_detail{
+    margin-left: 12%;
+
+    color: #FFFFFF;
+    background-color: #2D334A;
+
+    width: 35%;
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+#evnet_1_detail_title{
+    margin-top:0;
+    margin-bottom: 2%;
+
+    padding-top:5%;
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 35px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#evnet_1_detail_address{
+    margin-top:0;
+    margin-bottom: 1%;
+
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#evnet_1_detail_zoom{
+    margin-top:0;
+    /* padding-bottom: 5%; */
+
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#evnet_1_detail_date{
+    margin-left: 10%;
+    background-color: blueviolet;
+
+    /* フォントのあれこれ */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+
+    color: #FFFFFF;
+
+    /* 文字の縁取りをつけるやつ */
+    text-shadow:0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343,0 0 2px #272343;
+    
+}
+
+
+/* イベント */
 #event_box{
     padding-top: 5%;
     padding-left: 7%;
