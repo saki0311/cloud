@@ -303,6 +303,8 @@ button.kodaimurakami:hover{
   opacity: 0.8;   
 }
 
+
+
 #flow_box{
     background-color: #B9C1D6;
     /* 角を丸くする */
@@ -358,13 +360,6 @@ button.kodaimurakami:hover{
     padding-top: 1%;
 
 }
-  
-#open_btn {
-    position: absolute;
-    top: 32%;
-    left: 10%;
-    transform:translate(-50%,-50%);
-} 
 
 #event_edit_menu{
     padding-right: 6%;
