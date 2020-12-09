@@ -88,6 +88,7 @@ def ES_delete(data):
 
 def Event_create(req,account):
     company = Company.objects.get(Account_id=account.id,id=req.POST.get('id'))
+    print(company)
 
     event_name = req.POST.get('EventName')
     locate = req.POST.get('EventPlace')

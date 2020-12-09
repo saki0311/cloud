@@ -173,6 +173,10 @@
                         </div>
                 </li>
             </div>
+                    </ul>
+        <input type="hidden" name="action" value="update-company-data">
+        <input type="hidden" name="com_id" value={{company.id}}>
+    </form>
             <!-- モーダル画面を開くボタン -->
             <div id="open" class="e_button">
                 イベント<button id="open_btn">追加</button>
@@ -193,7 +197,7 @@
                         <p class="addflow">選考フローにも追加する<input type="checkbox" name="Addflow" value="フロー">
                         <input type="hidden" name="action" value="add_envent">
                         <br>
-                        <!-- <input type="hidden" name="action" value="add_event"> -->
+                         <input type="hidden" name="action" value="add_event"> 
                         <input type="submit" value="追加">
                     </form>
                     <!-- モーダル画面を閉じるボタン -->
@@ -206,9 +210,5 @@
                 <hr>
                 {% endfor %} -->
             </section>
-        </ul>
-        <input type="hidden" name="action" value="update-company-data">
-        <input type="hidden" name="com_id" value={{company.id}}>
-    </form>
 {% endblock %}
 </html>
