@@ -116,7 +116,11 @@
     font-weight: bold;
     color: #FFFFFF;
     font-size: 41px;
+
+    margin-top: 5%;
+
   }
+
 
 #toolbar_es{
     /* 背景色変更 */
@@ -244,12 +248,15 @@ select::-ms-expand {
 
 /* 編集画面のcss */
 .kodaimurakami{ 
-    margin-left: 83%;
+    /* margin-left: 70%; */
     margin-bottom: 1%;
     width: 51px;
     height: 29px;
     /* left: 1000px;
     top: 117px; */
+    float: right;
+    margin-top: 1%;
+    margin-right: 2%;
 
     /* 文字の色を白色にする */
     color: #FFFFFF;
