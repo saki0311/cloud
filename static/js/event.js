@@ -10,6 +10,9 @@ var btn = document.getElementById('open_btn');
 var modal = document.getElementById('modalArea');
 var closeBtn = document.getElementById('close_modal');
 
+const test = document.querySelectorAll(".event_1_box");
+const owari = document.querySelectorAll(".event_1_box_class_checked");
+
 
 btn.addEventListener('click', function() {
   modal.style.display = 'block';
@@ -26,13 +29,13 @@ window.addEventListener('click', function(e) {
 });
 
 
-
-// const test = document.getElementsByClassName('event_1_box');
-const test = document.querySelectorAll(".event_1_box");
-// var test = Array.from(test);
-// const btn = document.getElementById('btn');
+// 打ち消し線を出すところ
 test.forEach(function(target) {
   target.addEventListener('click', () => {
   　target.classList.toggle('event_1_box_class_checked');
   　});
 });
+
+function eventTitleClick() {
+  document.div.insertBefore(test, owari);
+}
