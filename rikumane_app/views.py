@@ -70,12 +70,18 @@ def calendar(request):
                 CommonInfo_update(request,request.user)
             elif post_action == "prof_edit":
                 Account_update(request)
-            else:
-                print("aiueo")
+        Company_list = Company.objects.all().filter(Account_id=request.user.id)
+        Events_list = []
+        for one in Company_list:
+            event_list = Event.objects.all().filter(Company=one)
+            if event_list != []:
+                for event in event_list: 
+                    Events_list.append(event)
         d = {
-            'data':Company.objects.all().filter(Account_id=request.user.id),
+            'data':Company_list,
             'user':request.user,
-            'common':CommonInfo.objects.get(id=request.user.id)
+            'common':CommonInfo.objects.get(id=request.user.id),
+            'events':Events_list
             }
         return render(request,'calendar.html',d)
 '''
