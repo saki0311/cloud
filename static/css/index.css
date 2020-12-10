@@ -538,6 +538,48 @@ button.kodaimurakami:hover{
     padding-top: 1.5%;
 }
 
+/* googleカレンダーのアイコンの位置とか */
+.googlecalendar{
+    padding-right: 2%;
+    padding-bottom: 1.5%;
+}
+
+/* googleカレンダーのアイコンをホバーして吹き出し出るとこ */
+.googlefukidashi {
+    /* display: none; */
+    width: 200px;
+    /* position: absolute; */
+    top: 0;
+    left: 250px;
+    padding: 16px;
+    border-radius: 5px;
+    background: #33cc99;
+    color: #fff;
+    font-weight: bold;
+  }
+  .googlefukidashi:after {
+    /* position: absolute; */
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: -19px;
+    margin-left: 10px;
+    border: solid transparent;
+    border-color: rgba(51, 204, 153, 0);
+    border-top-color: #33cc99;
+    border-width: 10px;
+    pointer-events: none;
+    content: " ";
+  }
+
+.googlecalendar:hover + .googlefukidashi {
+    display: block;
+}
+
+
+
+
+
 #detail{
     font-family: Hiragino Kaku Gothic Pro;
     font-style: normal;

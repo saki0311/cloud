@@ -52,4 +52,10 @@ function moveEvent(e){
   // console.log(e.currentTarget);
   event_box.appendChild(e.currentTarget);
   // ifチェックボックスにチェック入ってなかったらいれる
+  // check = document.event_box.checkboxEvent.checked;
+  // // ↑フォームのとこどうする？
+  // if (check == False) {
+  //   check.checked = true;
+  // }
+
 }
