@@ -33,7 +33,6 @@ window.addEventListener('click', function(e) {
 });
 
 const event_box = document.getElementById('event_box');
-console.log(event_box.childNodes);
 
 
 // 打ち消し線を出すところ

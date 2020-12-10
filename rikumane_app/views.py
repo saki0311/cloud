@@ -77,7 +77,6 @@ def calendar(request):
             if event_list != []:
                 for event in event_list: 
                     Events_list.append(event)
-        print(Events_list)
         d = {
             'data':Company_list,
             'user':request.user,

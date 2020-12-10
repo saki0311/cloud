@@ -77,11 +77,11 @@
             </div>
             {% for one in data%}
               <input id="company{{one.id}}" class="company-acd-check" type="checkbox">
-              <label class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
+              <label id="company_id_{{one.id}}" class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
                 <p id="mypageid">mypageID: {{one.LoginId}}</p>
               </label>
               <div class="company-content">
-                <p><a class="company_name" href="{{one.URL}}">マイページ</a></p>
+                <p><a class="company_name" href="{{one.URL}}" onclick="copyToClipboard({{one.id}})" target="_blank">マイページ</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
