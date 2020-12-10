@@ -12,27 +12,25 @@ function OnclickCopy(login_id){
 
 // クリップボードコピーを行う関数
 function copyToClipboard(login_id){
-    // テキストエリアを生成するdivを取得
-    const mypage_id = document.getElementById("mypageid");
-    // テキストエリアオブジェクトを生成
-    const input = document.createElement("textarea");
-    // テキストエリアの内容をIDに
-    input.textContent = document.getElementById(`mypage_id_${login_id}`).getElementsByTagName('p')[0].innerHTML.replace('mypageID: ','');
-    // テキストエリアにidを付与
-    input.id = "copyTarget";
-    // テキストエリアを指定したdivに生成（子ノードとして）
-    mypage_id.appendChild(input);
-      
-    // テキストエリアの内容を読み取る
-    var textarea = document.getElementsByTagName("textarea")[0];
-    // テキストエリアの文字を選択状態に
-    textarea.select();
-    // コピーを実行
-    document.execCommand("copy");
-    
-    // 生成したテキストエリアを削除
-    input.remove();
-  }
+  // テキストエリアオブジェクトを生成
+  const input = document.createElement("textarea");
+  // テキストエリアの内容をIDに
+  con = document.getElementById(`company_id_${login_id}`);
+  console.log(con.childNodes[1].textContent);
+  input.textContent=con.childNodes[1].textContent.replace("mypageID: ","");
+  // // テキストエリアにidを付与
+  input.id = "copyTarget";
+  // // テキストエリアを指定したdivに生成（子ノードとして）
+  con.appendChild(input);
+  // // テキストエリアの内容を読み取る
+  var textarea = document.getElementsByTagName("textarea")[0];
+  // // テキストエリアの文字を選択状態に
+  textarea.select();
+  // // コピーを実行
+  document.execCommand("copy");
+  // // 生成したテキストエリアを削除
+  input.remove();
+}
 
 // モーダルウィンドウの処理（新規企業登録）
   (function(){

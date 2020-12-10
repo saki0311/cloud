@@ -85,10 +85,11 @@ DATABASES = {
         'NAME': 'rikumane',
         'USER': 'root',
         'PASSWORD': 'password',
-        # 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
+        'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
         'PORT': '3306'
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

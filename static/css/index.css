@@ -101,36 +101,62 @@
     line-height: 33px;
     color: #272343;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .detail_title{
-    display: flex;
-    width: 10%;
-}*/
-
-
-
-
-
-
-
-
-
-
+.osono_group{
+    text-align: center;
+}
+.modal_input_starttime{
+    margin: 10px 0px 20px 0px;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    width: 700px;
+    background-color: #CACACA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 17%; /*配置場所の指定*/
+    /*border-color: #272343;*/ /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 0px 0px; /*テキストフィールドの枠線を下線のみにする*/
+    border-radius: 5px;
+    z-index: 1;
+}
+.starttime_title{
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    color: #272343;
+    z-index: 2;
+}
+.modal_input_endtime{
+    margin: 20px 0px 20px 0px;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    width: 700px;
+    background-color: #CACACA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 17%; /*配置場所の指定*/
+    /*border-color: #272343;*/ /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 0px 0px; /*テキストフィールドの枠線を下線のみにする*/
+    border-radius: 5px;
+}
+.modal_input_detail{
+    margin: 30px 0px 10px 0px;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    width: 700px;
+    background-color: #FAFAFA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 17%; /*配置場所の指定*/
+    border-color: #272343; /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 2px 0px; /*テキストフィールドの枠線を下線のみにする*/
+}
+.addflow{
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    color: #272343;
+    margin: 60px 0px 0px 0px;
+}
 
 
 
@@ -145,7 +171,11 @@
     font-weight: bold;
     color: #FFFFFF;
     font-size: 41px;
+
+    margin-top: 5%;
+
   }
+
 
 #toolbar_es{
     /* 背景色変更 */
@@ -273,12 +303,15 @@ select::-ms-expand {
 
 /* 編集画面のcss */
 .kodaimurakami{ 
-    margin-left: 83%;
+    /* margin-left: 70%; */
     margin-bottom: 1%;
     width: 51px;
     height: 29px;
     /* left: 1000px;
     top: 117px; */
+    float: right;
+    margin-top: 1%;
+    margin-right: 2%;
 
     /* 文字の色を白色にする */
     color: #FFFFFF;
@@ -325,6 +358,23 @@ button.kodaimurakami:hover{
 
     color: #FFFFFF;
     background-color: #2D334A;
+
+    width: 35%;
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+/* イベント次のところ */
+#evnet_1_detail_now{
+    margin-left: 12%;
+
+    color: #FFFFFF;
+    background-color: #2D334A;
+    border: 4px solid rgba(248, 229, 61, 0.9);
+
 
     width: 35%;
 
@@ -396,7 +446,7 @@ button.kodaimurakami:hover{
 }
 
 /* 選考フローの三角作るやつ */
-  .triangle{
+.triangle{
 
     position: absolute;
     /* display: inline-block; */
@@ -409,8 +459,23 @@ button.kodaimurakami:hover{
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
     border-top: 30px solid #272343;
-  }
+}
 
+/* 黄色の三角 */
+.triangle_done{
+
+    position: absolute;
+    /* display: inline-block; */
+    margin-top:13%;
+    margin-left: 25.5%;
+
+    /* 三角の色とか */
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #F8E53D;
+}
 
 /* イベント */
 .event_1_box_class_checked{
@@ -420,6 +485,59 @@ button.kodaimurakami:hover{
     text-decoration: line-through;
     color:#272343;
 }
+
+
+/* 元々のチェックボックス（非表示） */
+.event_title input[type="checkbox"]{
+    display: none;
+}
+/* チェックボックスの代わりを成すラベル */
+.event_title input[type="checkbox"]{
+    display: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    padding-right: 10px;
+}
+/* ラベルの左に表示させる正方形のボックス□ */
+.event_title input[type="checkbox"]::before{
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    left: 0;
+    top: 50%;
+    border: 1px solid;
+    border-color:  #585753;
+    background-color: #FFF;
+
+     /* 角を丸くする */
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px; 
+
+}
+/* チェックが入った時のレ点 */
+.event_title input[type="checkbox"]:checked::after{
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 18px;
+    height: 9px;
+    margin-top: -9px;
+    top: 50%;
+    left: 3px;
+    transform: rotate(-45deg);
+    border-bottom: 3px solid;
+    border-left: 3px solid;
+    border-color:  #585753; 
+}
+
 
 
 
@@ -474,6 +592,45 @@ button.kodaimurakami:hover{
     padding-right: 6%;
     padding-top: 1.5%;
 }
+
+/* googleカレンダーのアイコンの位置とか */
+.googlecalendar{
+    padding-right: 2%;
+    padding-bottom: 1.5%;
+}
+
+/* googleカレンダーのアイコンをホバーして吹き出し出るとこ */
+/* .googlefukidashi {
+    display: none;
+    width: 190px;
+    top: 0;
+    left: 190px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #33cc99;
+    color: #fff;
+  }
+  .googlefukidashi:after {
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: -19px;
+    margin-left: 10px;
+    border: solid transparent;
+    border-color: rgba(51, 204, 153, 0);
+    border-top-color: #33cc99;
+    border-width: 10px;
+    pointer-events: none;
+    content: " ";
+  }
+
+.googlecalendar:hover + .googlefukidashi {
+    display: block;
+} */
+
+
+
+
 
 #detail{
     font-family: Hiragino Kaku Gothic Pro;

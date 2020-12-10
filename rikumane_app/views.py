@@ -70,12 +70,18 @@ def calendar(request):
                 CommonInfo_update(request,request.user)
             elif post_action == "prof_edit":
                 Account_update(request)
-            else:
-                print("aiueo")
+        Company_list = Company.objects.all().filter(Account_id=request.user.id)
+        Events_list = []
+        for one in Company_list:
+            event_list = Event.objects.all().filter(Company=one)
+            if event_list != []:
+                for event in event_list: 
+                    Events_list.append(event)
         d = {
-            'data':Company.objects.all().filter(Account_id=request.user.id),
+            'data':Company_list,
             'user':request.user,
-            'common':CommonInfo.objects.get(id=request.user.id)
+            'common':CommonInfo.objects.get(id=request.user.id),
+            'events':Events_list
             }
         return render(request,'calendar.html',d)
 '''
@@ -101,12 +107,14 @@ def index(request):
                 Event_create(request)
         company = Company.objects.get(Account_id=request.user.id,id=request.GET.get('id'))
         Events = Event.objects.all().filter(Company=company).order_by('EventEnd')
-        for event in Events:
-            event.EventEnd = event.EventEnd.strftime('%Y/%m/%d')
+        if len(Events) > 0:
+            for event in Events:
+                event.EventEnd = event.EventEnd.strftime('%Y/%m/%d')
         
         Flows = Event.objects.all().filter(Company=company,Flow=True).order_by('EventEnd')
-        for flow in Flows:
-            flow.EventEnd = flow.EventEnd.strftime('%Y/%m/%d')
+        if len(Flows) > 0:
+            for flow in Flows:
+                flow.EventEnd = flow.EventEnd.strftime('%Y/%m/%d')
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,

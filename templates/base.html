@@ -12,6 +12,7 @@
   <link href='/static/lib/main.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <script src='/static/lib/main.js'></script>
+<<<<<<< HEAD
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -91,6 +92,8 @@
   });
 
 </script>
+=======
+>>>>>>> murakami_1210_ver3
 <style>
 </style>
   <meta charset="UTF-8">
@@ -156,12 +159,20 @@
             </div>
             {% for one in data%}
               <input id="company{{one.id}}" class="company-acd-check" type="checkbox">
+<<<<<<< HEAD
               <label id="mypage_id_{{one.id}}" class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
                 <p id="mypageid">mypageID: {{one.LoginId}}</p>
               </label>
               <div class="company-content">
                 {% comment %} <p><a class="company_name" href="{{one.URL}}" onclick="copyToClipboard();">マイページ</a></p> {% endcomment %}
                  <p><button class="company_name"  onclick=" copyToClipboard({{one.id}});">マイページ</a></p>
+=======
+              <label id="company_id_{{one.id}}" class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
+                <p id="mypageid">mypageID: {{one.LoginId}}</p>
+              </label>
+              <div class="company-content">
+                <p><a class="company_name" href="{{one.URL}}" onclick="copyToClipboard({{one.id}})" target="_blank">マイページ</a></p>
+>>>>>>> murakami_1210_ver3
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
