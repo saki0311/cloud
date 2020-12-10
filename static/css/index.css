@@ -101,6 +101,62 @@
     line-height: 33px;
     color: #272343;
 }
+.osono_group{
+    text-align: center;
+}
+.modal_input_starttime{
+    margin: 10px 0px 20px 0px;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    width: 700px;
+    background-color: #CACACA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 17%; /*配置場所の指定*/
+    /*border-color: #272343;*/ /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 0px 0px; /*テキストフィールドの枠線を下線のみにする*/
+    border-radius: 5px;
+    z-index: 1;
+}
+.starttime_title{
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    color: #272343;
+    z-index: 2;
+}
+.modal_input_endtime{
+    margin: 20px 0px 20px 0px;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    width: 700px;
+    background-color: #CACACA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 17%; /*配置場所の指定*/
+    /*border-color: #272343;*/ /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 0px 0px; /*テキストフィールドの枠線を下線のみにする*/
+    border-radius: 5px;
+}
+.modal_input_detail{
+    margin: 30px 0px 10px 0px;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    width: 700px;
+    background-color: #FAFAFA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 17%; /*配置場所の指定*/
+    border-color: #272343; /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 2px 0px; /*テキストフィールドの枠線を下線のみにする*/
+}
+.addflow{
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    color: #272343;
+    margin: 60px 0px 0px 0px;
+}
 
 
 
