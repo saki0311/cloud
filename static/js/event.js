@@ -11,7 +11,7 @@ var btn = document.getElementById('open_btn');
 var modal = document.getElementById('modalArea');
 var closeBtn = document.getElementById('close_modal');
 
-const test = document.querySelectorAll(".event_1_box");
+const test = document.querySelectorAll(".event_ogata_box");
 const owari = document.querySelectorAll(".event_1_box_class_checked");
 
 
