@@ -65,13 +65,13 @@ class Event(models.Model):
     EventName = models.CharField(max_length=100)
     EventStart = models.DateTimeField()
     EventEnd = models.DateTimeField()
-    Flow = models.BooleanField(default=True)
+    Flow = models.BooleanField(default=False)
     Complete = models.BooleanField(default=False)
     Address = models.CharField(max_length=200,default='')
+    Description = models.CharField(max_length=1024)
 
     def __str__(self):
         return self.EventName
-
 
 class ES(models.Model):
     '''
