@@ -32,25 +32,12 @@ window.addEventListener('click', function(e) {
     }
 });
 
-const event_box = document.getElementById('event_box');
-console.log(event_box.childNodes);
-
-
 // 打ち消し線を出すところ
 test.forEach(function(target) {
   target.addEventListener('click', () => {
   　target.classList.toggle('event_1_box_class_checked');
   　});
 });
-
-function eventTitleClick(e) {
-  // document.div.insertBefore(test, owari);
-  // console.log(e.target)
-  // console.log(event_box.childNodes[1]);
-  // event_box.appendChild(event_box.childNodes[1])
-  // event_box.appendChild(e.target);
-  
-}
 
 function moveEvent(e){
   // console.log(e.currentTarget);
