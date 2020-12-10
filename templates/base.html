@@ -16,7 +16,8 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-
+    var events_list = [];
+    var event = {};
     var calendar = new FullCalendar.Calendar(calendarEl, {
       headerToolbar: {
         left: 'prev,next today',
@@ -155,11 +156,12 @@
             </div>
             {% for one in data%}
               <input id="company{{one.id}}" class="company-acd-check" type="checkbox">
-              <label class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
+              <label id="mypage_id_{{one.id}}" class="company-acd-label cursor" for="company{{one.id}}">{{ one.CompanyName }}
                 <p id="mypageid">mypageID: {{one.LoginId}}</p>
               </label>
               <div class="company-content">
-                <p><a class="company_name" href="{{one.URL}}">マイページ</a></p>
+                {% comment %} <p><a class="company_name" href="{{one.URL}}" onclick="copyToClipboard();">マイページ</a></p> {% endcomment %}
+                 <p><button class="company_name"  onclick=" copyToClipboard({{one.id}});">マイページ</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">ES</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">選考フロー</a></p>
                 <p><a class="company_name" href="{% url 'rikumane_app:index' %}?id={{one.id}}">イベント</a></p>
