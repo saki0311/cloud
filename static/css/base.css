@@ -14,12 +14,18 @@ body{
     height: 100%;
 }
 
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
 /* リクマネ表示に関して */
 #maintitle{
     color: white;
     text-align: center;
     font-size: 60px;
     margin-left: 20px;
+    margin-bottom: 0px;
 }
 
 /* RecruitManagementに関して */
@@ -27,12 +33,53 @@ body{
     color: white;
 }
 
+/*左側の固定メニュー*/
+#menu{
+    width: 100%;
+    height: 16%;
+    padding-left: 40px;
+}
+#menu p{
+    font-family: "Hiragino Kaku Gothic ProN";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FAFAFA;
+    margin: 0px 0px 15px 0px;
+}
+/*カレンダーアイコン*/
+.calender-icon{
+    color: white;
+    font-size: 1.5em; /*通常の２倍の大きさ*/
+    margin-right: 10px;
+}
+/*ビルアイコン*/
+.building-icon{
+    color: white;
+    font-size: 1.5em; /*通常の２倍の大きさ*/
+    margin-right: 17px;
+}
+/*企業登録ボタンエリア*/
+#open{
+    width: 45%;
+    margin-left: 40px;
+}
+
+/*企業登録ボタンエリアのボタン*/
+#open button{
+    border: 2px solid #FAFAFA;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    outline: none; /*ボタン押したときの枠線消去*/ 
+}
 /* 企業ごとのリンク */
 #conpanylink{
     width: 100%;
-    height: 60%; 
+    height: 58%; 
     font-size: 24px;
-    /* text-align: right; */
     text-align: left;
     color: white;
     margin-right: 30px;
@@ -44,23 +91,276 @@ body{
     display:none;
 }
 
+#conpanylink ul{
+    margin-top: 0px;
+    padding-left: 72px;
+}
+
 #conpanylink li{
     list-style-type:none;
     padding-top: 10px;
 }
 
-.button button{
+/*カンパニーリンク内のアコーディオンメニュー*/
+.company-acd-check{
+    display: none;
+}
+.company-acd-label{
+    color: #fff;
+    display: block;
+    padding: 10px;
+}
+.company-acd-label:hover{
+    color: #F8E53D;
+    background: rgba(240, 240, 240, 0.11);
+    border-radius: 5px;
+}
+.company-content{
+    background: rgba(240, 240, 240, 0.11);
+    border: 1px solid transparent;
+    height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    transition: .5s;
+    visibility: hidden;
+}
+.company-acd-check:checked + .company-acd-label + .company-content{
+    height: 200px;
+    opacity: 1;
+    padding: 0px 10px 10px 10px;
+    margin-bottom: 5px;
+    visibility: visible;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.company-acd-check:checked + .company-acd-label{
+    background: rgba(240, 240, 240, 0.11);
+    border-radius: 5px 5px 0px 0px;
+    color: #F8E53D;
+}
+
+#mypageid{
+    font-size: 15px;
+    margin: 0;
+    display: none;
+}
+
+.company-acd-check:checked + .company-acd-label > #mypageid{
+    display: block;
+    color: rgba(233, 233, 233, 0.9);
+}
+
+.company-content p{
+    margin-left: 40px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+/*カンパニーリンクのアコーディオンメニューに関してはここまで*/
+
+
+/* .button button{
     font-size: 15px;
     color: white;
     background-color: #1F609C;
     font-family: Aldrich;
     border: none;
-}
+} */
 /* 画面の左側 */
 #box1{
-    /* background-color: #1F609C; */
+    /* background-color: white; */
+    /* position: relative; */
     width: 20%;
     height: 100%;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+/*アカウントメニュー*/
+#account-menu-area{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 6%;
+    padding: 0;
+}
+
+#account-menu{
+    position: absolute;
+    bottom: 6%;
+    width: 15%;
+    height: 20%;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 72px;
+    background: rgba(240, 240, 240, 0.11);
+}
+
+#account-menu h3{
+    margin: 0;
+    padding: 10px 5px 10px 30px;
+    color: white;
+}
+
+#menu-link{
+    margin-left: 60px;
+}
+
+#menu-link a{
+    display: block;
+}
+
+
+#user-info{
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    bottom: 0;
+    display: flex;
+}
+
+.triple_dot{
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 10%;
+    color: white;
+    font-size: 1.5em;
+}
+
+/*トリプルドットを押すと開くエリア*/
+#detail-area{
+    position: absolute;
+    top: 25%;
+    right: 15%;
+    width: 70%;
+    height: 60%;
+    background: #FAFAFA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: black;
+    text-align: center;
+}
+/*ログアウトリンクの装飾*/
+#detail-area a{
+    color: black;
+}
+/*ユーザーアイコン表示エリア*/
+#user-icon-area{
+    /* width: 10px;
+    height: 22px; */
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+/*ユーザーアイコン*/
+.user-icon{
+    color: white;
+    font-size: 2em; /*通常の２倍の大きさ*/
+}
+/*ユーザーネーム表示に関して*/
+#username{
+    margin-left: 5px;
+    font-size: 22px;
+    color: white;
+}
+/*アカウント管理を表示するためのボタン*/
+#edit-user-info{
+    position: absolute;
+    margin-right: 5px;
+    right: 0;
+    font-family: "Hiragino Kaku Gothic ProN";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    background-color: transparent;
+    color: rgba(233, 233, 233, 0.9);
+    border: none;
+    outline: none;
+    transition-duration: .5s;
+
+    /* transform: rotate(90deg); */
+}
+/*プロフィール編集画面*/
+#profile-edit-window{
+    position: absolute;
+    top:5%;
+    right: 5%;
+    width: 71%;
+    height: 90%;
+    background: #FAFAFA;
+    border-radius: 10px;
+    z-index: 1; /*カレンダーの上に表示させるため*/
+}
+
+/*プロフィール編集画面タイトル*/
+.profile-window-title{
+    font-size: 5vh;
+    width: 80%;
+    font-family: "Hiragino Kaku Gothic Pro";
+    font-style: normal;
+    font-weight: normal;
+    position: relative;
+    margin: 0;
+    left: 10%;
+    top: 10%;
+}
+
+/*プロフィール編集画面閉じるボタンエリア*/
+#exit-profile-window{
+    position: absolute;
+    top: 5%;
+    right: 3%;
+}
+/*入力エリアの配置*/
+#input-area{
+    position: absolute;
+    width: 50%;
+    height: 30%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+#input-area p{
+    font-size: 3vh;
+    border-bottom: 2px solid #272343;
+}
+
+#input-area input{
+    position: absolute;
+    right: 0;
+    font-size: 3vh;
+    width: 85%;
+    border: none;
+    background: #FAFAFA;
+}
+#input-area input::placeholder{
+    font-size: 3vh;
+}
+
+#input-area button{
+    display: block;
+    width: 30%;
+    height: 30%;
+    font-size: 3vh;
+    background: #FAFAFA;
+    border: 3px solid #272343;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 0 auto;
 }
 
 /* 画面の真ん中 */
@@ -115,10 +415,12 @@ body{
     position: relative;
     /* background-color: white; */
     background-color: transparent;
-    top:20%;
+    /* top:20%; */
+    top:4.5%;
     left: 5%;
     width: 70%;
-    height: 70%;
+    /* height: 70%; */
+    height: 90%;
     box-sizing: border-box;
     /* margin-left: 100px; */
     /* margin-top: 120px; */
@@ -193,15 +495,16 @@ html,body{
 }
 /*モーダル画面*/
 #modal {
-    /*background: #1F609C;/*背景は白(わかりやすさのため今は白じゃない)*/
-    background:#FAFAFA;/*背景は#FAFAFA*/
+    /*background: #1F609C; /*背景は白(わかりやすさのため今は白じゃない)*/
+    background:#FAFAFA; /*背景は#FAFAFA*/
     border-radius: 10px;/*モーダル画面の角を丸する*/
-    width: 966px; /*横幅を指定*/
+    width: 1010px; /*横幅を指定*/
     position:absolute;/*絶対位置を指定(スクロールで動く)*/
-    top:42px;/*縦に40pxの位置から描画*/
+    top:33px;/*縦に40pxの位置から描画*/
     /*right: 0px;*//*右に0距離から描画を始める*/
-    height:510px;/*モーダル画面の縦幅を指定*/
-    left:300px;/*左に471pxの位置から描画を始める*/
+    /* height:510px;モーダル画面の縦幅を指定 */
+    height:725px;/*モーダル画面の縦幅を指定*/
+    left:360px;/*左に471pxの位置から描画を始める*/
     margin:0 auto; /*左右中央寄せ*/
     padding: 20px;/*内側に余白*/
     z-index: 2;
@@ -214,19 +517,20 @@ html,body{
     height: 55px;
     left: 574px;
     top: 144px;
-
     font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
     color: #272343; /*タイトルの文字の色*/
     font-style: normal; /*フォントスタイルは初期値*/
     font-weight: 500; /*フォントの太さを指定*/
     font-size: 40px; /*フォントの大きさを指定*/
     line-height: 60px; /*行の高さを指定*/
+    margin: 70px 0px 100px 40px;
 }
 #mask.hidden{
     display:none; /*非表示にする*/
 }
 #modal.hidden{
-    transform: translate(0px,-600px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
+    /* transform: translate(0px,-600px);[POINT]マイナス方向に動かして画面外に飛ばしておく */
+    transform: translate(0px,-800px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
 }
 /*モーダル内の項目名の配置*/
 .item_name{
@@ -245,7 +549,7 @@ html,body{
     width: 700px;
     background-color: #FAFAFA; /*入力欄の背景色*/
     color: #272343; /*入力欄の文字色*/
-    right: 14%; /*配置場所の指定*/
+    right: 17%; /*配置場所の指定*/
     border-color: #272343; /*テキストフィールドの枠線の色*/
     border-width: 0px 0px 2px 0px; /*テキストフィールドの枠線を下線のみにする*/
 }
@@ -255,51 +559,82 @@ input::placeholder {
     color: #272343; /*文字色の指定*/
     font-size: 15px;
 }
-
 input:focus{
     outline: none; /*テキストボックスフォーカス時の枠線を非表示*/
 }
-/*志望度に関して*/
-.shiboudo_name{
-    /*position: left;*/
-    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
-    font-size: 15px;
-    color: #272343; /*文字色*/
-    text-align: left; /*文字を左寄せにする*/
-    padding-left: 130px; /*左側に余白を設ける*/
+/*モーダル内の閉じるボタン領域*/
+#close{
+    position: absolute;
+    right: 5%;
 }
-.shiboudo{
+/*モーダル内の☓ボタンに関する装飾*/
+.batsu_button{
+    background-color: transparent; /*背景無色*/
+    border: none; /*枠線消去*/
+    outline: none; /*ボタン押したときの枠線消去*/ 
+    font-family: "Droid Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+/*志望度に関して*/
+.shiboudo_checkbox{
+ box-sizing: border-box;
  display: -ms-flex;
  display: -webkit-flex;
  display: -moz-flex;
  display: -o-flex;
  display: flex;
- 
  flex-direction: -ms-row-reverse;
  flex-direction: -webkit-row-reverse;
  flex-direction: -moz-row-reverse;
- flex-direction: -o-row-reverse; 
+ flex-direction: -o-row-reverse;
  flex-direction: row-reverse;
-  
 justify-content: -ms-right;
 justify-content: -webkit-right;
 justify-content: -moz-right;
 justify-content: -o-right;
 justify-content: right;
-
+/* justify-content: center; */
+width: 600px;
 }
-.shiboudo input[type='radio']{
+/* .hoshi1{
+    text-align: center;
+} */
+/*「志望度」の表示について*/
+.shiboudo{
+    display: flex;
+    justify-content: center;
+}
+.shiboudo_name{
+    /*position: left;*/
+    /*margin: 0px 30px 0px 0px;*/
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    color: #272343; /*文字色*/
+    text-align: left; /*文字を左寄せにする*/
+    /*padding-right: 390px;*/ /*右側に余白を設ける*/
+    padding: 0px 25px 0px 30px;
+    height: 30px;
+}
+/* .shiboudo_checkbox input[type=‘radio’]{ */
+  /* display: none; */
+/* } */
+/* .shiboudo_checkbox input[type=‘radio’]{ */
+  /* display: none; */
+/* } */
+.shiboudo_checkbox input{
   display: none;
 }
-.shiboudo input[type='radio']{
-  display: none;
-}
-.shiboudo label{
+/**志望度の星のデザイン*/
+.shiboudo_checkbox label{
   position: relative;
-  padding: 0px 50px 50px 0px;
+  padding: 0px 50px 0px 0px;
   display: inline-block;
   color: #FAFAFA;
-  text-shadow: 
+  text-shadow:
     0.6px  0.6px 0.6px #272343,
    -0.6px  0.6px 0.6px #272343,
     0.6px -0.6px 0.6px #272343,
@@ -307,15 +642,33 @@ justify-content: right;
     0.6px  0.6px 0.6px #272343,
     0.6px  0.6px 0.6px #272343,
    -0.6px  0.6px 0.6px #272343,
-    0.6px -0.6px 0.6px #272343; 
+    0.6px -0.6px 0.6px #272343;
   cursor: pointer;
   font-size: 30px;
 }
- 
-.shiboudo label:hover,
-.shiboudo label:hover ~ label,
-.shiboudo input[type='radio']:checked ~ label{
-  color: #faee2e;
+.shiboudo_checkbox label:hover,
+.shiboudo_checkbox label:hover ~ label,
+/*星をクリックしたとき*/
+/* .shiboudo_checkbox input[type=‘radio’]:checked ~ label{ */
+.shiboudo_checkbox input:checked ~ label{
+  color: #F8E53D;/*黄色の色*/
+}
+/*「登録」ボタンについて*/
+.modal_button_size{
+  position: absolute;
+  top: 85%;
+  left: 40%;
+　display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #FAFAFA;/*ボタン色*/
+  color: #272343;
+  border: 3px solid #272343;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  /*border-bottom: solid 4px #627295;
+  border-radius: 3px;*/
 }
 
 /* 予定登録のモーダル画面 */
@@ -363,7 +716,8 @@ a{
 }
 
 a:hover{
-    color: #1DFF5C;
+    /* color: #1DFF5C; */
+    color: rgba(248, 229, 61, 0.9);
 }
 
 /******************************************************************************/

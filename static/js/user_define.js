@@ -55,33 +55,33 @@ function copyToClipboard(){
     })();
     
 // モーダルウィンドウの処理（予定追加）
-(function(){
-    'use strict';
-    //[POINT]idを取得する
-    var open = document.getElementById('open_event');
-    var close = document.getElementById('close_event');
-    var mask = document.getElementById('mask_event');
-    var modal = document.getElementById('modal_event');
-    //[POINT]クリックイベントを定義
-    open.addEventListener('click',function(){
-      //openではマスクとモーダル画面が表示できるようにする
-      //[POINT]クラス名を変えてCSSを当て込まないようにする
-      mask.className = '';
-      modal.className = '';
-      });
-      close.addEventListener('click',function(){
-       //closeではマスクとモーダル画面を非表示にする
-       //[POINT]クラス名を再定義し、CSSを当て込む
-        mask.className = 'hidden_event';
-         modal.className = 'hidden_event';
-      });
-         //モーダル画面外をクリックしてもモーダル画面が閉じるようにする
-      mask.addEventListener('click',function(){
-      //closeと同じなので、closeのクリックイベントを呼び出せば良い
-      close.click(); 
-      //このように書くことができる
-      });
-  })();
+// (function(){
+//     'use strict';
+//     //[POINT]idを取得する
+//     var open = document.getElementById('open_event');
+//     var close = document.getElementById('close_event');
+//     var mask = document.getElementById('mask_event');
+//     var modal = document.getElementById('modal_event');
+//     //[POINT]クリックイベントを定義
+//     open.addEventListener('click',function(){
+//       //openではマスクとモーダル画面が表示できるようにする
+//       //[POINT]クラス名を変えてCSSを当て込まないようにする
+//       mask.className = '';
+//       modal.className = '';
+//       });
+//       close.addEventListener('click',function(){
+//        //closeではマスクとモーダル画面を非表示にする
+//        //[POINT]クラス名を再定義し、CSSを当て込む
+//         mask.className = 'hidden_event';
+//          modal.className = 'hidden_event';
+//       });
+//          //モーダル画面外をクリックしてもモーダル画面が閉じるようにする
+//       mask.addEventListener('click',function(){
+//       //closeと同じなので、closeのクリックイベントを呼び出せば良い
+//       close.click(); 
+//       //このように書くことができる
+//       });
+//   })();
 
   /******************************************************/
   /* SignIn SignOut SignUp                              */
@@ -231,29 +231,36 @@ function copyToClipboard(){
    
     if(button_elem.innerText == "編集"){
       area_con.contentEditable = true;
-      menu_bar.innerHTML = `<select onchange="document.execCommand('fontsize',false,this[this.selectedIndex].value);this.selectedIndex=0;">
-                              <option class="heading" selected>- size -</option>
-                              <option value="1">Very small</option>
-                              <option value="2">A bit small</option>
-                              <option value="3">Normal</option>
-                              <option value="4">Medium-large</option>
-                              <option value="5">Big</option>
-                              <option value="6">Very big</option>
-                              <option value="7">Maximum</option>
-                            </select>
-                            <select onchange="document.execCommand('forecolor',false,this[this.selectedIndex].value);this.selectedIndex=0;">
-                                <option class="heading" selected>- color -</option>
-                                <option value="red">Red</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="black">Black</option>
-                            </select>
-                            <select onchange="document.execCommand('backcolor',false,this[this.selectedIndex].value);this.selectedIndex=0;">
-                                <option class="heading" selected>- background -</option>
-                                <option value="red">Red</option>
-                                <option value="green">Green</option>
-                                <option value="black">Black</option>
-                            </select>
+      menu_bar.innerHTML = `
+                            <div class="pull_down_menu">
+                              <select class="select" onchange="document.execCommand('fontsize',false,this[this.selectedIndex].value);this.selectedIndex=0;">
+                                <option class="heading" selected> size </option>
+                                <option value="1">Very small</option>
+                                <option value="2">A bit small</option>
+                                <option value="3">Normal</option>
+                                <option value="4">Medium-large</option>
+                                <option value="5">Big</option>
+                                <option value="6">Very big</option>
+                                <option value="7">Maximum</option>
+                              </select>
+                            </div>
+                            <div class="pull_down_menu">
+                              <select class="select" onchange="document.execCommand('forecolor',false,this[this.selectedIndex].value);this.selectedIndex=0;">
+                                  <option class="heading" selected> color </option>
+                                  <option value="red">Red</option>
+                                  <option value="blue">Blue</option>
+                                  <option value="green">Green</option>
+                                  <option value="black">Black</option>
+                              </select>
+                            </div>
+                            <div class="pull_down_menu">
+                              <select class="select" onchange="document.execCommand('backcolor',false,this[this.selectedIndex].value);this.selectedIndex=0;">
+                                  <option class="heading" selected> background </option>
+                                  <option value="red">Red</option>
+                                  <option value="green">Green</option>
+                                  <option value="black">Black</option>
+                              </select>
+                            </div>
                             <img class="intLink" title="Bold" onclick="document.execCommand('bold');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" />`;
       button_elem.innerText = '保存'
       button_elem.addEventListener('click', function() {

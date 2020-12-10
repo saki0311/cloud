@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from datetime import datetime as dt
 #from rikumane_app import calendar
 from .data import company_data
 from django.contrib.auth.views import (
@@ -96,11 +97,23 @@ def index(request):
                 Company_delete(request,request.user)
             elif post_action == "update-company-data": # 企業詳細情報更新イベント
                 Company_data_update(request)
+            elif post_action == "add_event": # イベント追加
+                Event_create(request)
+        company = Company.objects.get(Account_id=request.user.id,id=request.GET.get('id'))
+        Events = Event.objects.all().filter(Company=company).order_by('EventEnd')
+        for event in Events:
+            event.EventEnd = event.EventEnd.strftime('%Y/%m/%d')
+        
+        Flows = Event.objects.all().filter(Company=company,Flow=True).order_by('EventEnd')
+        for flow in Flows:
+            flow.EventEnd = flow.EventEnd.strftime('%Y/%m/%d')
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,
             'common':CommonInfo.objects.get(id=request.user.id),
-            'company':Company.objects.get(Account_id=request.user.id,id=request.GET.get('id')),
+            'company':company,
+            'events':Events,
+            'flows':Flows,
             }
         return render(request,'index.html',d)
 
@@ -169,3 +182,23 @@ def detail(request):
 
     return render(request,'detail.html',d)
     '''
+    
+def profile(request):
+    # print(request.POST)
+    # print(request.GET)
+    if request.method == 'POST':
+        # print(request.POST.get('account'))
+        data = CommonInfo.objects.get(Account_id=request.POST.get('account'))
+        data.MemoAnalysis = request.POST.get('MemoAnalysis')
+        data.MemoES = request.POST.get('MemoES')
+        data.Memo = request.POST.get('Memo')
+        data.save()
+        # redirect('rikumane_app:profile')
+    else:
+        data = CommonInfo.objects.get(Account_id=request.GET.get('account'))
+
+    d = {
+        'common':data,
+    }
+    # print(d['common'].Memo)
+    return render(request,'profile.html',d)
