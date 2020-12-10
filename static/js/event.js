@@ -33,8 +33,6 @@ window.addEventListener('click', function(e) {
 });
 
 const event_box = document.getElementById('event_box');
-console.log(event_box.childNodes);
-
 
 // 打ち消し線を出すところ
 test.forEach(function(target) {
@@ -43,21 +41,79 @@ test.forEach(function(target) {
   　});
 });
 
-function eventTitleClick(e) {
+// function eventTitleClick(e) {
   // document.div.insertBefore(test, owari);
   // console.log(e.target)
   // console.log(event_box.childNodes[1]);
   // event_box.appendChild(event_box.childNodes[1])
   // event_box.appendChild(e.target);
   
-}
+// }
 
-function moveEvent(e){
-  // console.log(e.currentTarget);
-  event_box.appendChild(e.currentTarget);
+function eventTitleClick(e) {
+  event_box.appendChild(e.target.parentNode.parentNode);
 }
 
 // ▼削除
 flow_box = document.getElementById('flow_box');
 remove_triangle = flow_box.lastElementChild.lastElementChild;
 remove_triangle.remove();
+
+
+/*イベント編集に関して**/
+const menus = document.getElementsByClassName("edit_menu")
+for(var i = 0; i < menus.length; i++) {
+  menus[i].style.display = "none";
+}
+function eventEditMode(e){
+  // console.log(e.currentTarget);
+  const currentTarget = e.currentTarget;
+  // console.log(currentTarget.nextElementSibling);
+  const editMenu = currentTarget.nextElementSibling
+  if(editMenu.style.display == "none"){
+    editMenu.style.display = "block";
+  }else{
+    editMenu.style.display = "none";
+  }
+}
+/*イベント削除*/
+const askDeleteArea = document.getElementsByClassName("askDeleteWindow")
+for(var i = 0; i < askDeleteArea.length; i++) {
+  askDeleteArea[i].style.display = "none";
+}
+function openDeleteEventWindow(e){
+  console.log(e.target.parentNode.parentNode.parentNode);
+  const eventBox = e.target.parentNode.parentNode.parentNode;
+  /*以下のコメントの要素が対応するイベント削除モーダルの要素*/
+  // console.log(eventBox.previousElementSibling);
+  if(eventBox.previousElementSibling.style.display == "none"){
+    eventBox.previousElementSibling.style.display = "block";
+    e.target.parentNode.style.display = "none"; //プロフィール編集と削除のウィンドウを消す
+  }else{
+    eventBox.previousElementSibling.style.display = "none";
+    e.target.parentNode.style.display = "none"; //プロフィール編集と削除のウィンドウを消す
+  }
+}
+
+/*イベント削除ウィンドウ内の戻るボタンに関する内容**/
+function exitAskDeleteWindow(e){
+  const window = e.target.parentNode.parentNode
+  console.log(window);
+  if(window.style.display == "none"){
+    window.style.display = "block";
+  }else{
+    window.style.display = "none";
+  }
+}
+
+/*イベント削除ウィンドウ内の削除ボタンに関する内容**/
+function deleteEvent(e){
+  const window = e.target.parentNode.parentNode
+  console.log(window);
+  if(window.style.display == "none"){
+    window.style.display = "block";
+  }else{
+    window.style.display = "none";
+  }
+}
+
