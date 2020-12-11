@@ -94,6 +94,7 @@ def Event_create(req):
     start_time = req.POST.get('StartTime')
     end_time = req.POST.get('EndTime')
     description = req.POST.get('EventRemarks')
+    print(start_time,end_time)
     if req.POST.get('Addflow') == "1":
         flow_flag = True
     else:
