@@ -50,3 +50,4 @@ function printDoc() {
   oPrntWin.document.write("<!doctype html><html><head><title>Print<\/title><\/head><body onload=\"print();\">" + oDoc.innerHTML + "<\/body><\/html>");
   oPrntWin.document.close();
 }
+
