@@ -205,22 +205,40 @@ function copyToClipboard(login_id){
   /* GoogleCalendar追加関数                              */
   /******************************************************/
   // 開始時間がなければ24時間前に初期設定
-  function addToGoogleCalendar(){
-    var text = document.getElementById('event_name').textContent;
-    var company_time = document.getElementById('company_time').textContent.split('-');
-    var start_date = Date.parse(company_time[0]);
-    var end_date = Date.parse(company_time[1]);
-    var description = document.getElementById('company_description').textContent;
+  function addToGoogleCalendar(name,s_time,e_time,address,description){
+    var text = name
+    index_row = s_time.indexOf('日');
+    start_time = s_time.slice(index_row+1);
+    start_date = s_time.slice(0,index_row);
+
+    index_time_row = start_time.indexOf(':');
+    start_min = start_time.slice(index_time_row+1);
+    start_hour = start_time.slice(0,index_time_row);
+    
+    var start_date = new Date(Date.parse(start_date.replace('年','/').replace('月','/').replace('日',''))+Number(start_hour*3600000)+Number(start_min*60000)-32400000);
+    console.log(start_date);
+    //+32400000
+
+    index_row = e_time.indexOf('日');
+    end_time = e_time.slice(index_row+1);
+    end_date = e_time.slice(0,index_row);
+
+    index_time_row = end_time.indexOf(':');
+    end_min = end_time.slice(index_time_row+1);
+    end_hour = end_time.slice(0,index_time_row);
+
+    var end_date = new Date(Date.parse(end_date.replace('年','/').replace('月','/').replace('日',''))+Number(end_hour*3600000)+Number(end_min*60000)-32400000);
+    console.log(end_date);
+    var description = description;
 
     var zero = function(n) { return ('0' + n).slice(-2); };
-    var formatdate = function(datestr) {
-        var date = new Date(datestr + '+09:00');
-        return date.getUTCFullYear() + zero(date.getUTCMonth()+1) + zero(date.getUTCDate()) + 'T' + 
-                zero(date.getUTCHours()) + zero(date.getUTCMinutes()) + zero(date.getUTCSeconds()) + 'Z';
+    var formatdate = function(date) {
+        return date.getFullYear() + zero(date.getMonth()+1) + zero(date.getDate()) + 'T' + 
+                zero(date.getHours()) + zero(date.getMinutes()) + zero(date.getSeconds()) + 'Z';
         };  
     var url = 'http://www.google.com/calendar/event?action=TEMPLATE' +
               '&text=' + encodeURIComponent(text) +
-              '&dates=' + formatdate(company_time[0]) + '/' + formatdate(company_time[1]) + 
+              '&dates=' + formatdate(start_date) + '/' + formatdate(end_date) + 
               '&details=' + description;
 
     window.open(url);

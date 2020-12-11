@@ -109,12 +109,14 @@ def index(request):
         Events = Event.objects.all().filter(Company=company).order_by('EventEnd')
         if len(Events) > 0:
             for event in Events:
+                event.time = event.EventEnd
                 event.EventEnd = event.EventEnd.strftime('%Y/%m/%d')
         
         Flows = Event.objects.all().filter(Company=company,Flow=True).order_by('EventEnd')
         if len(Flows) > 0:
             for flow in Flows:
                 flow.EventEnd = flow.EventEnd.strftime('%Y/%m/%d')
+
         d = {
             'data':Company.objects.all().filter(Account_id=request.user.id),
             'user':request.user,
