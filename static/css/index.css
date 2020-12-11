@@ -631,26 +631,86 @@ button.kodaimurakami:hover{
     padding-right: 2%;
     padding-bottom: 1.5%;
 }
+/*------イベント削除画面のデザイン-------*/
+.askDeleteWindow{
+  /*border: solid 1px #FAFAFA;*/
+  outline: solid 3px #272343;
+  outline-offset: -3em;
+}
+/*『〜を削除しますか？」のデザイン*/
 #confirm_delete_eventName{
     font-family: Hiragino Kaku Gothic Pro;
     color: #272343;
     font-size: 20px;
     text-align: center;
     font-weight: bold;
-    margin: 80px 0px 20px 0px;
+    margin: 90px 0px 20px 0px;
 }
+/*「復元できません」のデザイン*/
 #warning_sentence_event{
     font-family: Hiragino Kaku Gothic Pro;
     color: #272343;
     font-size: 15px;
     text-align: center;
+    margin-bottom: 40px;
 }
-/*#return_button_event{
+/*ここから「戻る」「削除」ボタンデザイン*/
+.askDeleteAreaButton{
+    width: 50%;
+    margin: 0% 20% 0% 29%;
+}
+/*「戻る」ボタンデザイン*/
+#return_button_event{
+    display: inline-block;
     font-family: Hiragino Kaku Gothic Pro;
     color: #3B5986;
     font-weight: bold;
     font-size: 18px;
+    text-align: center;
+    margin: 5% 10% 5% 20%;
+}
+/*#return_button_event {
+  margin-top: 24px;
+  margin-left: 16px;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  line-heigt: 1.2em;
+  -webkit-transition: .8s;
+  transition: .8s;
 }*/
+
+/*カーソルを合わせた時に下線を出す*/
+/*#return_button_event:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#return_button_event::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #e41313;
+  transform: scale(0, 1);
+  transform-origin: right top;
+  transition: transform .3s;
+}
+#return_button_event:hover::after {
+  transform-origin: left top;
+  transform: scale(1, 1);
+}*/
+/*「削除」ボタンデザイン*/
+#delete_button_event{
+    font-family: Hiragino Kaku Gothic Pro;
+    color: #EF4565;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin: 5% 20% 5% 10%;
+}
 
 /* googleカレンダーのアイコンをホバーして吹き出し出るとこ */
 /* .googlefukidashi {
