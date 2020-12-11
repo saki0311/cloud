@@ -108,11 +108,13 @@
           <p class="cursor" onclick="profileEditDisplay()">プロフィール編集</p>
           <a href="{% url 'rikumane_app:top'%}?logout=true">サインアウト</a>
         </div>
+      {% for one in data %}
         <div id="menu-link">
-          <a href="">自己分析</a>
-          <a href="">共通ES</a>
-          <a href="">MEMO</a>
+          <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{one.id}}">自己分析</a>
+          <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{one.id}}">共通ES</a>
+          <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{one.id}}">MEMO</a>
         </div>
+      {% endfor %}
       </div>
       <div id="account-menu-area">
         <div id="user-info">
