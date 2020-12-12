@@ -203,11 +203,11 @@
                 {% comment %} {% for event in events %} {% endcomment %}
                 {% for event in events %}
                 <div class="askDeleteWindow">
-                    <p>{{event.EventName}}を削除しますか？</p>
-                    <p>この作業を実行すると復元することはできません。</p>
+                    <p id=confirm_delete_eventName>{{event.EventName}}を削除しますか？</p>
+                    <p id=warning_sentence_event>この作業を実行すると復元することはできません。</p>
                     <div class="askDeleteAreaButton">
-                        <p onclick="exitAskDeleteWindow(event)">戻る</p> 
-                        <p onclick="deleteEvent(event)">削除</p>
+                        <p id=return_button_event onclick="exitAskDeleteWindow(event)">戻る</p> 
+                        <p id=delete_button_event onclick="deleteEvent(event)">削除</p>
                     </div>
                 </div>
                 <div class='event_{{event.id}}_box'>
