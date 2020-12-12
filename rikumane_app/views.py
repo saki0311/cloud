@@ -106,6 +106,8 @@ def index(request):
                 Company_data_update(request)
             elif post_action == "add_event": # イベント追加
                 Event_create(request)
+            elif post_action == "event_delete": # イベント削除
+                Event_delete(Event.objects.get(id=request.POST.get('event_id')))
         company = Company.objects.get(Account_id=request.user.id,id=request.GET.get('id'))
         Events = Event.objects.all().filter(Company=company).order_by('EventEnd')
         if len(Events) > 0:
@@ -194,23 +196,20 @@ def detail(request):
     return render(request,'detail.html',d)
     '''
 def profile(request):
-    # print(request.POST)
-    # print(request.GET)
     if not request.user.is_authenticated:
         return redirect('rikumane_app:top')
     if request.method == 'POST':
-    #     # print(request.POST.get('account'))
-        data = CommonInfo.objects.get(Account_id=request.POST.get('id'))
-        data.MemoAnalysis = request.POST.get('MemoAnalysis')
-        data.MemoES = request.POST.get('MemoES')
-        data.Memo = request.POST.get('Memo')
+        data = CommonInfo.objects.get(Account_id=request.user.id)
+        data.MemoAnalysis = request.POST.get('self_analysis')
+        data.MemoES = request.POST.get('entrysheet')
+        data.Memo = request.POST.get('memo')
         data.save()
-        # redirect('rikumane_app:profile')
     else:
-        data = CommonInfo.objects.get(Account_id=request.GET.get('id'))
+        data = CommonInfo.objects.get(Account_id=request.user.id)
 
     d = {
         'common':data,
+        'data':Company.objects.all().filter(Account_id=request.user.id),
         # 'common.MemoAnalysis':data.MemoAnalysis,
         # 'common.MemoES':data.MemoES,
         # 'common.Memo':data.Memo,

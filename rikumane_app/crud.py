@@ -116,4 +116,5 @@ def Event_update(req):
 
 
 def Event_delete(data):
+    print(data)
     data.delete()
