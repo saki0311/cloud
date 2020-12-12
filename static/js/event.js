@@ -116,4 +116,3 @@ function deleteEvent(e){
     window.style.display = "none";
   }
 }
-

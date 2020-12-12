@@ -66,7 +66,7 @@ class Event(models.Model):
     EventStart = models.DateTimeField()
     EventEnd = models.DateTimeField()
     Flow = models.BooleanField(default=False)
-    Complete = models.BooleanField(default=False)
+    Complete = models.BooleanField(default=True)
     Address = models.CharField(max_length=200,default='')
     Description = models.CharField(max_length=1024)
 

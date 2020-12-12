@@ -75,8 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rikumane.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
@@ -84,12 +82,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'database_rikumane',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'password',
         'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
         'PORT': '3306'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
