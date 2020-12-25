@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.http import HttpResponse
 from datetime import datetime as dt
 #from rikumane_app import calendar
 from .data import company_data
@@ -9,10 +10,12 @@ from rikumane_app.models import Company,ES,Event,CommonInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from .forms import CompanyForm
 from .crud import *
+from .word_cloud import *
 from django.contrib.auth.models import User # Django認証用モデルのインポート
 from django.contrib.auth import authenticate # 認証設定用関数のインポート
 from django.contrib.auth import login as auth_login # ログイン認証用関数のインポート
 from django.contrib.auth import logout # ログアウト関数のインポート
+import io
 
 '''
 login/logout/sineup用関数
@@ -206,7 +209,7 @@ def profile(request):
         data.save()
     else:
         data = CommonInfo.objects.get(Account_id=request.user.id)
-
+    get_svg(request)
     d = {
         'common':data,
         'data':Company.objects.all().filter(Account_id=request.user.id),
@@ -216,3 +219,17 @@ def profile(request):
     }
     # print(d['common'].Memo)
     return render(request,'profile.html',d)
+
+def pltToSvg():
+    buf = io.BytesIO()
+    plt.savefig(buf,format='svg', bbox_inches='tight')
+    s = buf.getvalue()
+    buf.close()
+    return s
+
+def get_svg(request):
+    generate_wc("こんにちは")
+    svg = pltToSvg()
+    plt.cla()
+    response = HttpResponse(svg,content_type='image/svg+xml')
+    return response
