@@ -209,7 +209,7 @@
                             <p id="return_button_event" onclick="exitAskDeleteWindow(event)">戻る</p> 
                             <p id="delete_button_event" onclick="deleteEvent(event)">削除</p>
                         </div>
-                        <form name="delete_form" action="" method="post">
+                        <form id="event_delete_form" name="delete_form" action="" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="action" value="event_delete">
                             <input type="hidden" name="event_id" value={{event.id}}>
