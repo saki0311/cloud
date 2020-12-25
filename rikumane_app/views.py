@@ -5,7 +5,7 @@ from .data import company_data
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 )
-from rikumane_app.models import Company,ES,Event,CommonInfo
+from rikumane_app.models import Company,ES,Event,CommonInfo,analysis_myself
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from .forms import CompanyForm
 from .crud import *
@@ -216,3 +216,28 @@ def profile(request):
     }
     # print(d['common'].Memo)
     return render(request,'profile.html',d)
+
+def analysis_self(request):
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    else:
+        # data = analysis_myself.objects.get(Account_id=request.user.id) 
+        #データを追加したらコメントアウト外してください！
+        # d = {
+        #     'data':data,
+        # }
+        return render(request, 'analysis_self.html')
+
+def matching_output(request):
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    else:
+        return render(request, 'matching_output.html')
+
+
+
+
+
+
+
+
