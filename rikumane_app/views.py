@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from datetime import datetime as dt
 #from rikumane_app import calendar
 from .data import company_data
+from PIL import Image
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 )
-from rikumane_app.models import Company,ES,Event,CommonInfo
+from rikumane_app.models import Company,ES,Event,CommonInfo,analysis_myself
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from .forms import CompanyForm
 from .crud import *
@@ -221,7 +222,7 @@ def profile(request):
 
 def pltToSvg():
     buf = io.BytesIO()
-    plt.savefig(buf,format='svg', bbox_inches='tight')
+    plt.savefig(buf,format='png')
     s = buf.getvalue()
     buf.close()
     return s
@@ -230,5 +231,32 @@ def get_svg(request):
     generate_wc("こんにちは")
     svg = pltToSvg()
     plt.cla()
-    response = HttpResponse(svg,content_type='image/svg+xml')
-    return response
+    response = HttpResponse(svg,content_type='image/png')
+    plt.savefig('static/img/output.png')
+    #return response
+
+def analysis_self(request):
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    else:
+        # data = analysis_myself.objects.get(Account_id=request.user.id) 
+        #データを追加したらコメントアウト外してください！
+        # d = {
+        #     'data':data,
+        # }
+        get_svg(request)
+        return render(request, 'analysis_self.html')
+
+def matching_output(request):
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    else:
+        return render(request, 'matching_output.html')
+
+
+
+
+
+
+
+
