@@ -209,7 +209,6 @@ def profile(request):
         data.save()
     else:
         data = CommonInfo.objects.get(Account_id=request.user.id)
-    get_svg(request)
     d = {
         'common':data,
         'data':Company.objects.all().filter(Account_id=request.user.id),
