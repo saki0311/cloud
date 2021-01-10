@@ -109,6 +109,8 @@ function exitAskDeleteWindow(e){
 /*イベント削除ウィンドウ内の削除ボタンに関する内容**/
 function deleteEvent(e){
   const window = e.target.parentNode.parentNode
+  document.getElementById('event_delete_form').submit();
+  // document.delete_form.submit();
   console.log(window);
   if(window.style.display == "none"){
     window.style.display = "block";

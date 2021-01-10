@@ -66,7 +66,7 @@ class Event(models.Model):
     EventStart = models.DateTimeField()
     EventEnd = models.DateTimeField()
     Flow = models.BooleanField(default=False)
-    Complete = models.BooleanField(default=False)
+    Complete = models.BooleanField(default=True)
     Address = models.CharField(max_length=200,default='')
     Description = models.CharField(max_length=1024)
 
@@ -87,3 +87,21 @@ class ES(models.Model):
 
     def __str__(self):
         return self.QuestionTitle
+
+class analysis_myself(models.Model):
+    '''
+    Account: 属するユーザアカウント
+    Content: 内容
+    Motivation: モチベーション度
+    Start_time: 開始時期
+    End_time: 終了時期
+    '''
+    Account = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        null=True)
+    Title = models.CharField(max_length=100)
+    Content = models.CharField(max_length=1000,default="")
+    Motivation = models.FloatField()
+    Start_time = models.DateTimeField()
+    End_time = models.DateTimeField()

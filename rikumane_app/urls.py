@@ -10,4 +10,6 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('calendar/', views.calendar, name='calendar'),
     path('profile/',views.profile, name='profile'),
+    path('analysis_self/',views.analysis_self, name='analysis_self'),
+    path('matching_output/',views.matching_output, name='matching_output'),
 ]

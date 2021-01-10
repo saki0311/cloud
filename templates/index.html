@@ -174,7 +174,7 @@
             <section id="modalArea" class="modalArea">
                 <!-- グレーの透過マスク -->
                 <div id="e_mask" class="hidden"></div>
-                
+
                 <!-- モーダル画面 -->
                 <div id="e_modal" class="hidden">
                     <p class="e_title">イベント追加</p>
@@ -203,12 +203,17 @@
                 {% comment %} {% for event in events %} {% endcomment %}
                 {% for event in events %}
                 <div class="askDeleteWindow">
-                    <p>{{event.EventName}}を削除しますか？</p>
-                    <p>この作業を実行すると復元することはできません。</p>
-                    <div class="askDeleteAreaButton">
-                        <p onclick="exitAskDeleteWindow(event)">戻る</p> 
-                        <p onclick="deleteEvent(event)">削除</p>
-                    </div>
+                    <p id="confirm_delete_eventName">{{event.EventName}}を削除しますか？</p>
+                    <p id="warning_sentence_event">この作業を実行すると復元することはできません。</p>
+                        <div class="askDeleteAreaButton">
+                            <p id="return_button_event" onclick="exitAskDeleteWindow(event)">戻る</p> 
+                            <p id="delete_button_event" onclick="deleteEvent(event)">削除</p>
+                        </div>
+                        <form id="event_delete_form" name="delete_form" action="" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="event_delete">
+                            <input type="hidden" name="event_id" value={{event.id}}>
+                        </form>
                 </div>
                 <div class='event_{{event.id}}_box'>
                     <div class="event_top_con">

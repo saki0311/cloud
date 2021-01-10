@@ -1,17 +1,28 @@
 
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang="ja">
 
-<div id="account_body">
+</head>
+{% block content %}
+{% endblock %}
+{% block box3%}
+  <div id="account_body">
     <form action="{% url 'rikumane_app:profile'%}" method="post">
-    {% csrf_token %}
+      {% csrf_token %}
       <p>自己分析</p>
-      <textarea name="MemoAnalysis">{{common.MemoAnalysis}}</textarea>
+      <textarea name="self_analysis">{{common.MemoAnalysis}}</textarea>
 
       <p>共通ES</p>
-      <textarea name="MemoES">{{common.MemoES}}</textarea>
+      <textarea name="entrysheet">{{common.MemoES}}</textarea>
 
       <p>MEMO</p>
-      <textarea name="Memo">{{common.Memo}}</textarea>
-      <input type="hidden" name="account" value={{common.Account_id}}>
+      <textarea name="memo">{{common.Memo}}</textarea>
       <input type="submit" value="保存">
     </form>
-</div>
+  </div>
+</form>
+{% endblock %}
+</html>
