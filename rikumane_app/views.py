@@ -17,6 +17,7 @@ from django.contrib.auth import authenticate # 認証設定用関数のインポ
 from django.contrib.auth import login as auth_login # ログイン認証用関数のインポート
 from django.contrib.auth import logout # ログアウト関数のインポート
 import io
+import base64
 
 '''
 login/logout/sineup用関数
@@ -227,13 +228,22 @@ def pltToSvg():
     buf.close()
     return s
 
-def get_svg(request):
+def get_svg():
     generate_wc("こんにちは")
     svg = pltToSvg()
     plt.cla()
     response = HttpResponse(svg,content_type='image/png')
-    plt.savefig('static/img/output.png')
+    # plt.savefig('static/img/output.png')
     #return response
+
+    # 以下ますい追記部分
+    buffer = io.BytesIO() # メモリ上への仮保管先を生成
+    plt.savefig(buffer, format="PNG")
+    base64Img = base64.b64encode(buffer.getvalue()).decode().replace("'", "")
+
+    return base64Img
+
+
 
 def analysis_self(request):
     if not request.user.is_authenticated:
@@ -244,8 +254,10 @@ def analysis_self(request):
         # d = {
         #     'data':data,
         # }
-        get_svg(request)
-        return render(request, 'analysis_self.html')
+        # get_svg(request)
+        motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
+        return render(request, "analysis_self.html", {"motiGraphBase64": motiGraphBase64})
+        # return render(request, 'analysis_self.html')
 
 def matching_output(request):
     if not request.user.is_authenticated:

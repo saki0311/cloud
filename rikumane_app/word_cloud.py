@@ -3,7 +3,7 @@ from wordcloud import WordCloud
 import MeCab
 from matplotlib import pyplot as plt
 
-# ますいが書いた
+# ますいが書いた###
 import matplotlib
 matplotlib.use('Agg')
 ################
