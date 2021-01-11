@@ -230,9 +230,9 @@ def pltToSvg():
 
 def get_svg():
     generate_wc("こんにちは")
-    svg = pltToSvg()
-    plt.cla()
-    response = HttpResponse(svg,content_type='image/png')
+    # svg = pltToSvg()
+    # plt.cla()
+    # response = HttpResponse(svg,content_type='image/png')
     # plt.savefig('static/img/output.png')
     #return response
 
