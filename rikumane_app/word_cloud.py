@@ -24,7 +24,8 @@ def generate_wc(text):
     word_chain = ' '.join(word_list)
 
     wordcloud = WordCloud(background_color="white",
-                            font_path="/System/Library/Fonts/ヒラギノ明朝 ProN.ttc",
+                            font_path="./static/ttc/03SmartFontUI.ttf",
+                            # font_path="/System/Library/Fonts/ヒラギノ明朝 ProN.ttc",
                             # font_path="C:\Windows\Fonts\msgothic.ttc",
                             collocations=False,
                             width=800,height=600).generate(word_chain)
