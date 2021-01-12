@@ -4,4 +4,4 @@ rikumane_app/__pycache__/
 rikumane_app/migrations/
 rikumane_app/__pycache__/*.pyc
 __pycache__/
-rikumane/settings.py
+setting.py
