@@ -255,8 +255,8 @@ def analysis_self(request):
         #     'data':data,
         # }
         # get_svg(request)
-        motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
-        return render(request, "analysis_self.html", {"motiGraphBase64": motiGraphBase64})
+        # motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
+        return render(request, "analysis_self.html") # {"motiGraphBase64": motiGraphBase64})
         # return render(request, 'analysis_self.html')
 
 def matching_output(request):
