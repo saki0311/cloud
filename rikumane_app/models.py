@@ -103,5 +103,5 @@ class analysis_myself(models.Model):
     Title = models.CharField(max_length=100)
     Content = models.CharField(max_length=1000,default="")
     Motivation = models.FloatField()
-    Start_time = models.DateTimeField()
-    End_time = models.DateTimeField()
+    Age = models.IntegerField()
+    Month = models.IntegerField()
