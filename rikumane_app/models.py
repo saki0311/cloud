@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 
 class CommonInfo(models.Model):
@@ -100,7 +101,7 @@ class analysis_myself(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
         null=True)
-    Title = models.CharField(max_length=100)
+    Title = models.CharField(max_length=100,default='')
     Content = models.CharField(max_length=1000,default="")
     Motivation = models.FloatField()
     Age = models.IntegerField()

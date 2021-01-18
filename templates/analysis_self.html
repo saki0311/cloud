@@ -1,26 +1,14 @@
-{% extends 'base.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head lang="ja">
+{% extends 'base.html' %} {% load static %}
 
-</head>
-{% block content %}
-{% endblock %}
-
-</html>
-
-{% block company_edit %}
 <!DOCTYPE html>
 <html>
 <head lang="ja">
 </head>
-{% endblock %}
 
 
 {% block box3%}
   <!-- <img src="static/img/output.png" width=600 height=600> -->
-  <img src="data:image/png;base64,{{motiGraphBase64}}"/>
+  <img src="data:image/png;base64,{{motiGraphBase64}}" />
 
   <!-- モチベーショングラフ描画 -->
   <canvas id="motivation-graph"></canvas>
@@ -80,5 +68,31 @@
     });
   </script>
   {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
-  {% endblock %}
+
+  <h3>登録</h3>
+  <form action="{% url 'rikumane_app:analysis_self'%}" method="post">
+    {% csrf_token %}
+    <p>タイトル</p>
+    <textarea name="title"></textarea>
+
+    <p>内容</p>
+    <textarea name="content"></textarea>
+
+    <p>モチベーション</p>
+    <input type="number" name="motivation" />
+
+    <p>年齢</p>
+    <input type="number" name="age"/>
+    <p>月</p>
+    <input type="number" name="month"/>
+
+    <input type="submit" value="登録" />
+  </form>
+  {% for one in data %}
+  <p>
+    {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Start_time}}
+    {{one.End_time}}
+  </p>
+
+  {% endfor %} {% endblock %}
 </html>
