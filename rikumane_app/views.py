@@ -18,13 +18,10 @@ from django.contrib.auth import login as auth_login # ログイン認証用関�
 from django.contrib.auth import logout # ログアウト関数のインポート
 import io
 import base64
-<<<<<<< HEAD
 import json
-=======
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 
->>>>>>> 6b664682d1d3296eb0152c80e8d8e76af0620d34
 
 '''
 login/logout/sineup用関数
@@ -203,12 +200,13 @@ def analysis_self(request):
                 Title=request.POST.get('title'),
                 Content=request.POST.get('content'),
                 Motivation=request.POST.get('motivation'),
-                Start_time=request.POST.get('start_time'),
-                End_time=request.POST.get('end_time')
+                Age=request.POST.get('age'),
+                Month=request.POST.get('month')
             )
             d.save()
             return redirect('rikumane_app:analysis_self')
         motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
+        data = analysis_myself.objects.filter(Account_id=request.user.id)
         json_data = json.dumps(list(data.values()))
         d = {
             'data':analysis_myself.objects.filter(Account_id=request.user.id),
