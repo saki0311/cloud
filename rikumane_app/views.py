@@ -18,6 +18,7 @@ from django.contrib.auth import login as auth_login # ログイン認証用関�
 from django.contrib.auth import logout # ログアウト関数のインポート
 import io
 import base64
+import json
 
 '''
 login/logout/sineup用関数
@@ -221,21 +222,8 @@ def profile(request):
     # print(d['common'].Memo)
     return render(request,'profile.html',d)
 
-def pltToSvg():
-    buf = io.BytesIO()
-    plt.savefig(buf,format='png')
-    s = buf.getvalue()
-    buf.close()
-    return s
-
 def get_svg():
     generate_wc("こんにちは")
-    # svg = pltToSvg()
-    # plt.cla()
-    # response = HttpResponse(svg,content_type='image/png')
-    # plt.savefig('static/img/output.png')
-    #return response
-
     # 以下ますい追記部分
     buffer = io.BytesIO() # メモリ上への仮保管先を生成
     plt.savefig(buffer, format="PNG")
@@ -255,8 +243,15 @@ def analysis_self(request):
         #     'data':data,
         # }
         # get_svg(request)
+        data = analysis_myself.objects.all().filter(Account_id=request.user.id)
         motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
-        return render(request, "analysis_self.html", {"motiGraphBase64": motiGraphBase64})
+        json_data = json.dumps(list(data.values()))
+        d = {
+            'data':data,
+            'data_json':json_data,
+            "motiGraphBase64": motiGraphBase64
+        }
+        return render(request, "analysis_self.html", d)
         # return render(request, 'analysis_self.html')
 
 def matching_output(request):

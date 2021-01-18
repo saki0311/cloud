@@ -24,8 +24,9 @@
   <!-- モチベーショングラフ描画 -->
   <canvas id="motivation-graph"></canvas>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-  
-
-  <script src="{% static 'js/analysis_self.js' %}"></script>
+  {% for one in data %}
+    {{one.Title}}
+  {% endfor %}
   {% endblock %}
+  <script src="{% static 'js/analysis_self.js' %}"></script>
 </html>
