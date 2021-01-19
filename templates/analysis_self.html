@@ -1,32 +1,100 @@
-{% extends 'base.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head lang="ja">
+{% extends 'base.html' %} {% load static %}
 
-</head>
-{% block content %}
-{% endblock %}
-
-</html>
-
-{% block company_edit %}
 <!DOCTYPE html>
 <html>
 <head lang="ja">
 </head>
-{% endblock %}
+
 
 {% block box3%}
   <!-- <img src="static/img/output.png" width=600 height=600> -->
-  <img src="data:image/png;base64,{{motiGraphBase64}}"/>
+  <img src="data:image/png;base64,{{motiGraphBase64}}" />
 
   <!-- モチベーショングラフ描画 -->
   <canvas id="motivation-graph"></canvas>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  <script>
+    var ctx = document.getElementById("motivation-graph")
+    const motivate_data = JSON.parse('{{ data_json|safe }}')
+    motivate_data.sort(function(a, b) {
+      if (a.Age+a.Month/10 < b.Age+b.Month/10) {
+         return -1;
+      } else {
+        return 1;
+        }
+        });
+    console.log(motivate_data)
+    var x_labels = []
+    var y_labels = []
+
+    for (let i = 0; i < motivate_data.length; i++) {
+      x_element = motivate_data[i].Age + "歳" + motivate_data[i].Month + "月"
+      x_labels.push(x_element)
+      y_labels.push(motivate_data[i].Motivation)
+    }
+    var myLineChart = new Chart(ctx,{
+      type: 'line',
+      data:{
+        //labels: ['15歳', '16歳', '17歳', '18歳', '19歳', '20歳', '21歳'],
+        labels: x_labels,
+        datasets: [
+          {
+            label: 'モチベーション(%）',
+            //data: [40, 50, 75, 10, 34, 50, 80, 25],
+            data: y_labels,
+            borderColor: "rgba(255,0,0,1)",
+            backgroundColor: "rgba(0,0,0,0)"
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: '人生のモチベーショングラフ'
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMax: 100,
+              suggestedMin: 0,
+              stepSize: 10,
+              callback: function(value, index, values){
+                return  value +  '%'
+              }
+            }
+          }]
+        },
+      }
+    });
+  </script>
+  {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
+
+  <h3>登録</h3>
+  <form action="{% url 'rikumane_app:analysis_self'%}" method="post">
+    {% csrf_token %}
+    <p>タイトル</p>
+    <textarea name="title"></textarea>
+
+    <p>内容</p>
+    <textarea name="content"></textarea>
+
+    <p>モチベーション</p>
+    <input type="number" name="motivation" />
+
+    <p>年齢</p>
+    <input type="number" name="age"/>
+    <p>月</p>
+    <input type="number" name="month"/>
+
+    <input type="submit" value="登録" />
+  </form>
   {% for one in data %}
-    {{one.Title}}
-  {% endfor %}
-  <script src="{% static 'js/analysis_self.js' %}"></script>
-{% endblock %}
+  <div class="episode">
+    <p>
+      {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Start_time}}
+      {{one.End_time}}
+    </p>
+  </div>
+
+  {% endfor %} {% endblock %}
 </html>

@@ -19,6 +19,9 @@ from django.contrib.auth import logout # ログアウト関数のインポート
 import io
 import base64
 import json
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
+
 
 '''
 login/logout/sineup用関数
@@ -154,53 +157,7 @@ def detail(request):
 
     return render(request,'detail.html',d)
 
-'''
-    # 以下、編集部分（吉井）
 
-    # データを変更するものはここで
-    if request.method=='POST':
-        # データベースを取得
-        one = Company.objects.get(pk=request.POST['id'])
-        # t:操作するテーブル
-        # o:操作内容(Create,Update,Delete)
-        t = request.POST['table']
-        o = request.POST['operation']
-        if t == 'Account':
-            if o =='update':
-                pass
-            elif o =='delete':
-                pass
-        elif t == 'Company':
-            if o =='update':
-                pass
-            elif o =='delete':
-                pass
-        elif t == 'Event':
-            if o =='create':
-                pass
-            elif o =='update':
-                pass
-            elif o =='delete':
-                pass
-        elif t == 'ES':
-            if o =='create':
-                pass
-            elif o =='update':
-                pass
-            elif o =='delete':
-                pass
-        return redirect('rikumane_app:detail')
-        
-    # データベースを取得
-    one = Company.objects.get(pk=request.GET['id'])
-    d = {
-        company:one,
-        event:one.event_set.all(),
-        es:one.es_set.all()
-    }
-
-    return render(request,'detail.html',d)
-    '''
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('rikumane_app:top')
@@ -237,33 +194,30 @@ def analysis_self(request):
     if not request.user.is_authenticated:
         return redirect('rikumane_app:top')
     else:
-        # data = analysis_myself.objects.get(Account_id=request.user.id) 
-        #データを追加したらコメントアウト外してください！
-        # d = {
-        #     'data':data,
-        # }
-        # get_svg(request)
-        data = analysis_myself.objects.all().filter(Account_id=request.user.id)
+        if request.method == 'POST':
+            d = analysis_myself(
+                Account=request.user,
+                Title=request.POST.get('title'),
+                Content=request.POST.get('content'),
+                Motivation=request.POST.get('motivation'),
+                Age=request.POST.get('age'),
+                Month=request.POST.get('month')
+            )
+            d.save()
+            return redirect('rikumane_app:analysis_self')
         motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
+        data = analysis_myself.objects.filter(Account_id=request.user.id)
         json_data = json.dumps(list(data.values()))
         d = {
-            'data':data,
+            'data':analysis_myself.objects.filter(Account_id=request.user.id),
+            'now':timezone.now,
             'data_json':json_data,
             "motiGraphBase64": motiGraphBase64
         }
-        return render(request, "analysis_self.html", d)
-        # return render(request, 'analysis_self.html')
+        return render(request, 'analysis_self.html',d)
 
 def matching_output(request):
     if not request.user.is_authenticated:
         return redirect('rikumane_app:top')
     else:
         return render(request, 'matching_output.html')
-
-
-
-
-
-
-
-
