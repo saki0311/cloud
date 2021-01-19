@@ -17,7 +17,6 @@
 </head>
 {% endblock %}
 
-
 {% block box3%}
   <!-- <img src="static/img/output.png" width=600 height=600> -->
   <img src="data:image/png;base64,{{motiGraphBase64}}"/>
@@ -28,6 +27,6 @@
   {% for one in data %}
     {{one.Title}}
   {% endfor %}
-  {% endblock %}
   <script src="{% static 'js/analysis_self.js' %}"></script>
+{% endblock %}
 </html>
