@@ -1,6 +1,5 @@
-
-
 var ctx = document.getElementById("motivation-graph")
+const motivate_data = JSON.parse('{{ data_json|safe }}');
 var myLineChart = new Chart(ctx,{
   type: 'line',
   data:{
