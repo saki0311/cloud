@@ -104,8 +104,8 @@ class analysis_myself(models.Model):
     Title = models.CharField(max_length=100,default='')
     Content = models.CharField(max_length=1000,default="")
     Motivation = models.FloatField()
-    Start_time = models.DateTimeField()
-    End_time = models.DateTimeField()
+    Age = models.IntegerField()
+    Month = models.IntegerField()
 
 class CompanyInfo(models.Model):
     '''
@@ -119,5 +119,3 @@ class CompanyInfo(models.Model):
 
     def __str__(self):
         return self.Statue
-    Age = models.IntegerField()
-    Month = models.IntegerField()

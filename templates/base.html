@@ -112,7 +112,7 @@
         </div>
       {% comment %} {% for one in data %} {% endcomment %}
         <div id="menu-link">
-          <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">自己分析</a>
+          {% comment %} <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">自己分析</a> {% endcomment %}
           <a class="profile_manage" href="{% url 'rikumane_app:analysis_self' %}">自己分析</a>
           <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">共通ES</a>
           <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">MEMO</a>
