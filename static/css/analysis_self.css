@@ -1,0 +1,60 @@
+.gen_jibunshi {
+    /* position: absolute; */
+    width: 214px;
+    /* height: 46px;
+    left: 100px;
+    top: 2000px; */
+
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 41px;
+    line-height: 47px;
+
+    color: #FFFFFF;
+}
+
+.episode{
+    /* position: absolute; */
+    width: 963px;
+    /* height: 529px; */
+
+    background: #B9C1D6;
+    opacity: 0.9;
+    border-radius: 5px;
+}
+
+.gen_title{
+    position: relative;
+    width: 445px;
+    height: 27px;
+    left: 25px;
+    top: 10px;
+
+    font-family: Hiragino Kaku Gothic ProN;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: rgba(39, 35, 67, 0.9);
+
+    border-bottom: solid 1px #272343;
+    padding-bottom: 5px;
+}
+
+.gen_content{
+    position: relative;
+    width: 823px;
+    height: 111px;
+    left: 35px;
+    top: 10px;
+
+    font-family: Hiragino Kaku Gothic Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #272343;
+}

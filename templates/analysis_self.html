@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="ja">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/analysis_self.css' %}"> -->
 </head>
 
 
@@ -88,11 +89,16 @@
 
     <input type="submit" value="登録" />
   </form>
+  <h3 class='gen_jibunshi'> &check;自分史</h3>
   {% for one in data %}
   <div class="episode">
-    <p>
-      {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Start_time}}
-      {{one.End_time}}
+    <b class='gen_title'>
+      {{one.Age}}歳({{one.Month}}月):{{one.Title}}
+      <!-- {{one.Start_time}}
+      {{one.End_time}} -->
+      </b>
+    <p class='gen_content'>
+      {{one.Content}}
     </p>
   </div>
 
