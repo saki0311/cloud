@@ -210,11 +210,35 @@ def analysis_self(request):
         json_data = json.dumps(list(data.values()))
         d = {
             'data':analysis_myself.objects.filter(Account_id=request.user.id),
-            'now':timezone.now,
             'data_json':json_data,
             "motiGraphBase64": motiGraphBase64
         }
         return render(request, 'analysis_self.html',d)
+
+def analysis_self_update(request, id):
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    t = analysis_myself.objects.get(pk=id)
+    print(t.id,t.Title,t.Content)
+    if request.method == 'POST':
+        t.Title = request.POST.get('title')
+        t.Content = request.POST.get('content')
+        t.Motivation = request.POST.get('motivation')
+        t.Age = request.POST.get('age')
+        t.Month = request.POST.get('month')
+        t.save()
+        return redirect('rikumane_app:analysis_self')
+    d = {
+        'd':t,
+    }
+    return render(request, 'analysis_self_update.html',d)
+
+def analysis_self_delete(request, id):
+    if not request.user.is_authenticated:
+        return redirect('rikumane_app:top')
+    t = analysis_myself.objects.get(pk=id)
+    t.delete()
+    return redirect('rikumane_app:analysis_self')
 
 def matching_output(request):
     if not request.user.is_authenticated:

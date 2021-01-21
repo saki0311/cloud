@@ -2,11 +2,9 @@
 
 <!DOCTYPE html>
 <html>
-<head lang="ja">
-</head>
+  <head lang="ja"> </head>
 
-
-{% block box3%}
+  {% block box3%}
   <!-- <img src="static/img/output.png" width=600 height=600> -->
   <img src="data:image/png;base64,{{motiGraphBase64}}" />
 
@@ -14,60 +12,64 @@
   <canvas id="motivation-graph"></canvas>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   <script>
-    var ctx = document.getElementById("motivation-graph")
-    const motivate_data = JSON.parse('{{ data_json|safe }}')
-    motivate_data.sort(function(a, b) {
-      if (a.Age+a.Month/10 < b.Age+b.Month/10) {
-         return -1;
+    var ctx = document.getElementById("motivation-graph");
+    const motivate_data = JSON.parse("{{ data_json|safe }}");
+    motivate_data.sort(function (a, b) {
+      if (a.Age + a.Month / 10 < b.Age + b.Month / 10) {
+        return -1;
       } else {
         return 1;
-        }
-        });
-    console.log(motivate_data)
-    var x_labels = []
-    var y_labels = []
+      }
+    });
+    console.log(motivate_data);
+    var x_labels = [];
+    var y_labels = [];
 
     for (let i = 0; i < motivate_data.length; i++) {
-      x_element = motivate_data[i].Age + "歳" + motivate_data[i].Month + "月"
-      x_labels.push(x_element)
-      y_labels.push(motivate_data[i].Motivation)
+      x_element = motivate_data[i].Age + "歳" + motivate_data[i].Month + "月";
+      x_labels.push(x_element);
+      y_labels.push(motivate_data[i].Motivation);
     }
-    var myLineChart = new Chart(ctx,{
-      type: 'line',
-      data:{
+    var myLineChart = new Chart(ctx, {
+      type: "line",
+      data: {
         //labels: ['15歳', '16歳', '17歳', '18歳', '19歳', '20歳', '21歳'],
         labels: x_labels,
         datasets: [
           {
-            label: 'モチベーション(%）',
+            label: "モチベーション(%）",
             //data: [40, 50, 75, 10, 34, 50, 80, 25],
             data: y_labels,
             borderColor: "rgba(255,0,0,1)",
-            backgroundColor: "rgba(0,0,0,0)"
+            backgroundColor: "rgba(0,0,0,0)",
           },
         ],
       },
       options: {
         title: {
           display: true,
-          text: '人生のモチベーショングラフ'
+          text: "人生のモチベーショングラフ",
         },
         scales: {
-          yAxes: [{
-            ticks: {
-              suggestedMax: 100,
-              suggestedMin: 0,
-              stepSize: 10,
-              callback: function(value, index, values){
-                return  value +  '%'
-              }
-            }
-          }]
+          yAxes: [
+            {
+              ticks: {
+                suggestedMax: 100,
+                suggestedMin: 0,
+                stepSize: 10,
+                callback: function (value, index, values) {
+                  return value + "%";
+                },
+              },
+            },
+          ],
         },
-      }
+      },
     });
   </script>
-  {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
+  {% comment %}
+  <script src="{% static 'js/analysis_self.js' %}"></script>
+  {% endcomment %}
 
   <h3>登録</h3>
   <form action="{% url 'rikumane_app:analysis_self'%}" method="post">
@@ -82,17 +84,19 @@
     <input type="number" name="motivation" />
 
     <p>年齢</p>
-    <input type="number" name="age"/>
+    <input type="number" name="age" />
     <p>月</p>
-    <input type="number" name="month"/>
+    <input type="number" name="month" />
 
     <input type="submit" value="登録" />
   </form>
+  <h3>編集と削除</h3>
   {% for one in data %}
   <div class="episode">
     <p>
-      {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Start_time}}
-      {{one.End_time}}
+      <a href="{% url 'rikumane_app:analysis_self_update' one.id %}">編集</a>
+      <a href="{% url 'rikumane_app:analysis_self_delete' one.id %}">削除</a>
+      {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Age}} {{one.Month}}
     </p>
   </div>
 

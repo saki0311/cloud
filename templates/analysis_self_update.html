@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head lang="ja"> </head>
+
+  {% block box3%}
+  <h3>編集</h3>
+  <form action="{% url 'rikumane_app:analysis_self_update' d.id %}" method="post">
+    {% csrf_token %}
+    <p>タイトル</p>
+    <textarea name="title">{{d.Title}}</textarea>
+
+    <p>内容</p>
+    <textarea name="content">{{d.Content}}</textarea>
+
+    <p>モチベーション</p>
+    <input type="number" name="motivation" value="{{d.Motivation}}" />
+
+    <p>年齢</p>
+    <input type="number" name="age" value="{{d.Age}}" />
+    <p>月</p>
+    <input type="number" name="month" value="{{d.Month}}" />
+
+    <input type="submit" value="更新" />
+  </form>
+  {% endblock %}
+</html>

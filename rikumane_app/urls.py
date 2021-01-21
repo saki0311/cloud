@@ -11,5 +11,7 @@ urlpatterns = [
     path('calendar/', views.calendar, name='calendar'),
     path('profile/',views.profile, name='profile'),
     path('analysis_self/',views.analysis_self, name='analysis_self'),
+    path('analysis_self/<int:id>/',views.analysis_self_update, name='analysis_self_update'),
+    path('analysis_self/<int:id>/delete/',views.analysis_self_delete, name='analysis_self_delete'),
     path('matching_output/',views.matching_output, name='matching_output'),
 ]
