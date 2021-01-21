@@ -106,3 +106,16 @@ class analysis_myself(models.Model):
     Motivation = models.FloatField()
     Age = models.IntegerField()
     Month = models.IntegerField()
+
+class CompanyInfo(models.Model):
+    '''
+    Company: 属する企業名
+    Statue: 企業側が求める人物像
+    Busines: 企業の事業情報
+    '''
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE,null=True)
+    Statue = models.TextField('企業が求める人材')
+    Busines = models.TextField('事業案内')
+
+    def __str__(self):
+        return self.Statue

@@ -196,16 +196,21 @@ def analysis_self(request):
         return redirect('rikumane_app:top')
     else:
         if request.method == 'POST':
-            d = analysis_myself(
-                Account=request.user,
-                Title=request.POST.get('title'),
-                Content=request.POST.get('content'),
-                Motivation=request.POST.get('motivation'),
-                Age=request.POST.get('age'),
-                Month=request.POST.get('month')
-            )
-            d.save()
-            return redirect('rikumane_app:analysis_self')
+            if request.POST.get('action') == 'create': #　データ新規登録
+                d = analysis_myself(
+                    Account=request.user,
+                    Title=request.POST.get('title'),
+                    Content=request.POST.get('content'),
+                    Motivation=request.POST.get('motivation'),
+                    Age=request.POST.get('age'),
+                    Month=request.POST.get('month')
+                )
+                d.save()
+            elif request.POST.get('action') == 'delete': # データ削除
+                Analysis_myself_delete(analysis_myself.objects.get(id=request.POST.get('id')))
+            elif request.POST.get('action') == 'update': # データ更新
+                Analysis_myself_update(request)
+            #return redirect('rikumane_app:analysis_self')
         motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
         data = analysis_myself.objects.filter(Account_id=request.user.id)
         json_data = json.dumps(list(data.values()))
