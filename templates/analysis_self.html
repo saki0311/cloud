@@ -10,64 +10,103 @@
   <!-- <img src="static/img/output.png" width=600 height=600> -->
   <img src="data:image/png;base64,{{motiGraphBase64}}" />
 
-  <!-- モチベーショングラフ描画 -->
-  <canvas id="motivation-graph"></canvas>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-  <script>
-    var ctx = document.getElementById("motivation-graph")
-    const motivate_data = JSON.parse('{{ data_json|safe }}')
-    motivate_data.sort(function(a, b) {
-      if (a.Age+a.Month/10 < b.Age+b.Month/10) {
-         return -1;
-      } else {
-        return 1;
-        }
-        });
-    console.log(motivate_data)
-    var x_labels = []
-    var y_labels = []
 
-    for (let i = 0; i < motivate_data.length; i++) {
-      x_element = motivate_data[i].Age + "歳" + motivate_data[i].Month + "月"
-      x_labels.push(x_element)
-      y_labels.push(motivate_data[i].Motivation)
-    }
-    var myLineChart = new Chart(ctx,{
-      type: 'line',
-      data:{
-        //labels: ['15歳', '16歳', '17歳', '18歳', '19歳', '20歳', '21歳'],
-        labels: x_labels,
-        datasets: [
-          {
-            label: 'モチベーション(%）',
-            //data: [40, 50, 75, 10, 34, 50, 80, 25],
-            data: y_labels,
-            borderColor: "rgba(255,0,0,1)",
-            backgroundColor: "rgba(0,0,0,0)"
-          },
-        ],
-      },
-      options: {
-        title: {
-          display: true,
-          text: '人生のモチベーショングラフ'
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              suggestedMax: 100,
-              suggestedMin: 0,
-              stepSize: 10,
-              callback: function(value, index, values){
-                return  value +  '%'
-              }
+  <div class="motigraph">
+    <div class = "ogata">
+      <li><svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect width="31" height="32" fill="url(#pattern0)"/>
+        <defs>
+        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0" transform="translate(-0.016129) scale(0.00403226 0.00390625)"/>
+        </pattern>
+        <image id="image0" width="256" height="256" xlink:href="data:image/png;base64,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"/>
+        </defs>
+        </svg>モチベーショングラフ<br>
+    </div>
+    <div class= "motigraph-field">
+      <!-- モチベーショングラフ描画 -->
+      <canvas  id="motivation-graph"></canvas>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+      <script>
+        var ctx = document.getElementById("motivation-graph")
+        const motivate_data = JSON.parse('{{ data_json|safe }}')
+        motivate_data.sort(function(a, b) {
+          if (a.Age+a.Month/10 < b.Age+b.Month/10) {
+            return -1;
+          } else {
+            return 1;
             }
-          }]
-        },
-      }
-    });
-  </script>
-  {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
+            });
+        console.log(motivate_data)
+        var x_labels = []
+        var y_labels = []
+
+        for (let i = 0; i < motivate_data.length; i++) {
+          x_element = motivate_data[i].Age + "歳" + motivate_data[i].Month + "月"
+          x_labels.push(x_element)
+          y_labels.push(motivate_data[i].Motivation)
+        }
+        var myLineChart = new Chart(ctx,{
+          type: 'line',
+          data:{
+            //labels: ['15歳', '16歳', '17歳', '18歳', '19歳', '20歳', '21歳'],
+            labels: x_labels,
+            datasets: [
+              {
+                label: 'motivation(%）',
+                //data: [40, 50, 75, 10, 34, 50, 80, 25],
+                data: y_labels,
+                borderColor: "#68A8B6",
+                backgroundColor: "rgba(0,0,0,0)"
+              },
+            ],
+          },
+          options: {
+            legend: {
+              display:false
+            },
+            scales: {
+              xAxes: [{
+                gridLines: {
+                  display:false
+                },
+                scaleLabel: {              //軸ラベル設定
+                       display: true,          //表示設定
+                       labelString: 'time',  //ラベル
+                       fontSize: 13,               //フォントサイズ
+                       fontfamily: "Hiragino Kaku Gothic Pro"
+                },
+              }],
+              yAxes: [{
+                gridLines: {
+                  display:false
+                },
+                scaleLabel: {              //軸ラベル設定
+                       display: true,          //表示設定
+                       labelString: 'motivation',  //ラベル
+                       fontSize: 13,               //フォントサイズ
+                       fontfamily: "Hiragino Kaku Gothic Pro"
+                },
+                ticks: {
+                  display: true,
+                  suggestedMax: 100,
+                  suggestedMin: 0,
+                  stepSize: 10,
+                  callback: function(value, index, values) {
+                    if (value % 50 != 0){
+                        return ""
+                    } 
+                    return  value +  '%'
+                  }
+                }
+              }]
+            },
+          }
+        });
+      </script>
+      {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
+    </div>    
+  </div>
 
   <h3>登録</h3>
   <form action="{% url 'rikumane_app:analysis_self'%}" method="post" >
