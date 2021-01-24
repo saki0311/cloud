@@ -1,4 +1,4 @@
-from rikumane_app.models import Company, CommonInfo, ES, Event
+from rikumane_app.models import Company, CommonInfo, ES, Event, analysis_myself
 from django.contrib.auth.models import User
 
 '''
@@ -117,4 +117,16 @@ def Event_update(req):
 
 def Event_delete(data):
     print(data)
+    data.delete()
+
+def Analysis_myself_update(req):
+    analysis_myself_info = analysis_myself.objects.get(id=req.POST.get('id'))
+    analysis_myself_info.Title = req.POST.get('title')
+    analysis_myself_info.Content = req.POST.get('content')
+    analysis_myself_info.Motivation = req.POST.get('motivation')
+    analysis_myself_info.Age = req.POST.get('age')
+    analysis_myself_info.Month = req.POST.get('month')
+    analysis_myself_info.save()
+
+def Analysis_myself_delete(data):
     data.delete()

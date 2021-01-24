@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # from .forms import CompanyForm
 from .crud import *
 from .word_cloud import *
+from .cos import *
 from django.contrib.auth.models import User # Django認証用モデルのインポート
 from django.contrib.auth import authenticate # 認証設定用関数のインポート
 from django.contrib.auth import login as auth_login # ログイン認証用関数のインポート
@@ -195,16 +196,21 @@ def analysis_self(request):
         return redirect('rikumane_app:top')
     else:
         if request.method == 'POST':
-            d = analysis_myself(
-                Account=request.user,
-                Title=request.POST.get('title'),
-                Content=request.POST.get('content'),
-                Motivation=request.POST.get('motivation'),
-                Age=request.POST.get('age'),
-                Month=request.POST.get('month')
-            )
-            d.save()
-            return redirect('rikumane_app:analysis_self')
+            if request.POST.get('action') == 'create': #　データ新規登録
+                d = analysis_myself(
+                    Account=request.user,
+                    Title=request.POST.get('title'),
+                    Content=request.POST.get('content'),
+                    Motivation=request.POST.get('motivation'),
+                    Age=request.POST.get('age'),
+                    Month=request.POST.get('month')
+                )
+                d.save()
+            elif request.POST.get('action') == 'delete': # データ削除
+                Analysis_myself_delete(analysis_myself.objects.get(id=request.POST.get('id')))
+            elif request.POST.get('action') == 'update': # データ更新
+                Analysis_myself_update(request)
+            #return redirect('rikumane_app:analysis_self')
         motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
         data = analysis_myself.objects.filter(Account_id=request.user.id)
         json_data = json.dumps(list(data.values()))
@@ -220,4 +226,11 @@ def matching_output(request):
     if not request.user.is_authenticated:
         return redirect('rikumane_app:top')
     else:
-        return render(request, 'matching_output.html')
+        user_analysis_data = analysis_myself.objects.filter(Account_id=request.user.id) # 登録者の自分史データ
+        user_text_data = ''
+        company_data = "ソフトバンクの変化を楽しみ、何事もチャンスと捉え挑戦する人常に進化し続けるソフトバンクを楽しみながらいかなる仕事もチャンスと捉えやり遂げる様々な機会へ自ら意欲的に手を挙げるそんな一人ひとりの挑戦が会社の未来を創ります結局、人は何がしたいのだろう？」人は何がしたいのか、そのことをずっと考えていこう。まず、あなたが面白いと思うことでなければ、誰かを面白いと思わせることはできないはずだから。もっともらしいブランドスローガンを謳うより、まず自分は何をしたいのか？そう問いかけよう。あなたの周りの人、まだ会ったことのない人は、今いったい何がしたいのだろう？10年、20年、30年後は、どうだろう？そのことをずっと考えていこう。何をどうすれば、誰もが公平に、したいことができる世の中になるのか？そのことをずっと考えていこう。そういう仕事をしていこう。そういうチームを動かす人になろう。"
+        for one in list(user_analysis_data.values()):
+            user_text_data += one['Content']
+        similary = cos(user_text_data,company_data)
+        d = {'sim':similary}
+        return render(request, 'matching_output.html',d)

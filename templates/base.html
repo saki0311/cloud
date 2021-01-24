@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/analysis_self.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/matching_output.css' %}">
   <link href='/static/lib/main.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <script src='/static/lib/main.js'></script>
@@ -111,7 +112,7 @@
         </div>
       {% comment %} {% for one in data %} {% endcomment %}
         <div id="menu-link">
-          <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">自己分析</a>
+          {% comment %} <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">自己分析</a> {% endcomment %}
           <a class="profile_manage" href="{% url 'rikumane_app:analysis_self' %}">自己分析</a>
           <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">共通ES</a>
           <a class="profile_manage" href="{% url 'rikumane_app:profile' %}?id={{user.id}}">MEMO</a>
@@ -151,4 +152,5 @@
 {% endblock %}
 <script src="{% static 'js/user_define.js' %}"></script>
 <script src="{% static 'js/account_menu.js' %}"></script>
+<!-- <script src="{% static 'js/analysis_self.js' %}"></script> -->
 </html>
