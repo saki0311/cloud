@@ -47,3 +47,20 @@ function profileEditDisplay(){
         target.style.display = "none";
     }
 }
+
+// 自分史新規登録モーダル
+const motivation_modal = document.getElementById("motivation-modal");
+motivation_modal.style.display = "none";
+const open_modal = document.getElementById("open-modal");
+open_modal.onclick = function (){
+    if(motivation_modal.style.display == "none"){
+        motivation_modal.style.display = "block"
+    }
+}
+
+const motivation_modal_close = document.getElementById("motivation-modal-close");
+motivation_modal_close.onclick = function (){
+    if(motivation_modal.style.display == "block"){
+        motivation_modal.style.display = "none"
+    }
+}

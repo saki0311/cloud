@@ -1,3 +1,101 @@
+#open-modal{
+    /* width: 45%; */
+    /* margin-left: 40px; */
+    border: 2px solid #FAFAFA;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    outline: none; /*ボタン押したときの枠線消去*/ 
+    margin-top: 10px;
+}
+
+#motivation-modal{
+        /*background: #1F609C; /*背景は白(わかりやすさのため今は白じゃない)*/
+        background:#FAFAFA; /*背景は#FAFAFA*/
+        border-radius: 10px;/*モーダル画面の角を丸する*/
+        width: 1010px; /*横幅を指定*/
+        position:fixed;/*絶対位置を指定(スクロールで動く)*/
+        top:33px;/*縦に40pxの位置から描画*/
+        /*right: 0px;*//*右に0距離から描画を始める*/
+        /* height:510px;モーダル画面の縦幅を指定 */
+        height:725px;/*モーダル画面の縦幅を指定*/
+        left:360px;/*左に471pxの位置から描画を始める*/
+        margin:0 auto; /*左右中央寄せ*/
+        padding: 20px;/*内側に余白*/
+        z-index: 2;
+        text-align: center; /*modal内のブロック要素を中央に寄せる*/
+}
+
+/*モーダル内の閉じるボタン領域*/
+#motivation-modal-close{
+    position: absolute;
+    right: 5%;
+}
+
+/*モーダルのタイトル*/
+.motivation_modal_title{
+    /*タイトルの位置*/
+    width: 280px;
+    height: 55px;
+    left: 574px;
+    top: 144px;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    color: #272343; /*タイトルの文字の色*/
+    font-style: normal; /*フォントスタイルは初期値*/
+    font-weight: 500; /*フォントの太さを指定*/
+    font-size: 40px; /*フォントの大きさを指定*/
+    line-height: 60px; /*行の高さを指定*/
+    margin: 70px 0px 70px 40px;
+}
+
+/*モーダル内の項目名の配置*/
+.motivation_item_name{
+    position: relative;
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    text-align: left; /*文字を左寄せにする*/
+    padding-left: 135px; /*左側に余白を設ける*/
+    margin-bottom:40px
+}
+
+/*モーダル内の入力欄の配置*/
+.motivation_modal_input{
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    font-size: 15px;
+    position: absolute;
+    height: 30px;
+    width: 523px;
+    background-color: #FAFAFA; /*入力欄の背景色*/
+    color: #272343; /*入力欄の文字色*/
+    right: 17%; /*配置場所の指定*/
+    border-color: #272343; /*テキストフィールドの枠線の色*/
+    border-width: 0px 0px 2px 0px; /*テキストフィールドの枠線を下線のみにする*/
+}
+
+/* リサイズ禁止 */
+.not_resize{
+    resize: none;
+}
+
+/* テキストエリア行数 */
+.textarea_rows{
+    height: calc( 1.3em * 3 );
+    line-height: 1.3;
+    font-size: 15px;
+}
+
+/* モーダル内内容用高さ */
+.detail_height{
+    height: calc( 1.3em * 3 );
+}
+
+/*入力欄に初期表示する文字に関して*/
+textarea::placeholder {
+    font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
+    color: #272343; /*文字色の指定*/
+    font-size: 15px;
+}
 
 /* モチベーショングラフcss */
 /* モチベーショングラフのタイトル */
