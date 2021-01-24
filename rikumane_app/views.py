@@ -7,7 +7,7 @@ from PIL import Image
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 )
-from rikumane_app.models import Company,ES,Event,CommonInfo,analysis_myself
+from rikumane_app.models import Company,ES,Event,CommonInfo,analysis_myself,RegisterCompanyInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from .forms import CompanyForm
 from .crud import *
@@ -228,9 +228,18 @@ def matching_output(request):
     else:
         user_analysis_data = analysis_myself.objects.filter(Account_id=request.user.id) # 登録者の自分史データ
         user_text_data = ''
-        company_data = "ソフトバンクの変化を楽しみ、何事もチャンスと捉え挑戦する人常に進化し続けるソフトバンクを楽しみながらいかなる仕事もチャンスと捉えやり遂げる様々な機会へ自ら意欲的に手を挙げるそんな一人ひとりの挑戦が会社の未来を創ります結局、人は何がしたいのだろう？」人は何がしたいのか、そのことをずっと考えていこう。まず、あなたが面白いと思うことでなければ、誰かを面白いと思わせることはできないはずだから。もっともらしいブランドスローガンを謳うより、まず自分は何をしたいのか？そう問いかけよう。あなたの周りの人、まだ会ったことのない人は、今いったい何がしたいのだろう？10年、20年、30年後は、どうだろう？そのことをずっと考えていこう。何をどうすれば、誰もが公平に、したいことができる世の中になるのか？そのことをずっと考えていこう。そういう仕事をしていこう。そういうチームを動かす人になろう。"
+        company_text_data = ''
         for one in list(user_analysis_data.values()):
             user_text_data += one['Content']
-        similary = cos(user_text_data,company_data)
-        d = {'sim':similary}
+        
+        company_data = list(RegisterCompanyInfo.objects.all().values())
+        
+        for one in company_data:
+            company_text_data += one['Statue'] + one['Busines']
+            one['Sim'] = cos(user_text_data,company_text_data)
+            company_text_data = ''
+        
+        d = {
+            'company':company_data
+        }
         return render(request, 'matching_output.html',d)

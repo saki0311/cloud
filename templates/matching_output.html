@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+<!-- Compiled and minified CSS -->
 {% load static %}
 
 {% block company_edit %}
@@ -9,5 +10,28 @@
 {% endblock %}
 
 {% block box3%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<ul class="collapsible">
+{% for one in company %}
+  <li class="white">
+    <div class="collapsible-header">
+        {{one.Name}}
+        <span class="badge">適合度：{{one.Sim}}</span>
+    </div>
+    <div class="collapsible-body">
+        <p>{{one.Statue}}</p>
+        <p>{{one.Busines}}</p>
+    </div>
+  </li>
+{% endfor %}
+</ul>
 {{sim}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+  });
+</script>
 {% endblock %}
