@@ -3,12 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head lang="ja">
+  <link rel="stylesheet" href="{% static 'css/analysis_self.css' %}">
 </head>
 
 
 {% block box3%}
   <!-- <img src="static/img/output.png" width=600 height=600> -->
   <img src="data:image/png;base64,{{motiGraphBase64}}" />
+
+  <div>
+    <button id="open-modal" class="button"> 新規自分史登録 </button>
+  </div>
 
   <!-- モチベーショングラフ描画 -->
   <canvas id="motivation-graph"></canvas>
@@ -69,26 +74,27 @@
   </script>
   {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
 
-  <h3>登録</h3>
-  <form action="{% url 'rikumane_app:analysis_self'%}" method="post" >
-    {% csrf_token %}
-    <input type="hidden" name="action" value="create">
-    <p>タイトル</p>
-    <textarea name="title"></textarea>
+  <div id="motivation-modal">
+    <div id="motivation-modal-close">
+      <button class="batsu_button cursor">×</button>
+    </div>
+    <p class="motivation_modal_title">自分史新規登録</p>
+    <form action="{% url 'rikumane_app:analysis_self'%}" method="post" >
+      {% csrf_token %}
+      <input type="hidden" name="action" value="create">
+      <p class="motivation_item_name">タイトル<textarea class="motivation_modal_input not_resize" name="title" placeholder="出来事名を入力してください。"></textarea></p>
 
-    <p>内容</p>
-    <textarea name="content"></textarea>
+      <p class="motivation_item_name detail_height">内容<textarea class="motivation_modal_input textarea_rows not_resize" name="content" placeholder="出来事の内容を入力してください。"></textarea></p>
 
-    <p>モチベーション</p>
-    <input type="number" name="motivation" />
+      <p class="motivation_item_name">モチベーション(%)<input class="motivation_modal_input" type="number" min="0" max="100" name="motivation" placeholder="0~100の範囲内で入力してください。" /></p>
 
-    <p>年齢</p>
-    <input type="number" name="age"/>
-    <p>月</p>
-    <input type="number" name="month"/>
+      <p class="motivation_item_name">年齢(歳)<input class="motivation_modal_input" type="number" min="0" max="65" name="age" placeholder="0~65の範囲内で入力してください。"/></p>
+      
+      <p class="motivation_item_name">月<input class="motivation_modal_input" type="number" min="1" max="12" name="month" placeholder="1~12の範囲内で入力してください。"/></p>
 
-    <input type="submit" value="登録" />
-  </form>
+      <input class="modal_button_size" type="submit" value="登録" />
+    </form>
+  </div>
   <h3>編集と削除</h3>
     {% for one in data %}
     <div class="episode">
