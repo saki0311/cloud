@@ -138,13 +138,12 @@
   <div class="episode">
     <b class='gen_title'>
       {{one.Age}}歳({{one.Month}}月):{{one.Title}}
-      <!-- {{one.Start_time}}
-      {{one.End_time}} -->
-      </b>
+    </b>
     <p class='gen_content'>
       {{one.Content}}
     </p>
   </div>
+  {% endfor %}
   <h3>編集と削除</h3>
     {% for one in data %}
     <div class="episode">
@@ -174,6 +173,6 @@
         {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Age}} {{one.Month}}
       </p>
     </div>
-
-  {% endfor %} {% endblock %}
+    {% endfor %} 
+  {% endblock %}
 </html>
