@@ -64,3 +64,4 @@ motivation_modal_close.onclick = function (){
         motivation_modal.style.display = "none"
     }
 }
+

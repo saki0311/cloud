@@ -1,4 +1,8 @@
 #open-modal{
+    /* margin-bottom: 5%; */
+    float: right;
+    margin-right: 2%;
+    /* height: 10%; */
     /* width: 45%; */
     /* margin-left: 40px; */
     border: 2px solid #FAFAFA;
@@ -8,8 +12,12 @@
     background-color: transparent;
     color: white;
     outline: none; /*ボタン押したときの枠線消去*/ 
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    position: absolute;
+    top:760px;
+    left:880px;
 }
+
 
 #motivation-modal{
         /*background: #1F609C; /*背景は白(わかりやすさのため今は白じゃない)*/
@@ -99,14 +107,15 @@ textarea::placeholder {
 
 /* モチベーショングラフcss */
 /* モチベーショングラフのタイトル */
-.ogata{
+.ogata-title{
     /* フォント */
     font-family: Helvetica;
     font-style: normal;
     font-weight: bold;
     color: #FFFFFF;
     font-size: 41px;
-
+    /* width: 70%; */
+    /* float: left; */
     margin-top: 5%;
     margin-bottom: 1%;
 }
@@ -130,4 +139,35 @@ textarea::placeholder {
     font-family: Hiragino Kaku Gothic Pro;
     font-style: normal;
     font-weight: normal;
+}
+
+.jibunshi-field{
+    /* 背景色変更 */
+    background-color: #B9C1D6; 
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    border-bottom: solid 0.5px #b4b3b3;
+
+    padding: 5%;
+}
+
+.jibunshi-title{
+    font-family: Hiragino Kaku Gothic ProN;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: #272343;
+}
+
+.jibunshi-main{
+    font-family: Hiragino Kaku Gothic Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #272343;
 }
