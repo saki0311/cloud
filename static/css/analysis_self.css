@@ -1,7 +1,3 @@
-/* h3{
-    color: red; */
-/* } */
-
 #open-modal{
     /* width: 45%; */
     /* margin-left: 40px; */
@@ -12,6 +8,7 @@
     background-color: transparent;
     color: white;
     outline: none; /*ボタン押したときの枠線消去*/ 
+    margin-top: 10px;
 }
 
 #motivation-modal{
@@ -98,4 +95,39 @@ textarea::placeholder {
     font-family: Hiragino Kaku Gothic ProN; /*フォントの種類*/
     color: #272343; /*文字色の指定*/
     font-size: 15px;
+}
+
+/* モチベーショングラフcss */
+/* モチベーショングラフのタイトル */
+.ogata{
+    /* フォント */
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 41px;
+
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+
+/* モチベーショングラフの背景 */
+.motigraph-field{
+    /* 背景色変更 */
+    background-color: #F0F0F0; 
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    border-bottom: solid 0.5px #b4b3b3;
+
+    padding: 5%;
+}
+
+#motivation-graph{
+    font-family: Hiragino Kaku Gothic Pro;
+    font-style: normal;
+    font-weight: normal;
 }
