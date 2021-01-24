@@ -118,6 +118,6 @@ class CompanyInfo(models.Model):
     Company = models.ForeignKey(Company, on_delete=models.CASCADE,null=True)
     Statue = models.TextField('企業が求める人材')
     Busines = models.TextField('事業案内')
-
+    
     def __str__(self):
         return self.Statue
