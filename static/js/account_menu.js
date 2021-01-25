@@ -64,3 +64,11 @@ motivation_modal_close.onclick = function (){
         motivation_modal.style.display = "none"
     }
 }
+
+// 自分史編集モーだる
+const jibunshi_modal_close = document.getElementById("jibunshi-modal-close");
+jibunshi_modal_close.onclick = function (){
+    if(jibunshi_modal.style.display == "block"){
+        jibunshi_modal.style.display = "none"
+    }
+}
