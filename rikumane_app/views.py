@@ -22,7 +22,7 @@ import base64
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
-
+import discord
 
 '''
 login/logout/sineup用関数
@@ -184,10 +184,13 @@ def get_svg(con):
     #print(content)
     generate_wc(con)
     # 以下ますい追記部分
+    
     buffer = io.BytesIO() # メモリ上への仮保管先を生成
-    plt.savefig(buffer, format="PNG")
+    plt.savefig(buffer, format="PNG", transparent=True)
     base64Img = base64.b64encode(buffer.getvalue()).decode().replace("'", "")
-
+    # buffer.close()
+    buffer.flush()
+    print(buffer)
     return base64Img
 
 

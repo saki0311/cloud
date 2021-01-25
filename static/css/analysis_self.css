@@ -14,7 +14,7 @@
     outline: none; /*ボタン押したときの枠線消去*/ 
     /* margin-top: 10px; */
     position: absolute;
-    top:760px;
+    top:1460px;
     left:880px;
 }
 
@@ -143,7 +143,7 @@ textarea::placeholder {
 
 .jibunshi-field{
     /* 背景色変更 */
-    background-color: #B9C1D6; 
+    background-color: #E3EBF6; 
 
     /* 角を丸くする */
     -moz-border-radius: 5px;
@@ -204,3 +204,19 @@ textarea::placeholder {
     right: 5%;
 }
 
+
+.wordcloud-field{
+    /* 背景色変更 */
+    background-color: white; 
+
+    /* 角を丸くする */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    border-bottom: solid 0.5px #b4b3b3;
+
+    padding: 5%;
+    text-align: center;
+    
+}

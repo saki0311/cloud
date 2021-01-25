@@ -24,12 +24,15 @@ def generate_wc(text):
 
     word_chain = ' '.join(word_list)
 
-    wordcloud = WordCloud(background_color="white",
+    wordcloud = WordCloud(background_color=None,
+                            #background_color="white",
+                            mode="RGBA",
                             font_path="./static/ttc/03SmartFontUI.ttf",
+                            colormap="PuBu",
                             # font_path="/System/Library/Fonts/ヒラギノ明朝 ProN.ttc",
                             # font_path="C:\Windows\Fonts\msgothic.ttc",
                             collocations=False,
-                            width=800,height=600).generate(word_chain)
+                            width=1000,height=800).generate(word_chain)
 
 
     plt.imshow(wordcloud)
