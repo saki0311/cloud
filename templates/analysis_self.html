@@ -107,10 +107,6 @@
       {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
     </div>    
   </div>
-<<<<<<< HEAD
-  <div>
-    <button id="open-modal" class="button"> 新規自分史登録 </button>
-=======
   <img src="data:image/png;base64,{{motiGraphBase64}}" />
   <div class = "ogata-title">
     <svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -125,7 +121,6 @@
 
       <button id="open-modal" class="button"> 新規自分史登録 </button>
     
->>>>>>> master
   </div>
   <div id="motivation-modal">
     <div id="motivation-modal-close">
@@ -172,46 +167,12 @@
       {{one.Content}}
     </p>
   </div>
-<<<<<<< HEAD
   {% endfor %}
   <h3>編集と削除</h3>
-<<<<<<< HEAD
-  {% for one in data %}
-  <div class="episode">
-    <p>
-      <form method="post" name="form_update" action="{% url 'rikumane_app:analysis_self' %}">
-        {% csrf_token %}
-        <input type="hidden" name="id" value={{one.id}}>
-        <input type="hidden" name="action" value="update">
-        <p>タイトル</p>
-        <textarea name="title">{{one.Title}}</textarea>
-        <p>内容</p>
-        <textarea name="content">{{one.Content}}</textarea>
-        <p>モチベーション</p>
-        <input type="number" name="motivation" value={{one.Motivation}} />
-        <p>年齢</p>
-        <input type="number" name="age" value={{one.Age}} />
-        <p>月</p>
-        <input type="number" name="month" value={{one.Month}} />
-        <input type="submit" value="更新">
-      </form>
-      <form method="post" name="form_delete" action="{% url 'rikumane_app:analysis_self' %}">
-        {% csrf_token %}
-        <input type="hidden" name="id" value={{one.id}}>
-        <input type="hidden" name="action" value="delete">
-        <input type="submit" value="削除">
-      </form>
-      {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Age}} {{one.Month}}
-    </p>
-  </div>
-  {% endfor %} 
-=======
     {% for one in data %}
-=======
   <!-- <h3>編集と削除</h3> -->
   <div class="jibunshi-field">
       {% for one in analy_data %}
->>>>>>> 59d7e5024e5dce069c53001f67058ba20a15e092
     <div class="episode">
       <p>
       <div id="jibunshi-modal">
@@ -258,17 +219,6 @@
         </div>
         </p>
     </div>
-<<<<<<< HEAD
     {% endfor %} 
->>>>>>> master
   {% endblock %}
 </html>
-=======
-
-  {% endfor %} 
-  </div>
-  
-  
-  {% endblock %}
-</html>
->>>>>>> 59d7e5024e5dce069c53001f67058ba20a15e092
