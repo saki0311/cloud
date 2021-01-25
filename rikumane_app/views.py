@@ -180,8 +180,9 @@ def profile(request):
     # print(d['common'].Memo)
     return render(request,'profile.html',d)
 
-def get_svg():
-    generate_wc("こんにちは")
+def get_svg(con):
+    #print(content)
+    generate_wc(con)
     # 以下ますい追記部分
     buffer = io.BytesIO() # メモリ上への仮保管先を生成
     plt.savefig(buffer, format="PNG")
@@ -210,12 +211,19 @@ def analysis_self(request):
                 Analysis_myself_delete(analysis_myself.objects.get(id=request.POST.get('id')))
             elif request.POST.get('action') == 'update': # データ更新
                 Analysis_myself_update(request)
-            #return redirect('rikumane_app:analysis_self')
-        motiGraphBase64 = get_svg() # base64エンコードされた文字列を受け取り
-        data = analysis_myself.objects.filter(Account_id=request.user.id)
-        json_data = json.dumps(list(data.values()))
+            
+        data = list(analysis_myself.objects.filter(Account_id=request.user.id).values())
+        word_cloud_text = ''
+        for one in data:
+            one['val'] = int(one['Age']) + int(one['Month'])*0.1
+            word_cloud_text += one['Content']
+        data = sorted(data, key=lambda x: x['val'])
+        motiGraphBase64 = get_svg(word_cloud_text) # base64エンコードされた文字列を受け取り
+        json_data = json.dumps(data)
+
         d = {
-            'analy_data':analysis_myself.objects.filter(Account_id=request.user.id),
+            # 'analy_data':analysis_myself.objects.filter(Account_id=request.user.id),
+            'analy_data':data,
             'now':timezone.now,
             'data_json':json_data,
             "motiGraphBase64": motiGraphBase64,
@@ -237,7 +245,7 @@ def matching_output(request):
         
         for one in company_data:
             company_text_data += one['Statue'] + one['Busines']
-            one['Sim'] = cos(user_text_data,company_text_data)
+            one['Sim'] = int(cos(user_text_data,company_text_data) * 100)
             company_text_data = ''
         
         d = {
