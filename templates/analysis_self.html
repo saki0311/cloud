@@ -108,11 +108,9 @@
       {% comment %} <script src="{% static 'js/analysis_self.js' %}"></script> {% endcomment %}
     </div>    
   </div>
-
   <div>
     <button id="open-modal" class="button"> 新規自分史登録 </button>
   </div>
-
   <div id="motivation-modal">
     <div id="motivation-modal-close">
       <button class="batsu_button cursor">×</button>
@@ -133,9 +131,24 @@
 
       <input class="modal_button_size" type="submit" value="登録" />
     </form>
+  </div>
   <h3 class='gen_jibunshi'> &check;自分史</h3>
   {% for one in data %}
   <div class="episode">
+    <i type="button" class="fas fa-ellipsis-v triple_dot cursor" data-toggle="modal" data-target="#sampleModal"></i>
+    <div class="modal fade" id="sampleModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+			      <h4 class="modal-title">タイトル</h4>
+          </div>
+          <div class="modal-body">
+            本文
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} {% for one in data %} {% endcomment %}
     <b class='gen_title'>
       {{one.Age}}歳({{one.Month}}月):{{one.Title}}
     </b>
@@ -145,34 +158,34 @@
   </div>
   {% endfor %}
   <h3>編集と削除</h3>
-    {% for one in data %}
-    <div class="episode">
-      <p>
-        <form method="post" name="form_update" action="{% url 'rikumane_app:analysis_self' %}">
-          {% csrf_token %}
-          <input type="hidden" name="id" value={{one.id}}>
-          <input type="hidden" name="action" value="update">
-          <p>タイトル</p>
-          <textarea name="title">{{one.Title}}</textarea>
-          <p>内容</p>
-          <textarea name="content">{{one.Content}}</textarea>
-          <p>モチベーション</p>
-          <input type="number" name="motivation" value={{one.Motivation}} />
-          <p>年齢</p>
-          <input type="number" name="age" value={{one.Age}} />
-          <p>月</p>
-          <input type="number" name="month" value={{one.Month}} />
-          <input type="submit" value="更新">
-        </form>
-        <form method="post" name="form_delete" action="{% url 'rikumane_app:analysis_self' %}">
-          {% csrf_token %}
-          <input type="hidden" name="id" value={{one.id}}>
-          <input type="hidden" name="action" value="delete">
-          <input type="submit" value="削除">
-        </form>
-        {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Age}} {{one.Month}}
-      </p>
-    </div>
-    {% endfor %} 
+  {% for one in data %}
+  <div class="episode">
+    <p>
+      <form method="post" name="form_update" action="{% url 'rikumane_app:analysis_self' %}">
+        {% csrf_token %}
+        <input type="hidden" name="id" value={{one.id}}>
+        <input type="hidden" name="action" value="update">
+        <p>タイトル</p>
+        <textarea name="title">{{one.Title}}</textarea>
+        <p>内容</p>
+        <textarea name="content">{{one.Content}}</textarea>
+        <p>モチベーション</p>
+        <input type="number" name="motivation" value={{one.Motivation}} />
+        <p>年齢</p>
+        <input type="number" name="age" value={{one.Age}} />
+        <p>月</p>
+        <input type="number" name="month" value={{one.Month}} />
+        <input type="submit" value="更新">
+      </form>
+      <form method="post" name="form_delete" action="{% url 'rikumane_app:analysis_self' %}">
+        {% csrf_token %}
+        <input type="hidden" name="id" value={{one.id}}>
+        <input type="hidden" name="action" value="delete">
+        <input type="submit" value="削除">
+      </form>
+      {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Age}} {{one.Month}}
+    </p>
+  </div>
+  {% endfor %} 
   {% endblock %}
 </html>
