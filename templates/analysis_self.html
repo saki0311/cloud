@@ -135,7 +135,7 @@
     </form>
   </div>
   <h3>編集と削除</h3>
-    {% for one in data %}
+    {% for one in analy_data %}
     <div class="episode">
       <p>
         <form method="post" name="form_update" action="{% url 'rikumane_app:analysis_self' %}">

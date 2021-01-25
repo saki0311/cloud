@@ -215,10 +215,11 @@ def analysis_self(request):
         data = analysis_myself.objects.filter(Account_id=request.user.id)
         json_data = json.dumps(list(data.values()))
         d = {
-            'data':analysis_myself.objects.filter(Account_id=request.user.id),
+            'analy_data':analysis_myself.objects.filter(Account_id=request.user.id),
             'now':timezone.now,
             'data_json':json_data,
-            "motiGraphBase64": motiGraphBase64
+            "motiGraphBase64": motiGraphBase64,
+            'data':Company.objects.all().filter(Account_id=request.user.id),
         }
         return render(request, 'analysis_self.html',d)
 
@@ -240,6 +241,7 @@ def matching_output(request):
             company_text_data = ''
         
         d = {
-            'company':company_data
+            'company':company_data,
+            'data':Company.objects.all().filter(Account_id=request.user.id)
         }
         return render(request, 'matching_output.html',d)
