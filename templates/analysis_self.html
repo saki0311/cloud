@@ -157,16 +157,16 @@
             {% csrf_token %}
             <input type="hidden" name="id" value={{one.id}}>
             <input type="hidden" name="action" value="update">
-            <p class="motivation_item_name">タイトル</p>
-            <textarea class="motivation_modal_input not_resize" name="title">{{one.Title}}</textarea>
-            <p class="motivation_item_name">内容</p>
-            <textarea class="motivation_modal_input textarea_rows not_resize" name="content">{{one.Content}}</textarea>
-            <p class="motivation_item_name">モチベーション</p>
-            <input class="motivation_modal_input" type="number" name="motivation" value={{one.Motivation}} />
-            <p class="motivation_item_name">年齢</p>
-            <input class="motivation_modal_input" type="number" name="age" value={{one.Age}} />
-            <p class="motivation_item_name">月</p>
-            <input class="motivation_modal_input" type="number" name="month" value={{one.Month}} />
+            <p class="motivation_item_name">タイトル<textarea class="motivation_modal_input not_resize" name="title">{{one.Title}}</textarea></p>
+            
+            <p class="motivation_item_name">内容<textarea class="motivation_modal_input textarea_rows not_resize" name="content">{{one.Content}}</textarea></p>
+            
+            <p class="motivation_item_name">モチベーション<input class="motivation_modal_input" type="number" name="motivation" value={{one.Motivation}} /></p>
+            
+            <p class="motivation_item_name">年齢<input class="motivation_modal_input" type="number" name="age" value={{one.Age}} /></p>
+            
+            <p class="motivation_item_name">月<input class="motivation_modal_input" type="number" name="month" value={{one.Month}} /></p>
+            
             <!-- <input class="modal_button_size" type="submit" value="更新"> -->
             <input type="submit" value="更新">
           </form>
@@ -176,7 +176,7 @@
           {% csrf_token %}
           <input type="hidden" name="id" value={{one.id}}>
           <input type="hidden" name="action" value="delete">
-          <input type="submit" value="削除">
+          <!-- <input type="submit" value="削除"> -->
         </form>
 
 
@@ -187,8 +187,10 @@
         <div class="jibunshi-main">
           {{one.Content}}
         </div>
-        <img src="data:image/png;base64,{{motiGraphBase64}}" />
-      </p>
+        <div class = "word-cloud">
+          <img src="data:image/png;base64,{{motiGraphBase64}}" />
+        </div>
+        </p>
     </div>
 
   {% endfor %} 
