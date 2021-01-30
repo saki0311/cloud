@@ -9,8 +9,6 @@
 
 {% block box3%}
   <!-- <img src="data:image/png;base64,{{motiGraphBase64}}" /> -->
-
-
   <div class="motigraph">
     <div class = "ogata-title">
       <svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -169,13 +167,13 @@
   </div>
   {% endfor %}
   <h3>編集と削除</h3>
-    {% for one in data %}
+  {% for one in data %}
   <!-- <h3>編集と削除</h3> -->
   <div class="jibunshi-field">
-      {% for one in analy_data %}
+    {% for one in analy_data %}
     <div class="episode">
       <p>
-      <div id="jibunshi-modal">
+        <div id="jibunshi-modal">
           <div id="jibunshi-modal-close">
             <button class="batsu_button cursor">×</button>
           </div>
@@ -198,15 +196,12 @@
             <input type="submit" value="更新">
           </form>
         </div>
-
         <form method="post" name="form_delete" action="{% url 'rikumane_app:analysis_self' %}">
           {% csrf_token %}
           <input type="hidden" name="id" value={{one.id}}>
           <input type="hidden" name="action" value="delete">
           <!-- <input type="submit" value="削除"> -->
         </form>
-
-
         <!-- {{one.Title}} {{one.Content}} {{one.Motivation}} {{one.Age}} {{one.Month}} -->
         <div class="jibunshi-title">
           <span style="text-decoration: underline">{{one.Age}}歳{{one.Month}}月：{{one.Title}} </span>
@@ -217,8 +212,10 @@
         <div class = "word-cloud">
           {% comment %} <img src="data:image/png;base64,{{one.cloud}}" /> {% endcomment %}
         </div>
-        </p>
+      </p>
     </div>
-    {% endfor %} 
+    {% endfor %}
+  </div>
+  {% endfor %}
   {% endblock %}
 </html>
